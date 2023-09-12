@@ -1,12 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1694560921
-icon.svg::CompressedTexture2D::9139670884826947026::1694560877::1694560877::1::::<><>::
-README.md::TextFile::-1::1694560877::0::1::::<><>::
-::res://Scenes/::1694560877
-::res://Scenes/Areas/::1694560877
-Player.gd::GDScript::-1::1694560877::0::1::::<>CharacterBody3D<>::
-PlayerSpringArm.gd::GDScript::-1::1694560877::0::1::::<>SpringArm3D<>::
-test_world.tscn::PackedScene::2380891643240181583::1694560877::0::1::::<><>::uid://dx6kmx4r6nn6k::::res://Textures/Sprite3Ds/ppoint image_3.png<>res://Scenes/Areas/Player.gd<>res://Scenes/Areas/PlayerSpringArm.gd
-::res://Textures/::1694560877
-::res://Textures/Sprite3Ds/::1694560877
-ppoint image_3.png::CompressedTexture2D::8838231018235161492::1694560877::1694560877::1::::<><>::
+::res://::1694563170
+BlockLib.meshlib::MeshLibrary::4312249674441051464::1694562381::0::1::::<><>::
+icon.svg::CompressedTexture2D::9139670884826947026::1694552413::1694552423::1::::<><>::
+README.md::TextFile::-1::1694560156::0::1::::<><>::
+test_block.tscn::PackedScene::5088975394300570725::1694563009::0::1::::<><>::
+::res://Scenes/::1694552958
+::res://Scenes/Areas/::1694563140
+Player.gd::GDScript::-1::1694563140::0::1::::<>CharacterBody3D<>::
+PlayerSpringArm.gd::GDScript::-1::1694562473::0::1::::<>SpringArm3D<>::
+test_world.tscn::PackedScene::2380891643240181583::1694563140::0::1::::<><>::uid://dx6kmx4r6nn6k::::res://Textures/Sprite3Ds/ppoint image_3.png<>res://Scenes/Areas/Player.gd<>res://Scenes/Areas/PlayerSpringArm.gd<>uid://b2o5effovrwii::::res://BlockLib.meshlib
+::res://Scenes/Player/::1694552621
+::res://Textures/::1694552598
+::res://Textures/Sprite3Ds/::1694552664
+ppoint image_3.png::CompressedTexture2D::8838231018235161492::1694552661::1694552664::1::::<><>::

@@ -24,6 +24,9 @@ func _physics_process(delta):
 	
 	movement_vector = Input.get_vector("left", "right", "down", "up").normalized()
 	
+	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
+	
+	##FUCK FUCK FUCK!!
 	
 	if is_on_floor():
 		coyote_frames = max_coyote_frames
