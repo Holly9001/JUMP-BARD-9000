@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://86k6407oqgxj"]
+
+[ext_resource type="Texture2D" uid="uid://dx6kmx4r6nn6k" path="res://Textures/Sprite3Ds/ppoint image_3.png" id="1_3ukov"]
+[ext_resource type="Script" path="res://Scenes/Areas/Player.gd" id="1_daui3"]
+[ext_resource type="Script" path="res://Scenes/Areas/PlayerSpringArm.gd" id="3_rrr8i"]
+
+[sub_resource type="Curve" id="Curve_tboxv"]
+max_value = 0.04
+_data = [Vector2(0, 0.0206316), 0.0, 0.0, 0, 0, Vector2(1, 0.03), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8s65s"]
+height = 1.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxa64"]
+size = Vector3(20, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xj1go"]
+size = Vector3(20, 1, 1)
+
+[node name="Test_World" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25445, 0)
+script = ExtResource("1_daui3")
+jump_curve = SubResource("Curve_tboxv")
+
+[node name="Sprite3D" type="Sprite3D" parent="Player"]
+transform = Transform3D(0.12, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -1.19209e-07, 0)
+texture = ExtResource("1_3ukov")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)
+shape = SubResource("CapsuleShape3D_8s65s")
+
+[node name="SpringArm" type="SpringArm3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)
+collision_mask = 8
+spring_length = 8.0
+script = ExtResource("3_rrr8i")
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.08907)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_oxa64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_xj1go")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D"]
+transform = Transform3D(0.978267, -0.207348, 0, 0.207348, 0.978267, 0, 0, 0, 1, 12.8688, 2.00034, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_oxa64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_xj1go")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticBody3D"]
+transform = Transform3D(-0.988113, 0.153727, 8.63836e-08, 0.153727, 0.988113, -1.34393e-08, -8.74228e-08, 0, -1, 34.0057, 2.70045, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/StaticBody3D2"]
+shape = SubResource("BoxShape3D_oxa64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/StaticBody3D2/CollisionShape3D"]
+mesh = SubResource("BoxMesh_xj1go")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D/StaticBody3D2"]
+transform = Transform3D(0.980792, 0.195056, 7.07841e-09, -0.195056, 0.980792, 3.44605e-08, -2.20737e-10, -3.51793e-08, 1, 11.7413, -5.24705, 9.85716e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/StaticBody3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_oxa64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/StaticBody3D2/StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_xj1go")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticBody3D/StaticBody3D2"]
+transform = Transform3D(-0.988113, 0.153727, 8.63836e-08, 0.153727, 0.988113, -1.34393e-08, -8.74228e-08, 0, -1, 1.20862, 2.47199, 2.86721e-06)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/StaticBody3D2/StaticBody3D2"]
+shape = SubResource("BoxShape3D_oxa64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/StaticBody3D2/StaticBody3D2/CollisionShape3D"]
+mesh = SubResource("BoxMesh_xj1go")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D/StaticBody3D2/StaticBody3D2"]
+transform = Transform3D(0.980792, 0.195056, 7.07841e-09, -0.195056, 0.980792, 3.44605e-08, -2.20737e-10, -3.51793e-08, 1, 11.7413, -5.24705, 9.85716e-08)
