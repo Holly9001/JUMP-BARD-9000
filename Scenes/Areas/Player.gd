@@ -15,6 +15,9 @@ var vertical_speed :float= 2
 
 var y_velocity :float= 0
 
+var max_coyote_frames = 32
+var coyote_frames = 0
+
 @export var jump_curve:Curve
 
 func _physics_process(delta):
@@ -24,22 +27,29 @@ func _physics_process(delta):
 	
 	
 	if is_on_floor():
+		coyote_frames = max_coyote_frames
 		velocity.y = 0
-		if Input.is_action_just_pressed('jump'): y_velocity = jump_height
+		if Input.is_action_just_pressed('jump'):
+			y_velocity = jump_height
+			coyote_frames = 0
 	elif is_on_ceiling():
 		y_velocity = 0
 	elif is_on_wall():
 		pass
-#	else:
-#		velocity.y = lerp(velocity.y,-max_vertical_speed * vertical_speed * delta * 60,0.2)
+	else:
+		coyote_frames = clamp(coyote_frames-1,0,max_coyote_frames)
+		velocity.y = lerp(velocity.y,-max_vertical_speed * vertical_speed * delta * 60,0.2)
+	
+	print(coyote_frames)
 	
 	if y_velocity > -max_vertical_speed * gravity:
-		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y)+0.01)
+		
+		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.01)
+	
 	
 	
 	velocity.x = lerp(velocity.x,movement_vector.x * horizontal_speed * delta * 60,0.1)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
-	print(y_velocity)
 	
 	move_and_slide()

@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve" id="Curve_tboxv"]
 max_value = 0.04
-_data = [Vector2(0, 0.0206316), 0.0, 0.0, 0, 0, Vector2(1, 0.03), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.035), 0.0, 0.0, 0, 0, Vector2(1, 0.01), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8s65s"]
