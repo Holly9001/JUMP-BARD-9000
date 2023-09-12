@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=9 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="Texture2D" uid="uid://dx6kmx4r6nn6k" path="res://Textures/Sprite3Ds/ppoint image_3.png" id="1_3ukov"]
 [ext_resource type="Script" path="res://Scenes/Areas/Player.gd" id="1_daui3"]
 [ext_resource type="Script" path="res://Scenes/Areas/PlayerSpringArm.gd" id="3_rrr8i"]
+[ext_resource type="MeshLibrary" uid="uid://b2o5effovrwii" path="res://BlockLib.meshlib" id="4_4gpr5"]
 
 [sub_resource type="Curve" id="Curve_tboxv"]
 max_value = 0.04
@@ -93,3 +94,10 @@ skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D/StaticBody3D2/StaticBody3D2"]
 transform = Transform3D(0.980792, 0.195056, 7.07841e-09, -0.195056, 0.980792, 3.44605e-08, -2.20737e-10, -3.51793e-08, 1, 11.7413, -5.24705, 9.85716e-08)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("4_4gpr5")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(131061, 0, 0, 131060, 0, 0, 131059, 0, 0, 131058, 0, 0, 131057, 0, 0, 131056, 0, 0, 262127, 0, 0, 262126, 0, 0, 262125, 0, 0, 262124, 0, 0, 262123, 0, 0, 262122, 0, 0, 262121, 0, 0)
+}
