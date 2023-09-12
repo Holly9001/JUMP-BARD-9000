@@ -19,7 +19,9 @@ var y_velocity :float= 0
 
 func _physics_process(delta):
 	
-	movement_vector = Vector2(int(Input.is_action_pressed("right"))-int(Input.is_action_pressed('left')),int(Input.is_action_pressed('up'))-int(Input.is_action_pressed('down'))).normalized()
+	movement_vector = Input.get_vector("left", "right", "down", "up").normalized()
+	
+	#movement_vector = Vector2(int(Input.is_action_pressed("right"))-int(Input.is_action_pressed('left')),int(Input.is_action_pressed('up'))-int(Input.is_action_pressed('down'))).normalized()
 	
 	
 	

@@ -2,3 +2,4 @@ res://Scenes/Areas/test_world.tscn
 res://README.md
 res://BlockLib.meshlib
 res://test_block.tscn
+res://Scenes/Areas/Player.gd
