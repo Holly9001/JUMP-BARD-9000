@@ -1,6 +1,7 @@
 # Godot-specific ignores
 .import/
 .godot/editor/script_editor_cache.cfg
+.godot/editor/project_metadata.cfg
 export.cfg
 export_presets.cfg
 
