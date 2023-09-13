@@ -23,6 +23,9 @@ size = Vector3(20, 1, 1)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25445, 0)
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 script = ExtResource("1_daui3")
 jump_curve = SubResource("Curve_tboxv")
 
