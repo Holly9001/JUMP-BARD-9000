@@ -46,7 +46,7 @@ func _physics_process(delta):
 	
 	if y_velocity > -max_vertical_speed * gravity:
 		
-		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.01)
+		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.01-coyote_frames*0.001)
 	
 	
 	
