@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7kp1h3lmxp85"]
+[gd_scene load_steps=6 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
-[ext_resource type="MeshLibrary" uid="uid://b2o5effovrwii" path="res://BlockLib.meshlib" id="4_4gpr5"]
+[ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_block/on_off_block.tscn" id="3_o4vv3"]
+[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="4_4gpr5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb5vy"]
 size = Vector3(1, 15, 1)
@@ -15,7 +16,7 @@ data = PackedVector3Array(-0.5, 7.5, 0.5, 0.5, 7.5, 0.5, -0.5, -7.5, 0.5, 0.5, 7
 mesh_library = ExtResource("4_4gpr5")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(-6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, 131062, 0, 0, 131063, 0, 0, 131064, 0, 0, 65542, 0, 0, 6, 0, 0, 131060, 0, 0, 131057, 0, 0, 131058, 0, 0, 262139, 0, 0, 262143, 0, 0, 196611, 0, 0, 196615, 0, 0, 196619, 0, 0)
+"cells": PackedInt32Array(-6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, 131062, 0, 0, 131063, 0, 0, 131064, 0, 0, 65542, 0, 0, 6, 0, 0, 131060, 0, 0, 131057, 0, 0, 131058, 0, 0, 262139, 0, 0, 262143, 0, 0, 196611, 0, 0, 196619, 0, 0, 196599, 0, 1441793, 458757, 0, 1441792, 458756, 0, 1441792, 458755, 0, 1441792, 458754, 0, 1441792, 458753, 0, 1441792)
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -31,3 +32,15 @@ shape = SubResource("ConcavePolygonShape3D_nn6ks")
 
 [node name="Player" parent="." instance=ExtResource("1_i1lek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23971, 2.01541, 0.574021)
+
+[node name="on_off_block" parent="." instance=ExtResource("3_o4vv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0.5)
+
+[node name="on_off_block2" parent="." instance=ExtResource("3_o4vv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4.5, 0.5)
+
+[node name="on_off_block3" parent="." instance=ExtResource("3_o4vv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 5.5, 0.5)
+
+[node name="on_off_block4" parent="." instance=ExtResource("3_o4vv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 6.5, 0.5)

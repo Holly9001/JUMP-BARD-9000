@@ -1,16 +1,21 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1694572481
-BlockLib.meshlib::MeshLibrary::4312249674441051464::1694562381::0::1::::<><>::
-icon.svg::CompressedTexture2D::9139670884826947026::1694552413::1694552423::1::::<><>::
-README.md::TextFile::-1::1694560156::0::1::::<><>::
-test_block.tscn::PackedScene::5088975394300570725::1694572464::0::1::::<><>::
-::res://Scenes/::1694552958
-::res://Scenes/Areas/::1694572471
-Player.gd::GDScript::-1::1694572256::0::1::::<>CharacterBody3D<>::
-PlayerSpringArm.gd::GDScript::-1::1694572312::0::1::::<>SpringArm3D<>::
-::res://Scenes/Player/::1694572464
-player.tscn::PackedScene::5792645123849217061::1694572491::0::1::::<><>::res://Scenes/Areas/Player.gd<>uid://dx6kmx4r6nn6k::::res://Textures/Sprite3Ds/ppoint image_3.png<>res://Scenes/Areas/PlayerSpringArm.gd
-::res://Scripts/::1694572481
-::res://Textures/::1694552598
-::res://Textures/Sprite3Ds/::1694552664
-ppoint image_3.png::CompressedTexture2D::8838231018235161492::1694552661::1694552664::1::::<><>::
+::res://::1694612182
+BlockLib.meshlib::MeshLibrary::4312249674441051464::1694612131::0::1::::<><>::
+grid_props.tscn::PackedScene::5088975394300570725::1694612182::0::1::::<><>::uid://b7w6eam7k048p::::res://Scenes/Props/on_off_block/on_off_block.tscn
+icon.svg::CompressedTexture2D::9139670884826947026::1694560877::1694560877::1::::<><>::
+README.md::TextFile::-1::1694561035::0::1::::<><>::
+::res://Scenes/::1694611079
+::res://Scenes/Areas/::1694612182
+test_world.tscn::PackedScene::2380891643240181583::1694612182::0::1::::<><>::uid://cosaav22w682t::::res://Scenes/Player/player.tscn<>uid://b2o5effovrwii::::res://BlockLib.meshlib
+::res://Scenes/Player/::1694612182
+player.tscn::PackedScene::5792645123849217061::1694612182::0::1::::<><>::res://Scripts/Player.gd<>uid://dx6kmx4r6nn6k::::res://Textures/Sprite3Ds/ppoint image_3.png<>res://Scripts/PlayerSpringArm.gd
+::res://Scenes/Props/::1694611936
+::res://Scenes/Props/on_off_block/::1694612182
+on_off_block.gd::GDScript::-1::1694612151::0::1::::<>Node3D<>::
+on_off_block.tscn::PackedScene::4679769380656799565::1694612182::0::1::::<><>::res://Scenes/Props/on_off_block/on_off_block.gd
+::res://Scripts/::1694612174
+Player.gd::GDScript::-1::1694612174::0::1::::<>CharacterBody3D<>::
+PlayerSpringArm.gd::GDScript::-1::1694577422::0::1::::<>SpringArm3D<>::
+::res://Textures/::1694560877
+::res://Textures/Sprite3Ds/::1694560877
+ppoint image_3.png::CompressedTexture2D::8838231018235161492::1694560877::1694560877::1::::<><>::

@@ -69,7 +69,7 @@ func _physics_process(delta):
 		coyote_frames = clamp(coyote_frames-1,0,max_coyote_frames)
 		velocity.y = lerp(velocity.y,-max_vertical_speed * vertical_speed * delta * 60,0.15)
 	
-	print(jump_hold)
+	#print(jump_hold)
 	
 	if y_velocity > -max_vertical_speed * gravity:
 		
