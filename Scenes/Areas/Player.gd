@@ -26,7 +26,7 @@ func _physics_process(delta):
 	
 	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
 	
-	##FUCK FUCK FUCK!!
+	## OK THIS IS CODE I WANNA KEEP YAYAYAYAYYAYAY! THIS SHOULD REMAIN
 	
 	if is_on_floor():
 		coyote_frames = max_coyote_frames
