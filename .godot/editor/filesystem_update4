@@ -1,5 +1,0 @@
-res://Scenes/Areas/test_world.tscn
-res://Scenes/Player/player.tscn
-res://Scenes/Props/on_off_props/on_off_props.tscn
-res://Scripts/on_off_block.gd
-res://grid_meshes.tscn
