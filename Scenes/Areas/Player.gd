@@ -15,38 +15,60 @@ var vertical_speed :float= 2
 
 var y_velocity :float= 0
 
-var max_coyote_frames = 32
-var coyote_frames = 0
+var max_coyote_frames := 32
+var coyote_frames := 0
+
+var max_jump_hold := 10
+var jump_hold := 0
+
+## ability booleans
+# for double jump bools and shit, gonna make one for hold jump too.
+
+
+
 
 @export var jump_curve:Curve
 
 func _physics_process(delta):
 	
-	movement_vector = Input.get_vector("left", "right", "down", "up").normalized()
+	movement_vector = Input.get_vector("left", "right", "down", "up")# normalized()
 	
 	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
 	
 	## OK THIS IS CODE I WANNA KEEP YAYAYAYAYYAYAY! THIS SHOULD REMAIN
 	
-	if is_on_floor():
+	## is_on_floor is jank as fuck sometimes lol, this is better.
+	var on_floor = test_move(global_transform,Vector3.DOWN)
+	
+	if on_floor and is_on_floor(): ## added and is_onfloor() for angled wall checks
 		coyote_frames = max_coyote_frames
+		jump_hold = 0
 		velocity.y = 0
 		if Input.is_action_just_pressed('jump'):
+			jump_hold = max_jump_hold
+			
 			y_velocity = jump_height
 			coyote_frames = 0
 	elif is_on_ceiling():
 		y_velocity = 0
-	elif is_on_wall():
-		pass
+		velocity.y = velocity.y/2
+#	elif is_on_wall():
+#		pass
 	else:
+		if Input.is_action_pressed('jump') and jump_hold > 0:
+			jump_hold -= 1
+			y_velocity = jump_height
+		else: jump_hold = 0
+#		if Input.is_action_just_released('jump'): jump_hold = 0
+		
 		coyote_frames = clamp(coyote_frames-1,0,max_coyote_frames)
-		velocity.y = lerp(velocity.y,-max_vertical_speed * vertical_speed * delta * 60,0.2)
+		velocity.y = lerp(velocity.y,-max_vertical_speed * vertical_speed * delta * 60,0.15)
 	
-	print(coyote_frames)
+	print(jump_hold)
 	
 	if y_velocity > -max_vertical_speed * gravity:
 		
-		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.01-coyote_frames*0.001)
+		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.01-coyote_frames*0.0008)
 	
 	
 	

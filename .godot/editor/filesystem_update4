@@ -1,3 +1,5 @@
 res://Scenes/Areas/test_world.tscn
 res://Scenes/Areas/Player.gd
 res://test_block.tscn
+res://Scenes/Player/player.tscn
+res://Scenes/Areas/PlayerSpringArm.gd
