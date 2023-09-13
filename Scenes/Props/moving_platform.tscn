@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkcqcjnprk17u"]
+
+[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="1_qjbao"]
+
+[node name="moving_platform" type="Node3D"]
+script = ExtResource("1_qjbao")
+MOVE_SPEED = 1.0

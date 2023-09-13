@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkcqcjnprk17u"]
+
+[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="1_qjbao"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_31m2j"]
+
+[node name="moving_platform" type="Node3D"]
+script = ExtResource("1_qjbao")
+MOVESPEED = 10.0
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_31m2j")
