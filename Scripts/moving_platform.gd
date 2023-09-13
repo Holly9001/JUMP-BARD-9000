@@ -2,7 +2,7 @@ extends Node3D
 
 @export var MOVE_SPEED:float
 
-const SWITCH_TIME = 1.5
+const SWITCH_TIME = 4
 
 var targets = []
 var time_until_switch = SWITCH_TIME
