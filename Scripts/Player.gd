@@ -2,8 +2,6 @@ extends CharacterBody3D
 # this is the single greatest comment of all time no comment is better
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
-@onready var jump_ray= $PreJumpRay
-
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var movement_vector :Vector2= Vector2.ZERO
@@ -40,10 +38,14 @@ func _physics_process(delta):
 	
 	## OK THIS IS CODE I WANNA KEEP YAYAYAYAYYAYAY! THIS SHOULD REMAIN
 	
-	## is_on_floor is jank as fuck sometimes lol, this is better.
+	## is_on_floor() is jank as fuck sometimes lol, this is better.
 	var on_floor = test_move(global_transform,Vector3.DOWN * delta * 10)
 	
-	if on_floor and jump_hold <= 0: ## added and is_onfloor() for angled wall checks
+	###
+	
+	###
+	
+	if on_floor and jump_hold <= 0:  
 		coyote_frames = max_coyote_frames
 		jump_hold = 0
 		velocity.y = 0

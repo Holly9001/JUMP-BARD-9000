@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7kp1h3lmxp85"]
+[gd_scene load_steps=5 format=3 uid="uid://b7kp1h3lmxp85"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
 [ext_resource type="MeshLibrary" uid="uid://b2o5effovrwii" path="res://BlockLib.meshlib" id="4_4gpr5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pb5vy"]
+size = Vector3(1, 15, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nn6ks"]
+data = PackedVector3Array(-0.5, 7.5, 0.5, 0.5, 7.5, 0.5, -0.5, -7.5, 0.5, 0.5, 7.5, 0.5, 0.5, -7.5, 0.5, -0.5, -7.5, 0.5, 0.5, 7.5, -0.5, -0.5, 7.5, -0.5, 0.5, -7.5, -0.5, -0.5, 7.5, -0.5, -0.5, -7.5, -0.5, 0.5, -7.5, -0.5, 0.5, 7.5, 0.5, 0.5, 7.5, -0.5, 0.5, -7.5, 0.5, 0.5, 7.5, -0.5, 0.5, -7.5, -0.5, 0.5, -7.5, 0.5, -0.5, 7.5, -0.5, -0.5, 7.5, 0.5, -0.5, -7.5, -0.5, -0.5, 7.5, 0.5, -0.5, -7.5, 0.5, -0.5, -7.5, -0.5, 0.5, 7.5, 0.5, -0.5, 7.5, 0.5, 0.5, 7.5, -0.5, -0.5, 7.5, 0.5, -0.5, 7.5, -0.5, 0.5, 7.5, -0.5, -0.5, -7.5, 0.5, 0.5, -7.5, 0.5, -0.5, -7.5, -0.5, 0.5, -7.5, 0.5, 0.5, -7.5, -0.5, -0.5, -7.5, -0.5)
 
 [node name="TestWorld" type="Node3D"]
 
@@ -11,6 +17,17 @@ cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(-6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, 131062, 0, 0, 131063, 0, 0, 131064, 0, 0, 65542, 0, 0, 6, 0, 0, 131060, 0, 0, 131057, 0, 0, 131058, 0, 0, 262139, 0, 0, 262143, 0, 0, 196611, 0, 0, 196615, 0, 0, 196619, 0, 0)
 }
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.919636, 0.392771, 0, -0.392771, 0.919636, 0, 0, 0, 1, 13.9051, 2.01541, 0.574021)
+mesh = SubResource("BoxMesh_pb5vy")
+skeleton = NodePath("../Player")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_nn6ks")
 
 [node name="Player" parent="." instance=ExtResource("1_i1lek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23971, 2.01541, 0.574021)
