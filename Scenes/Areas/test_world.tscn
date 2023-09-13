@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=7 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
 [ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props/on_off_props.tscn" id="3_o4vv3"]
 [ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="4_4gpr5"]
+[ext_resource type="PackedScene" uid="uid://cerexfrjsycev" path="res://grid_meshes.tscn" id="4_gk4iu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb5vy"]
 size = Vector3(1, 15, 1)
@@ -33,14 +34,16 @@ shape = SubResource("ConcavePolygonShape3D_nn6ks")
 [node name="Player" parent="." instance=ExtResource("1_i1lek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23971, 2.01541, 0.574021)
 
-[node name="on_off_block" parent="." instance=ExtResource("3_o4vv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0.5)
+[node name="on_off_props" parent="." instance=ExtResource("3_o4vv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0)
 
-[node name="on_off_block2" parent="." instance=ExtResource("3_o4vv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4.5, 0.5)
+[node name="Node3D" parent="on_off_props" instance=ExtResource("4_gk4iu")]
 
-[node name="on_off_block3" parent="." instance=ExtResource("3_o4vv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 5.5, 0.5)
+[node name="Node3D2" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="on_off_block4" parent="." instance=ExtResource("3_o4vv3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 6.5, 0.5)
+[node name="Node3D3" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Node3D4" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

@@ -1,21 +1,21 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1694614577
+::res://::1694615245
 BlockLib.meshlib::MeshLibrary::2257876069851243933::1694612257::0::1::::<><>::
-grid_meshes.tscn::PackedScene::5088975394300570725::1694612258::0::1::::<><>::
 icon.svg::CompressedTexture2D::9139670884826947026::1694560877::1694614578::1::::<><>::
 README.md::TextFile::-1::1694561035::0::1::::<><>::
 ::res://Scenes/::1694614038
-::res://Scenes/Areas/::1694614543
-test_world.tscn::PackedScene::2380891643240181583::1694614543::0::1::::<><>::uid://cosaav22w682t::::res://Scenes/Player/player.tscn<>uid://b7w6eam7k048p::::res://Scenes/Props/on_off_props/on_off_props.tscn<>uid://7fy5hw5gdrir::::res://BlockLib.meshlib
-::res://Scenes/Player/::1694614543
-player.tscn::PackedScene::5792645123849217061::1694614543::0::1::::<><>::res://Scripts/Player.gd<>uid://dx6kmx4r6nn6k::::res://Textures/Sprite3Ds/ppoint image_3.png<>res://Scripts/PlayerSpringArm.gd
+::res://Scenes/Areas/::1694615035
+test_world.tscn::PackedScene::2380891643240181583::1694615035::0::1::::<><>::uid://cosaav22w682t::::res://Scenes/Player/player.tscn<>uid://b7w6eam7k048p::::res://Scenes/Props/on_off_props/on_off_props.tscn<>uid://7fy5hw5gdrir::::res://BlockLib.meshlib
+::res://Scenes/Player/::1694615035
+player.tscn::PackedScene::5792645123849217061::1694615035::0::1::::<><>::res://Scripts/Player.gd<>uid://dx6kmx4r6nn6k::::res://Textures/Sprite3Ds/ppoint image_3.png<>res://Scripts/PlayerSpringArm.gd
 ::res://Scenes/Props/::1694614038
-::res://Scenes/Props/on_off_props/::1694614543
-on_off_props.tscn::PackedScene::4679769380656799565::1694614543::0::1::::<><>::res://Scripts/on_off_block.gd
-::res://Scripts/::1694614562
-on_off_block.gd::GDScript::-1::1694614562::0::1::::<>Node3D<>::
+::res://Scenes/Props/on_off_props/::1694615245
+grid_meshes.tscn::PackedScene::5088975394300570725::1694612258::0::1::::<><>::
+on_off_props.tscn::PackedScene::4679769380656799565::1694615229::0::1::::<><>::res://Scripts/on_off_block.gd
+::res://Scripts/::1694615191
+on_off_block.gd::GDScript::-1::1694615191::0::1::::<>Node3D<>::
 Player.gd::GDScript::-1::1694612174::0::1::::<>CharacterBody3D<>::
 PlayerSpringArm.gd::GDScript::-1::1694577422::0::1::::<>SpringArm3D<>::
 ::res://Textures/::1694560877
-::res://Textures/Sprite3Ds/::1694614562
+::res://Textures/Sprite3Ds/::1694614578
 ppoint image_3.png::CompressedTexture2D::8838231018235161492::1694560877::1694614578::1::::<><>::
