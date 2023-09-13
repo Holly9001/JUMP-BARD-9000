@@ -1,5 +1,10 @@
 res://Scenes/Areas/test_world.tscn
-res://Scenes/Areas/Player.gd
+res://README.md
+res://BlockLib.meshlib
 res://test_block.tscn
+<<<<<<< HEAD
 res://Scenes/Player/player.tscn
 res://Scenes/Areas/PlayerSpringArm.gd
+=======
+res://Scenes/Areas/Player.gd
+>>>>>>> c8474ea8fbcc079940e5f0a83ed2a259081fdc29
