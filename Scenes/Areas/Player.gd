@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+# this is the single greatest comment of all time no comment is better
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
