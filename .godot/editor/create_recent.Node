@@ -1,9 +1,9 @@
+CollisionShape3D
+StaticBody3D
 Node3D
 GridMap
 MeshInstance3D
-StaticBody3D
 Camera3D
 SpringArm3D
-CollisionShape3D
 Sprite3D
 CharacterBody3D
