@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=15 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
 [ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props/on_off_props.tscn" id="3_o4vv3"]
@@ -21,10 +21,21 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Curve" id="Curve_8wih3"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
 [sub_resource type="BoxMesh" id="BoxMesh_fjj8o"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_32pno"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="Curve3D" id="Curve3D_1qluv"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="TestWorld" type="Node3D"]
 
@@ -64,14 +75,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 10, 0)
 curve = SubResource("Curve3D_8ibov")
 
 [node name="moving_platform" parent="Path3D2" instance=ExtResource("5_bjkqj")]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, -1.5, -0.3396, 0)
+transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 0, 0)
 cubic_interp = false
 tilt_enabled = false
 move_time = 5.0
+speed_curve = SubResource("Curve_8wih3")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D2/moving_platform"]
 axis_lock_linear_z = true
@@ -94,6 +106,40 @@ transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Path3D2/moving_platform/AnimatableBody3D"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_32pno")
+
+[node name="Path3D3" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, 0)
+curve = SubResource("Curve3D_1qluv")
+
+[node name="moving_platform" parent="Path3D3" instance=ExtResource("5_bjkqj")]
+transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 0, 0)
+cubic_interp = false
+tilt_enabled = false
+move_time = 5.0
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D3/moving_platform"]
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D3/moving_platform/AnimatableBody3D"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -3.8147e-06, 0, 0)
+mesh = SubResource("BoxMesh_fjj8o")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D3/moving_platform/AnimatableBody3D"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, 0.999996, 0, 0)
+mesh = SubResource("BoxMesh_fjj8o")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D3/moving_platform/AnimatableBody3D"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_32pno")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Path3D3/moving_platform/AnimatableBody3D"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
 
