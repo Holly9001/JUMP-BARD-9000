@@ -1,3 +1,2 @@
 res://Scenes/Areas/test_world.tscn
-res://Scripts/music_states.gd
 res://Scenes/WorldControl/music_controller.tscn
