@@ -15,7 +15,6 @@ func _process(delta):
 		move_progress = 0
 	else:
 		self.progress_ratio = move_progress / move_time
-		print(self.progress_ratio)
 		for i in children:
 			i.global_position = self.global_position
 "
