@@ -1,7 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkcqcjnprk17u"]
+[gd_scene load_steps=6 format=3 uid="uid://dd8ym2lrvds45"]
 
-[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="1_qjbao"]
+[ext_resource type="Script" path="res://Scenes/Props/moving_platform.gd" id="1_ap7yt"]
 
-[node name="moving_platform" type="Node3D"]
-script = ExtResource("1_qjbao")
-MOVE_SPEED = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_hu0ok"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gder0"]
+
+[sub_resource type="Animation" id="Animation_2iayh"]
+resource_name = "move"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03fhg"]
+_data = {
+"move": SubResource("Animation_2iayh")
+}
+
+[node name="moving_platform" type="AnimatableBody3D"]
+script = ExtResource("1_ap7yt")
+idle_duration = null
+move_to = null
+speed = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hu0ok")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gder0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_03fhg")
+}
