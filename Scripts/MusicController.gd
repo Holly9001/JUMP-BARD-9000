@@ -12,4 +12,3 @@ func _process(_delta):
 
 func _bass_1():
 	MusicStates.bass_1 = !MusicStates.bass_1
-	print('i work')
