@@ -76,6 +76,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [node name="Node3D4" parent="on_off_props" instance=ExtResource("4_gk4iu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
+[node name="Node3D5" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+
 [node name="Path3D2" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2765, 10, 0)
 curve = SubResource("Curve3D_8ibov")
