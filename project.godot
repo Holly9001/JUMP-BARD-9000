@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 run/max_fps=5
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicStates="*res://Scripts/music_states.gd"
+
 [input]
 
 right={

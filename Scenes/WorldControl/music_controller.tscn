@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://7vog8io13utl"]
 
-[ext_resource type="AudioStream" uid="uid://lrwmgqhev5yu" path="res://Audio/Songs/test_song_1.wav" id="1_wmqx1"]
+[ext_resource type="AudioStream" uid="uid://b5jpqrq7oi8kx" path="res://Audio/Music/test_song_1.wav" id="1_bf146"]
 [ext_resource type="Script" path="res://Scripts/MusicController.gd" id="2_hwmsn"]
 
 [sub_resource type="Animation" id="Animation_mf8hj"]
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("1_wmqx1")
+"stream": ExtResource("1_bf146")
 }],
 "times": PackedFloat32Array(0)
 }
