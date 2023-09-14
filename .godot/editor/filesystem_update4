@@ -1,2 +1,6 @@
 res://Scenes/Areas/test_world.tscn
 res://Scenes/WorldControl/music_controller.tscn
+res://Beat_Switch_Block.gd
+res://Scenes/Props/on_off_props/beat_switch_prop.tscn
+res://Scripts/MusicController.gd
+res://Scripts/Player.gd
