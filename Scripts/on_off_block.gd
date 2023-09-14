@@ -2,18 +2,21 @@ extends Node3D
 
 const SWITCH_TIME = 1.5
 
+@export var beat_type:String
+
 var child_collisions
 var children
-var prev_base_state = false
+var prev_state
 
 func _ready():
 	child_collisions = get_children_of_type(self, "CollisionShape3D")
 	children = get_children()
+	prev_state = MusicStates[beat_type]
 
 func _process(_delta):
 	# eventually this shouldn't be hardcoded for bass
-	if MusicStates.bass_1 != prev_base_state:
-		prev_base_state = MusicStates.bass_1
+	if MusicStates[beat_type] != prev_state:
+		prev_state = MusicStates[beat_type]
 		for i in child_collisions:
 			i.disabled = !i.disabled
 		

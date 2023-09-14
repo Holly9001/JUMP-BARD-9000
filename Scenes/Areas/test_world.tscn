@@ -16,7 +16,7 @@ data = PackedVector3Array(-0.5, 7.5, 0.5, 0.5, 7.5, 0.5, -0.5, -7.5, 0.5, 0.5, 7
 
 [sub_resource type="Curve3D" id="Curve3D_8ibov"]
 _data = {
-"points": PackedVector3Array(0.5, -0.5, 0, -0.5, 0.5, 0, 0, 0, 0, -1, -1, 0, 1, 1, 0, 0, 3, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 3, 3, 0, 1, 1, 0, -1, -1, 0, 3, 0, 0, 0.5, -0.5, 0, 1, 2, 0, 0, 0, 0),
+"points": PackedVector3Array(0.5, -0.5, 0, -0.5, 0.5, 0, 0, 0, 0, -1, -1, 0, 1, 1, 0, 0, 3, 0, -1, 1, 0, 1, -1, 0, 4, 3, 0, 1, 1, 0, -1, -1, 0, 4, 0, 0, 0.5, -0.5, 0, 1, 2, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -63,6 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7397, 5.51541, 0.574021)
 
 [node name="on_off_props" parent="." instance=ExtResource("3_o4vv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0)
+beat_type = "bass_1"
 
 [node name="Node3D" parent="on_off_props" instance=ExtResource("4_gk4iu")]
 
@@ -76,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2765, 10, 0)
 curve = SubResource("Curve3D_8ibov")
 
 [node name="moving_platform" parent="Path3D2" instance=ExtResource("5_bjkqj")]
