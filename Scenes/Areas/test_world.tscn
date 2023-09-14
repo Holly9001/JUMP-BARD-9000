@@ -20,6 +20,7 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+up_vector_enabled = false
 
 [sub_resource type="Curve" id="Curve_8wih3"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
