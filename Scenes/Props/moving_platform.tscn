@@ -1,28 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://b633jbtar6pl6"]
+[gd_scene load_steps=3 format=3 uid="uid://b633jbtar6pl6"]
 
 [sub_resource type="GDScript" id="GDScript_64oqr"]
 script/source = "extends PathFollow3D
 
-@export var speed_curve:Curve2d
+@export var move_time:float
+@export var speed_curve:Curve
 
 @onready var children = self.get_children()
 
-var move_progress = 0
+var elapsed = 0.0
 
 func _process(delta):
-	move_progress += delta
-	if move_progress > move_time:
-		move_progress = 0
-	else:
-		self.progress_ratio = move_progress / move_time
-		for i in children:
-			i.global_position = self.global_position
+	self.progress_ratio = speed_curve.sample(fmod(elapsed / move_time, 1.0))
+	for i in children:
+		i.global_position = self.global_position
+	print(self.progress_ratio)
+#	if elapsed > move_time:
+#		elapsed = 0.0
+	elapsed += delta
+#	else:
+#		self.progress_ratio = move_progress / move_time
+#		for i in children:
+#			i.global_position = self.global_position
 "
+
+[sub_resource type="Curve" id="Curve_cd4ya"]
+_data = [Vector2(0, 0.0315789), 0.0, 0.984399, 0, 0, Vector2(1, 1), 0.957895, 0.0, 0, 0]
+point_count = 2
 
 [node name="moving_platform" type="PathFollow3D"]
 transform = Transform3D(-1.03143e-07, -0.316226, 0.948683, -8.29364e-08, -0.948679, -0.316228, 0.999998, -1.11297e-07, 7.16236e-08, 0.489494, 0.503502, 0)
-progress = 3.74
 rotation_mode = 0
-loop = false
 script = SubResource("GDScript_64oqr")
-move_time = null
+move_time = 2.0
+speed_curve = SubResource("Curve_cd4ya")
