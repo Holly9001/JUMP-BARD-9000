@@ -8,6 +8,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	b_1_label.text = str('bass_1: ',MusicStates.bass_1)

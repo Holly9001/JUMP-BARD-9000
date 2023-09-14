@@ -2,21 +2,21 @@ extends Node3D
 
 const SWITCH_TIME = 1.5
 
+@export var beat_type:String
+
 var child_collisions
 var children
-var time_until_switch = SWITCH_TIME
+var prev_state
 
 func _ready():
 	child_collisions = get_children_of_type(self, "CollisionShape3D")
 	children = get_children()
+	prev_state = MusicStates[beat_type]
 
-func _process(delta):
-	# this won't be happening here once the music works. it's just a timer to test
-	time_until_switch -= delta
-	# below code will check the music status singleton instead
-	if time_until_switch < 0:
-		time_until_switch = SWITCH_TIME
-		
+func _process(_delta):
+	# eventually this shouldn't be hardcoded for bass
+	if MusicStates[beat_type] != prev_state:
+		prev_state = MusicStates[beat_type]
 		for i in child_collisions:
 			i.disabled = !i.disabled
 		

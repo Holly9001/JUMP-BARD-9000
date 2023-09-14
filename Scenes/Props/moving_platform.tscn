@@ -14,19 +14,12 @@ func _process(delta):
 	self.progress_ratio = speed_curve.sample(fmod(elapsed / move_time, 1.0))
 	for i in children:
 		i.global_position = self.global_position
-	print(self.progress_ratio)
-#	if elapsed > move_time:
-#		elapsed = 0.0
 	elapsed += delta
-#	else:
-#		self.progress_ratio = move_progress / move_time
-#		for i in children:
-#			i.global_position = self.global_position
 "
 
 [sub_resource type="Curve" id="Curve_cd4ya"]
-_data = [Vector2(0, 0.0315789), 0.0, 0.984399, 0, 0, Vector2(1, 1), 0.957895, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0.1, 0), 0.0, 0.0, 0, 0, Vector2(0.45, 0.5), 3.3038e-07, 0.0, 0, 0, Vector2(0.55, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="moving_platform" type="PathFollow3D"]
 transform = Transform3D(-1.03143e-07, -0.316226, 0.948683, -8.29364e-08, -0.948679, -0.316228, 0.999998, -1.11297e-07, 7.16236e-08, 0.489494, 0.503502, 0)
