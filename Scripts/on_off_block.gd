@@ -4,19 +4,16 @@ const SWITCH_TIME = 1.5
 
 var child_collisions
 var children
-var time_until_switch = SWITCH_TIME
+var prev_base_state = false
 
 func _ready():
 	child_collisions = get_children_of_type(self, "CollisionShape3D")
 	children = get_children()
 
 func _process(delta):
-	# this won't be happening here once the music works. it's just a timer to test
-	time_until_switch -= delta
-	# below code will check the music status singleton instead
-	if time_until_switch < 0:
-		time_until_switch = SWITCH_TIME
-		
+	# eventually this shouldn't be hardcoded for bass
+	if MusicStates.bass_1 != prev_base_state:
+		prev_base_state = MusicStates.bass_1
 		for i in child_collisions:
 			i.disabled = !i.disabled
 		
