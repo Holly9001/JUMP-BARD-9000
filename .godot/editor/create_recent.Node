@@ -1,7 +1,4 @@
-Label
 Control
-AudioStreamPlayer
-AnimationPlayer
 CollisionShape3D
 AnimatableBody3D
 MeshInstance3D

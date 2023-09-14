@@ -5,7 +5,7 @@ script/source = "extends PathFollow3D
 
 @export var speed_curve:Curve2d
 
-@onready var children = get_children()
+@onready var children = self.get_children()
 
 var move_progress = 0
 
@@ -14,9 +14,9 @@ func _process(delta):
 	if move_progress > move_time:
 		move_progress = 0
 	else:
-		progress_ratio = move_progress / move_time
+		self.progress_ratio = move_progress / move_time
 		for i in children:
-			i.global_position = global_position
+			i.global_position = self.global_position
 "
 
 [node name="moving_platform" type="PathFollow3D"]
