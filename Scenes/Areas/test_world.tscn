@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=8 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
 [ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props/on_off_props.tscn" id="3_o4vv3"]
 [ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="4_4gpr5"]
 [ext_resource type="PackedScene" uid="uid://cerexfrjsycev" path="res://grid_meshes.tscn" id="4_gk4iu"]
+[ext_resource type="PackedScene" uid="uid://dkcqcjnprk17u" path="res://Scenes/Props/moving_platform.tscn" id="5_bjkqj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb5vy"]
 size = Vector3(1, 15, 1)
@@ -47,3 +48,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Node3D4" parent="on_off_props" instance=ExtResource("4_gk4iu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="moving_platform" parent="." instance=ExtResource("5_bjkqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, 0)
+MOVE_SPEED = 4.0
+
+[node name="platform" parent="moving_platform" instance=ExtResource("4_gk4iu")]
+
+[node name="Node3D" parent="moving_platform/platform" instance=ExtResource("4_gk4iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="moving_platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="moving_platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
