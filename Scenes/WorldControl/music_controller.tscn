@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7vog8io13utl"]
 
 [ext_resource type="AudioStream" uid="uid://lrwmgqhev5yu" path="res://Audio/Songs/test_song_1.wav" id="1_wmqx1"]
-[ext_resource type="Script" path="res://Scenes/Areas/MusicController.gd" id="2_hwmsn"]
+[ext_resource type="Script" path="res://Scripts/MusicController.gd" id="2_hwmsn"]
 
 [sub_resource type="Animation" id="Animation_mf8hj"]
 resource_name = "test_song_1"
