@@ -13,7 +13,6 @@ config_version=5
 config/name="Jump Bard 9000"
 run/main_scene="res://Scenes/Areas/test_world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-run/max_fps=5
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://UI/JUMPBARD9000.PNG"
 config/icon="res://icon.svg"

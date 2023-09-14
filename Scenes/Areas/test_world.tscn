@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=13 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
 [ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props/on_off_props.tscn" id="3_o4vv3"]
@@ -14,24 +14,17 @@ size = Vector3(1, 15, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nn6ks"]
 data = PackedVector3Array(-0.5, 7.5, 0.5, 0.5, 7.5, 0.5, -0.5, -7.5, 0.5, 0.5, 7.5, 0.5, 0.5, -7.5, 0.5, -0.5, -7.5, 0.5, 0.5, 7.5, -0.5, -0.5, 7.5, -0.5, 0.5, -7.5, -0.5, -0.5, 7.5, -0.5, -0.5, -7.5, -0.5, 0.5, -7.5, -0.5, 0.5, 7.5, 0.5, 0.5, 7.5, -0.5, 0.5, -7.5, 0.5, 0.5, 7.5, -0.5, 0.5, -7.5, -0.5, 0.5, -7.5, 0.5, -0.5, 7.5, -0.5, -0.5, 7.5, 0.5, -0.5, -7.5, -0.5, -0.5, 7.5, 0.5, -0.5, -7.5, 0.5, -0.5, -7.5, -0.5, 0.5, 7.5, 0.5, -0.5, 7.5, 0.5, 0.5, 7.5, -0.5, -0.5, 7.5, 0.5, -0.5, 7.5, -0.5, 0.5, 7.5, -0.5, -0.5, -7.5, 0.5, 0.5, -7.5, 0.5, -0.5, -7.5, -0.5, 0.5, -7.5, 0.5, 0.5, -7.5, -0.5, -0.5, -7.5, -0.5)
 
-[sub_resource type="Curve3D" id="Curve3D_yfnrt"]
+[sub_resource type="Curve3D" id="Curve3D_8ibov"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0.5, -0.5, 0, -0.5, 0.5, 0, 0, 0, 0, -1, -1, 0, 1, 1, 0, 0, 3, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 3, 3, 0, 1, 1, 0, -1, -1, 0, 3, 0, 0, 0.5, -0.5, 0, 1, 2, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 3
+point_count = 5
 
 [sub_resource type="BoxMesh" id="BoxMesh_fjj8o"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_32pno"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="Curve3D" id="Curve3D_8ibov"]
-_data = {
-"points": PackedVector3Array(0.5, -0.5, 0, -0.5, 0.5, 0, -1.5, -0.3396, 0, -1, -1, 0, 1, 1, 0, 0, 3, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 3, 3, 0, 1, 1, 0, -1, -1, 0, 3, 0, 0, -1, -2, 0, 1, 2, 0, -1.5, -0.3396, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
 
 [node name="TestWorld" type="Node3D"]
 
@@ -70,38 +63,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [node name="Node3D4" parent="on_off_props" instance=ExtResource("4_gk4iu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 7.33955, 0)
-curve = SubResource("Curve3D_yfnrt")
-
-[node name="moving_platform" parent="Path3D" instance=ExtResource("5_bjkqj")]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 2.99328, 0, 0)
-progress = 12.0
-
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D/moving_platform"]
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/moving_platform/AnimatableBody3D"]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_fjj8o")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/moving_platform/AnimatableBody3D"]
-transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("ConcavePolygonShape3D_32pno")
-
 [node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 10.3396, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 11, 0)
 curve = SubResource("Curve3D_8ibov")
 
 [node name="moving_platform" parent="Path3D2" instance=ExtResource("5_bjkqj")]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, -1.63281, 0.0764891, 0)
-progress = 0.447953
+transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, -1.5, -0.3396, 0)
+cubic_interp = false
 tilt_enabled = false
+move_time = 5.0
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D2/moving_platform"]
+axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
