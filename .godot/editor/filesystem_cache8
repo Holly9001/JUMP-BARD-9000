@@ -1,6 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ::res://::1694722882
 BlockLib.meshlib::MeshLibrary::2257876069851243933::1694620353::0::1::::<><>::
 grid_meshes.tscn::PackedScene::5088975394300570725::1694620353::0::1::::<><>::
@@ -35,6 +36,8 @@ debug_ui.tscn::PackedScene::1577278451423583944::1694722732::0::1::::<><>::res:/
 =======
 =======
 >>>>>>> parent of 25ceee9 (holy scuffed)
+=======
+>>>>>>> parent of a008d4f (music system alpha)
 ::res://::1694704608
 BlockLib.meshlib::MeshLibrary::2257876069851243933::1694612257::0::1::::<><>::
 grid_meshes.tscn::PackedScene::5088975394300570725::1694643081::0::1::::<><>::
@@ -57,4 +60,7 @@ PlayerSpringArm.gd::GDScript::-1::1694577422::0::1::::<>SpringArm3D<>::
 ::res://Textures/::1694560877
 ::res://Textures/Sprite3Ds/::1694629863
 ppoint image_3.png::CompressedTexture2D::8838231018235161492::1694560877::1694629863::1::::<><>::
+<<<<<<< HEAD
+>>>>>>> parent of a008d4f (music system alpha)
+=======
 >>>>>>> parent of a008d4f (music system alpha)
