@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy8bg56v7csed"]
-
-[ext_resource type="Script" path="res://Beat_Switch_Block.gd" id="1_7r0vb"]
-
-[node name="Beat_Switch_Prop" type="Node3D"]
-script = ExtResource("1_7r0vb")

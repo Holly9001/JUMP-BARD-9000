@@ -4,6 +4,10 @@ const SWITCH_TIME = 1.5
 
 @export var beat_type:String
 
+@export var beat_interval : int
+var beat_count :int= 0
+
+
 var child_collisions
 var children
 var prev_state
@@ -17,11 +21,20 @@ func _process(_delta):
 	# eventually this shouldn't be hardcoded for bass
 	if MusicStates[beat_type] != prev_state:
 		prev_state = MusicStates[beat_type]
-		for i in child_collisions:
-			i.disabled = !i.disabled
 		
-		for i in children:
-			i.visible = !i.visible
+		beat_count += 1
+		
+		if beat_count >= beat_interval:
+			for i in child_collisions:
+				i.disabled = !i.disabled
+		
+			for i in children:
+				i.visible = !i.visible
+			
+			beat_count = 0
+		
+
+
 
 func get_children_of_type(in_node, type, arr:=[]):
 	if in_node.get_class() == type:

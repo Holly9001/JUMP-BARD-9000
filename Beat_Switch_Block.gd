@@ -13,7 +13,7 @@ var children : Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in get_child_count():
-		children[i] = get_child(i)
+		children.append(get_child)
 	
 	temp_beat = MusicStates[beat_type]
 
@@ -31,4 +31,8 @@ func _process(delta):
 		temp_beat = MusicStates[beat_type]
 
 func _beat_action():
-	print('d-d-d-dd dddjjj sorrowww, laughing all the way to helllll')
+	for i in children:
+		if i.get_class() == CollisionShape3D:
+			print('yep, thas a collider.')
+	
+	

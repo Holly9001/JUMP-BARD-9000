@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b633jbtar6pl6" path="res://Scenes/Props/moving_platform.tscn" id="5_bjkqj"]
 [ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="6_225av"]
 [ext_resource type="PackedScene" uid="uid://wqbss1j8p52s" path="res://UI/debug_ui.tscn" id="7_4y0cq"]
-[ext_resource type="PackedScene" uid="uid://dy8bg56v7csed" path="res://Scenes/Props/on_off_props/beat_switch_prop.tscn" id="8_mfwcg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb5vy"]
 size = Vector3(1, 15, 1)
@@ -65,6 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7397, 5.51541, 0.574021)
 [node name="on_off_props" parent="." instance=ExtResource("3_o4vv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0)
 beat_type = "bass_1"
+beat_interval = 2
 
 [node name="Node3D" parent="on_off_props" instance=ExtResource("4_gk4iu")]
 
@@ -75,6 +75,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Node3D4" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="on_off_props2" parent="." instance=ExtResource("3_o4vv3")]
+transform = Transform3D(0.999998, 0, 1.42109e-14, 0, 0.999995, 0, 0, 0, 1, -1.50002, 8.99998, 0)
+beat_type = "bass_1"
+
+[node name="Node3D" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
+
+[node name="Node3D2" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Node3D3" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Node3D4" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Path3D2" type="Path3D" parent="."]
@@ -149,7 +164,3 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 [node name="DebugUI" parent="." instance=ExtResource("7_4y0cq")]
 
 [node name="MusicController" parent="." instance=ExtResource("6_225av")]
-
-[node name="Beat_Switch_Block" parent="." instance=ExtResource("8_mfwcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -38)
-beat_type = "bass_1"
