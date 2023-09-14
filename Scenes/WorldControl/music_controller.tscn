@@ -1,0 +1,133 @@
+[gd_scene load_steps=5 format=3 uid="uid://7vog8io13utl"]
+
+[ext_resource type="AudioStream" uid="uid://lrwmgqhev5yu" path="res://Audio/Songs/test_song_1.wav" id="1_wmqx1"]
+[ext_resource type="Script" path="res://Scenes/Areas/MusicController.gd" id="2_hwmsn"]
+
+[sub_resource type="Animation" id="Animation_mf8hj"]
+resource_name = "test_song_1"
+length = 28.05
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicController/AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_wmqx1")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = false
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicController")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 1.3, 2.3, 3.3, 4.3, 5.3, 6.3, 7.3, 8.3, 9.3, 10.3, 11.3, 12.3, 13.3, 14.3, 15.3, 16.3, 17.3, 18.3, 19.3, 20.3, 21.3, 22.3, 23.3, 24.3, 25.3, 26.3, 27.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}, {
+"args": [],
+"method": &"_bass_1"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f34m4"]
+_data = {
+"test_song_1": SubResource("Animation_mf8hj")
+}
+
+[node name="MusicController" type="AnimationPlayer"]
+autoplay = "test_song_1"
+libraries = {
+"": SubResource("AnimationLibrary_f34m4")
+}
+script = ExtResource("2_hwmsn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
