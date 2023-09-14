@@ -1,7 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkcqcjnprk17u"]
+[gd_scene load_steps=2 format=3 uid="uid://b633jbtar6pl6"]
 
-[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="1_qjbao"]
+[sub_resource type="GDScript" id="GDScript_64oqr"]
+script/source = "extends PathFollow3D
 
-[node name="moving_platform" type="Node3D"]
-script = ExtResource("1_qjbao")
-MOVE_SPEED = 1.0
+@export var move_time = 2.0
+
+@onready var children = self.get_children()
+
+var move_progress = 0
+
+func _process(delta):
+	move_progress += delta
+	if move_progress > move_time:
+		move_progress = 0
+	else:
+		self.progress_ratio = move_progress / move_time
+		print(self.progress_ratio)
+		for i in children:
+			i.global_position = self.global_position
+"
+
+[node name="moving_platform" type="PathFollow3D"]
+transform = Transform3D(-1.03143e-07, -0.316226, 0.948683, -8.29364e-08, -0.948679, -0.316228, 0.999998, -1.11297e-07, 7.16236e-08, 0.489494, 0.503502, 0)
+progress = 3.74
+rotation_mode = 0
+loop = false
+script = SubResource("GDScript_64oqr")
