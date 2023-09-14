@@ -10,7 +10,7 @@ func _ready():
 	child_collisions = get_children_of_type(self, "CollisionShape3D")
 	children = get_children()
 
-func _process(delta):
+func _process(_delta):
 	# eventually this shouldn't be hardcoded for bass
 	if MusicStates.bass_1 != prev_base_state:
 		prev_base_state = MusicStates.bass_1
