@@ -14,7 +14,6 @@ func _process(delta):
 	self.progress_ratio = speed_curve.sample(fmod(elapsed / move_time, 1.0))
 	for i in children:
 		i.global_position = self.global_position
-	print(self.progress_ratio)
 	elapsed += delta
 "
 
