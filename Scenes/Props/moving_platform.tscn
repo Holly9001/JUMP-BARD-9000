@@ -3,7 +3,7 @@
 [sub_resource type="GDScript" id="GDScript_64oqr"]
 script/source = "extends PathFollow3D
 
-@export var move_time = 2.0
+@export var speed_curve:Curve2d
 
 @onready var children = self.get_children()
 
@@ -25,3 +25,4 @@ progress = 3.74
 rotation_mode = 0
 loop = false
 script = SubResource("GDScript_64oqr")
+move_time = null
