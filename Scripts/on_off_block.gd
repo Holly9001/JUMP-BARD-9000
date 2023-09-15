@@ -19,7 +19,6 @@ func _ready():
 	
 
 func _process(_delta):
-	# eventually this shouldn't be hardcoded for bass
 	if MusicStates[beat_type] != prev_state:
 		prev_state = MusicStates[beat_type]
 		
