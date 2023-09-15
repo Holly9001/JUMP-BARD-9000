@@ -7,19 +7,25 @@ script/source = "extends PathFollow3D
 @export var beat_type:String
 @export var checkpoints: Array[float]
 @export var checkpoint_move_speeds: Array[float]
+@export var one_time:bool = false
+@export var enabled = true
+
 @onready var children = self.get_children()
 
 var prev_result = false
 var target_idx = 0
 
 func _process(delta):
-	self.progress_ratio = lerp(progress_ratio, checkpoints[target_idx], delta * checkpoint_move_speeds[target_idx])
-	for i in children:
-		i.global_position = self.global_position
-	if MusicStates[beat_type] != prev_result:
-		target_idx = (target_idx + 1) % (checkpoints.size())
-		print(checkpoints[target_idx])
-		prev_result = MusicStates[beat_type]
+	if enabled or target_idx != 1:
+		self.progress_ratio = lerp(progress_ratio, checkpoints[target_idx], delta * checkpoint_move_speeds[target_idx])
+		for i in children:
+			i.global_position = self.global_position
+		if MusicStates[beat_type] != prev_result:
+			if one_time and (target_idx >= checkpoints.size() - 1):
+				enabled = false 
+			target_idx = (target_idx + 1) % (checkpoints.size())
+			print(target_idx)
+			prev_result = MusicStates[beat_type]
 "
 
 [node name="checkpoint_moving_platform" type="PathFollow3D"]

@@ -47,7 +47,7 @@ _data = {
 point_count = 5
 
 [sub_resource type="Curve" id="Curve_kyord"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.865979, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.752577, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="TestWorld" type="Node3D"]
@@ -176,12 +176,15 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 14.9494, 0.5)
+
 [node name="zoom" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 14.9494, 0.5)
 curve = SubResource("Curve3D_my6hu")
 
 [node name="continuous_moving_platform" parent="zoom" instance=ExtResource("5_bjkqj")]
-move_time = 20.0
+move_time = 5.0
 position_curve = SubResource("Curve_kyord")
 beat_type = "bass_1"
 boost_time_scale = 1.0
