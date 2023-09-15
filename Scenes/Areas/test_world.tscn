@@ -145,7 +145,7 @@ transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
 
 [node name="Path3D3" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1735, 8, 0.5)
 curve = SubResource("Curve3D_1qluv")
 
 [node name="moving_platform" parent="Path3D3" instance=ExtResource("5_bjkqj")]
