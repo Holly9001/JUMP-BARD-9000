@@ -1,35 +1,35 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1694746352
+::res://::1694749894
 Beat_Switch_Block.gd::GDScript::-1::1694729409::0::1::::<>Node3D<>::
 BlockLib.meshlib::MeshLibrary::2257876069851243933::1694620353::0::1::::<><>::
 grid_meshes.tscn::PackedScene::5088975394300570725::1694745672::0::1::::<><>::
 icon.svg::CompressedTexture2D::9139670884826947026::1694552413::1694746353::1::::<><>::
 README.md::TextFile::-1::1694560156::0::1::::<><>::
 ::res://Audio/::1694724594
-::res://Audio/Music/::1694724619
+::res://Audio/Music/::1694746353
 test_song_1.wav::AudioStreamWAV::4511605639301404175::1694724618::1694746353::1::::<><>::
 ::res://Scenes/::1694722013
-::res://Scenes/Areas/::1694745672
-test_world.tscn::PackedScene::2380891643240181583::1694745672::0::1::::<><>::uid://cosaav22w682t::::res://Scenes/Player/player.tscn<>uid://b7w6eam7k048p::::res://Scenes/Props/on_off_props/on_off_props.tscn<>uid://7fy5hw5gdrir::::res://BlockLib.meshlib<>uid://cerexfrjsycev::::res://grid_meshes.tscn<>uid://b633jbtar6pl6::::res://Scenes/Props/moving_platform.tscn<>uid://7vog8io13utl::::res://Scenes/WorldControl/music_controller.tscn<>uid://wqbss1j8p52s::::res://UI/debug_ui.tscn
-::res://Scenes/Player/::1694745822
-player.tscn::PackedScene::5792645123849217061::1694745822::0::1::::<><>::res://Scripts/Player.gd<>uid://dx6kmx4r6nn6k::::res://Textures/Sprite3Ds/ppoint image_3.png<>res://Scripts/PlayerSpringArm.gd
+::res://Scenes/Areas/::1694749472
+test_world.tscn::PackedScene::2380891643240181583::1694749472::0::1::::<><>::uid://cosaav22w682t::::res://Scenes/Player/player.tscn<>uid://b7w6eam7k048p::::res://Scenes/Props/on_off_props/on_off_props.tscn<>uid://7fy5hw5gdrir::::res://BlockLib.meshlib<>uid://cerexfrjsycev::::res://grid_meshes.tscn<>uid://b633jbtar6pl6::::res://Scenes/Props/moving_platform.tscn<>uid://7vog8io13utl::::res://Scenes/WorldControl/music_controller.tscn<>uid://wqbss1j8p52s::::res://UI/debug_ui.tscn
+::res://Scenes/Player/::1694749448
+player.tscn::PackedScene::5792645123849217061::1694749448::0::1::::<><>::res://Scripts/Player.gd<>uid://dx6kmx4r6nn6k::::res://Textures/Sprite3Ds/ppoint image_3.png<>res://Scripts/PlayerSpringArm.gd
 ::res://Scenes/Props/::1694745672
 moving_platform.tscn::PackedScene::4621793643426971673::1694745672::0::1::::<><>::
 ::res://Scenes/Props/on_off_props/::1694745672
 on_off_props.tscn::PackedScene::4679769380656799565::1694745672::0::1::::<><>::res://Scripts/on_off_block.gd
 ::res://Scenes/WorldControl/::1694730568
-music_controller.tscn::PackedScene::2290257428215406497::1694730568::0::1::::<><>::uid://b5jpqrq7oi8kx::::res://Audio/Music/test_song_1.wav<>res://Scripts/MusicController.gd
-::res://Scripts/::1694744720
+music_controller.tscn::PackedScene::2290257428215406497::1694730568::0::1::::<><>::uid://b5jpqrq7oi8kx
+::res://Scripts/::1694749472
 DebugUI.gd::GDScript::-1::1694727919::0::1::::<>Control<>::
 moving_platform.gd::GDScript::-1::1694714986::0::1::::<>PathFollow3D<>::
 MusicController.gd::GDScript::-1::1694727919::0::1::::<>AnimationPlayer<>::
 music_states.gd::GDScript::-1::1694724545::0::1::::<>Node<>::
-on_off_block.gd::GDScript::-1::1694740909::0::1::::<>Node3D<>::
-Player.gd::GDScript::-1::1694744720::0::1::::<>CharacterBody3D<>::
+on_off_block.gd::GDScript::-1::1694749472::0::1::::<>Node3D<>::
+Player.gd::GDScript::-1::1694749249::0::1::::<>CharacterBody3D<>::
 PlayerSpringArm.gd::GDScript::-1::1694727919::0::1::::<>SpringArm3D<>::
 ::res://Textures/::1694552598
-::res://Textures/Sprite3Ds/::1694624618
+::res://Textures/Sprite3Ds/::1694746353
 ppoint image_3.png::CompressedTexture2D::8838231018235161492::1694552661::1694746353::1::::<><>::
-::res://UI/::1694725009
+::res://UI/::1694746353
 debug_ui.tscn::PackedScene::1577278451423583944::1694724107::0::1::::<><>::res://Scripts/DebugUI.gd
 JUMPBARD9000.PNG::CompressedTexture2D::8784735677936060058::1694725008::1694746353::1::::<><>::
