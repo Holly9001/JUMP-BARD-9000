@@ -88,6 +88,7 @@ cubic_interp = false
 tilt_enabled = false
 move_time = 5.0
 speed_curve = SubResource("Curve_8wih3")
+beat_type = "bass_1"
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D2/moving_platform"]
 axis_lock_linear_z = true
@@ -122,6 +123,9 @@ transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 0, 0)
 cubic_interp = false
 tilt_enabled = false
 move_time = 5.0
+beat_type = "bass_1"
+boost_time_scale = 1.5
+default_time_scale = 0.5
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D3/moving_platform"]
 axis_lock_linear_z = true

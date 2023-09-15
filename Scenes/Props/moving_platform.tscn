@@ -5,7 +5,9 @@ script/source = "extends PathFollow3D
 
 @export var move_time:float
 @export var speed_curve:Curve
-
+@export var beat_type:String
+@export var boost_time_scale = 2.0
+@export var default_time_scale = 1.0
 @onready var children = self.get_children()
 
 var elapsed = 0.0
@@ -14,12 +16,15 @@ func _process(delta):
 	self.progress_ratio = speed_curve.sample(fmod(elapsed / move_time, 1.0))
 	for i in children:
 		i.global_position = self.global_position
-	elapsed += delta
+	if MusicStates[beat_type]:
+		elapsed += boost_time_scale * delta
+	else:
+		elapsed += delta * default_time_scale
 "
 
 [sub_resource type="Curve" id="Curve_cd4ya"]
-_data = [Vector2(0.1, 0), 0.0, 0.0, 0, 0, Vector2(0.45, 0.5), 3.3038e-07, 0.0, 0, 0, Vector2(0.55, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
 
 [node name="moving_platform" type="PathFollow3D"]
 transform = Transform3D(-1.03143e-07, -0.316226, 0.948683, -8.29364e-08, -0.948679, -0.316228, 0.999998, -1.11297e-07, 7.16236e-08, 0.489494, 0.503502, 0)
