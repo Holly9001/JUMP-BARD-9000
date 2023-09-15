@@ -4,3 +4,9 @@
 
 [node name="on_off_props" type="Node3D"]
 script = ExtResource("1_jcupk")
+
+[node name="BeatLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1)
+billboard = 2
+text = "hiiiiiiiii"
+font_size = 48

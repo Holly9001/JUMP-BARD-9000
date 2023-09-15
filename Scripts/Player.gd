@@ -4,6 +4,10 @@ extends CharacterBody3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@onready var HeadArea :Area3D= $HeadBonkArea
+@onready var HeadRayR :RayCast3D= $HeadBonkRayR
+@onready var HeadRayL :RayCast3D= $HeadBonkRayL
+
 var movement_vector :Vector2= Vector2.ZERO
 
 var max_horizontal_speed :float= 3
@@ -54,11 +58,11 @@ func _physics_process(delta):
 			
 			y_velocity = jump_height
 			coyote_frames = 0
-	elif is_on_ceiling():
-		y_velocity = 0
-		velocity.y = velocity.y/2
-#	elif is_on_wall():
-#		pass
+#	elif is_on_ceiling():
+#		y_velocity = 0
+#		velocity.y = velocity.y/2
+##	elif is_on_wall():
+##		pass
 	else:
 		if Input.is_action_pressed('jump') and jump_hold > 0:
 			jump_hold -= 1
@@ -72,12 +76,30 @@ func _physics_process(delta):
 	
 	if y_velocity > -max_vertical_speed * gravity:
 		
-		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
+		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)		
 	
+
 	
+	if is_on_ceiling():
+		if HeadArea.body_entered:
+			y_velocity = 0
+			velocity.y = velocity.y/2
+			print('stop')
+		elif HeadRayR.is_colliding():
+			velocity.x += velocity.y
+			velocity.y +=1
+			print('move left')
+		elif HeadRayL.is_colliding():
+			print('move right')
+			velocity.x -= velocity.y
+			velocity.y +=1
 	
 	velocity.x = lerp(velocity.x,movement_vector.x * horizontal_speed * delta * 60,0.1)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
 	
 	move_and_slide()
+
+
+func _on_head_bonk_area_body_entered(body):
+	print(body)

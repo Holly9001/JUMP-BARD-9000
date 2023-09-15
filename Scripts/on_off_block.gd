@@ -16,6 +16,7 @@ func _ready():
 	child_collisions = get_children_of_type(self, "CollisionShape3D")
 	children = get_children()
 	prev_state = MusicStates[beat_type]
+	
 
 func _process(_delta):
 	# eventually this shouldn't be hardcoded for bass
@@ -33,6 +34,8 @@ func _process(_delta):
 			
 			beat_count = 0
 		
+	
+	$BeatLabel.text = str(beat_count,' / ',beat_interval)
 
 
 

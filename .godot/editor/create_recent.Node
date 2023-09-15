@@ -1,6 +1,9 @@
+CollisionShape3D
+Area3D
+RayCast3D
+Label3D
 Path3D
 MeshInstance3D
 StaticBody3D
-CollisionShape3D
 AnimatableBody3D
 PathFollow3D

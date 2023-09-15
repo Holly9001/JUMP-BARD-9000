@@ -51,8 +51,9 @@ point_count = 5
 mesh_library = ExtResource("4_4gpr5")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(196619, 0, 0, 196599, 0, 1441793, 458757, 0, 1441792, 458756, 0, 1441792, 458755, 0, 1441792, 458754, 0, 1441792, 458753, 0, 1441792, 524272, 0, 0, 524273, 0, 0, 524274, 0, 0, 524275, 0, 0, 262143, 0, 0, 196608, 0, 0, 131076, 0, 0, 131077, 0, 0, 851957, 0, 0, 851958, 0, 0, 851959, 0, 0, 851960, 0, 0, 851961, 0, 0, 851962, 0, 0, 262133, 0, 0, 262134, 0, 0, 262135, 0, 0, 262136, 0, 0, 262132, 0, 0, 327666, 0, 0, 327665, 0, 0, 327664, 0, 0, 262139, 0, 0, 262140, 0, 0)
+"cells": PackedInt32Array(196619, 0, 0, 196599, 0, 1441793, 458757, 0, 1441792, 458756, 0, 1441792, 458755, 0, 1441792, 458754, 0, 1441792, 458753, 0, 1441792, 524272, 0, 0, 524273, 0, 0, 524274, 0, 0, 524275, 0, 0, 262143, 0, 0, 196608, 0, 0, 131076, 0, 0, 131077, 0, 0, 851957, 0, 0, 851958, 0, 0, 851959, 0, 0, 851960, 0, 0, 851961, 0, 0, 851962, 0, 0, 262133, 0, 0, 262134, 0, 0, 262135, 0, 0, 262136, 0, 0, 262132, 0, 0, 327666, 0, 0, 327665, 0, 0, 327664, 0, 0, 262139, 0, 0, 262140, 0, 0, 327663, 0, 0, 327662, 0, 0, 327661, 0, 0, 327660, 0, 0, 327659, 0, 0, 524269, 0, 0, 524268, 0, 0, 458731, 0, 0, 524267, 0, 0)
 }
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.919636, 0.392771, 0, -0.392771, 0.919636, 0, 0, 0, 1, 13.9051, 2.01541, 0.574021)
@@ -71,6 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7397, 5.51541, 0.574021)
 [node name="on_off_props" parent="." instance=ExtResource("3_o4vv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0)
 beat_type = "bass_1"
+beat_interval = 4
 
 [node name="Node3D" parent="on_off_props" instance=ExtResource("4_gk4iu")]
 
@@ -90,7 +92,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2765, 10, 0)
 curve = SubResource("Curve3D_8ibov")
 
 [node name="moving_platform" parent="Path3D2" instance=ExtResource("5_bjkqj")]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 0, 0)
 cubic_interp = false
 tilt_enabled = false
 move_time = 5.0
@@ -126,7 +127,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, 0)
 curve = SubResource("Curve3D_1qluv")
 
 [node name="moving_platform" parent="Path3D3" instance=ExtResource("5_bjkqj")]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 0, 0)
 cubic_interp = false
 tilt_enabled = false
 move_time = 5.0
