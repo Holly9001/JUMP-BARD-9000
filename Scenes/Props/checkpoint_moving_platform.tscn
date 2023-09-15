@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bob661mynbg6t"]
+
+[sub_resource type="GDScript" id="GDScript_64oqr"]
+script/source = "extends PathFollow3D
+
+#@export var position_curve:Curve
+@export var beat_type:String
+@export var checkpoints: Array[float]
+@export var checkpoint_move_speeds: Array[float]
+@onready var children = self.get_children()
+
+var prev_result = false
+var target_idx = 0
+
+func _process(delta):
+	self.progress_ratio = lerp(progress_ratio, checkpoints[target_idx], delta * checkpoint_move_speeds[target_idx])
+	for i in children:
+		i.global_position = self.global_position
+	if MusicStates[beat_type] != prev_result:
+		target_idx = (target_idx + 1) % (checkpoints.size() - 1)
+		prev_result = MusicStates[beat_type]
+"
+
+[node name="checkpoint_moving_platform" type="PathFollow3D"]
+transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 0, 0)
+rotation_mode = 0
+script = SubResource("GDScript_64oqr")
