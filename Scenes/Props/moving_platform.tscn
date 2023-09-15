@@ -23,11 +23,11 @@ func _process(delta):
 "
 
 [sub_resource type="Curve" id="Curve_cd4ya"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 1.14118, 0, 1, Vector2(0.876289, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 1, 0]
+point_count = 3
 
 [node name="moving_platform" type="PathFollow3D"]
-transform = Transform3D(-1.03143e-07, -0.316226, 0.948683, -8.29364e-08, -0.948679, -0.316228, 0.999998, -1.11297e-07, 7.16236e-08, 0.489494, 0.503502, 0)
+transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 0, 0)
 rotation_mode = 0
 script = SubResource("GDScript_64oqr")
 move_time = 2.0
