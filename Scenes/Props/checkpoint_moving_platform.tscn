@@ -17,7 +17,8 @@ func _process(delta):
 	for i in children:
 		i.global_position = self.global_position
 	if MusicStates[beat_type] != prev_result:
-		target_idx = (target_idx + 1) % (checkpoints.size() - 1)
+		target_idx = (target_idx + 1) % (checkpoints.size())
+		print(checkpoints[target_idx])
 		prev_result = MusicStates[beat_type]
 "
 

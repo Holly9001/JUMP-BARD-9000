@@ -34,10 +34,10 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [sub_resource type="Curve3D" id="Curve3D_1qluv"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_my6hu"]
 _data = {
@@ -149,8 +149,8 @@ curve = SubResource("Curve3D_1qluv")
 
 [node name="checkpoint_moving_platform" parent="Path3D3" instance=ExtResource("6_7f8cv")]
 beat_type = "bass_1"
-checkpoints = Array[float]([0.0, 0.5, 1.0])
-checkpoint_move_speeds = Array[float]([5.0, 5.0, 25.0])
+checkpoints = Array[float]([0.0, 0.5, 1.0, 0.5])
+checkpoint_move_speeds = Array[float]([5.0, 5.0, 5.0, 5.0])
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D3/checkpoint_moving_platform"]
 axis_lock_linear_z = true
