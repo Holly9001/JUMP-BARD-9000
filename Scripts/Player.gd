@@ -4,7 +4,8 @@ extends CharacterBody3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var HeadArea :Area3D= $HeadBonkArea
+@onready var HeadRayML :RayCast3D= $HeadBonkRayMidL
+@onready var HeadRayMR :RayCast3D= $HeadBonkRayMidR
 @onready var HeadRayR :RayCast3D= $HeadBonkRayR
 @onready var HeadRayL :RayCast3D= $HeadBonkRayL
 
@@ -64,6 +65,12 @@ func _physics_process(delta):
 ##	elif is_on_wall():
 ##		pass
 	else:
+		if coyote_frames >= max_coyote_frames*0.9 and Input.is_action_just_pressed('jump'):
+			jump_hold = max_jump_hold
+			y_velocity = jump_height     ## THIS IS SO FUCKING SCUFFED ALL THESE IFS THIS CODE IS SO UGLY IM SORRY FUCK
+			coyote_frames = 0
+		
+		
 		if Input.is_action_pressed('jump') and jump_hold > 0:
 			jump_hold -= 1
 			y_velocity = jump_height
@@ -81,7 +88,7 @@ func _physics_process(delta):
 
 	
 	if is_on_ceiling():
-		if HeadArea.body_entered:
+		if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
 			y_velocity = 0
 			velocity.y = velocity.y/2
 			print('stop')
@@ -94,12 +101,10 @@ func _physics_process(delta):
 			velocity.x -= velocity.y
 			velocity.y +=1
 	
-	velocity.x = lerp(velocity.x,movement_vector.x * horizontal_speed * delta * 60,0.1)
+	velocity.x = lerp(velocity.x,movement_vector.x * horizontal_speed * delta * 60,0.2)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
 	
 	move_and_slide()
 
 
-func _on_head_bonk_area_body_entered(body):
-	print(body)

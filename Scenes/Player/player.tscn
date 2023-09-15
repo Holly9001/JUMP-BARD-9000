@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=6 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
 [ext_resource type="Texture2D" uid="uid://dx6kmx4r6nn6k" path="res://Textures/Sprite3Ds/ppoint image_3.png" id="2_ntqn3"]
@@ -12,9 +12,6 @@ point_count = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_mxlaw"]
 size = Vector3(0.8, 1, 0.8)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uc3y1"]
-size = Vector3(0.2, 0.1, 0.25)
-
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.646821, 0)
 axis_lock_linear_z = true
@@ -23,6 +20,7 @@ jump_curve = SubResource("Curve_tboxv")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.12, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -1.19209e-07, 0)
+visible = false
 texture = ExtResource("2_ntqn3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -38,13 +36,13 @@ script = ExtResource("3_cvtvs")
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.08907)
 
-[node name="HeadBonkArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.510976, 0)
-monitorable = false
+[node name="HeadBonkRayMidR" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312, 0)
+target_position = Vector3(0.25, 0.1, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadBonkArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254146, 0)
-shape = SubResource("BoxShape3D_uc3y1")
+[node name="HeadBonkRayMidL" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312, 0)
+target_position = Vector3(-0.25, 0.1, 0)
 
 [node name="HeadBonkRayR" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 0.312347, 0)
@@ -53,5 +51,3 @@ target_position = Vector3(0, 0.1, 0)
 [node name="HeadBonkRayL" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38, 0.312347, 0)
 target_position = Vector3(0, 0.1, 0)
-
-[connection signal="body_entered" from="HeadBonkArea" to="." method="_on_head_bonk_area_body_entered"]
