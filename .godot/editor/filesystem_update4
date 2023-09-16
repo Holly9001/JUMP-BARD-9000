@@ -4,3 +4,4 @@ res://Scenes/Props/continuous_moving_platform.tscn
 res://Scenes/Props/checkpoint_moving_platform.tscn
 res://Scenes/WorldControl/music_controller.tscn
 res://Scenes/Props/trigger_area.tscn
+res://Scripts/Player.gd
