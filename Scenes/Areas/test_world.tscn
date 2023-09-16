@@ -72,7 +72,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7397, 6.0154, 0.574021)
 
 [node name="on_off_props" parent="." instance=ExtResource("3_o4vv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0.5)
+visible = false
 beat_type = "bass_1"
+beat_interval = 4
+on_beats = [1, 2]
+off_beats = [3, 4]
 
 [node name="Node3D" parent="on_off_props" instance=ExtResource("4_gk4iu")]
 
@@ -90,7 +94,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 [node name="on_off_props2" parent="." instance=ExtResource("3_o4vv3")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.5, 3.5, 0.5)
 beat_type = "bass_1"
-beat_interval = 2
+beat_interval = 4
+on_beats = [1, 2]
+off_beats = [3, 4]
 
 [node name="Node3D" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
 

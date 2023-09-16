@@ -5,6 +5,9 @@ const SWITCH_TIME = 1.5
 @export var beat_type:String
 
 @export var beat_interval : int
+@export var on_beats : Array
+@export var off_beats : Array
+
 var beat_count :int= 0
 
 
@@ -24,13 +27,24 @@ func _process(_delta):
 		
 		beat_count += 1
 		
-		if beat_count >= beat_interval:
-			for i in child_collisions:
-				i.disabled = !i.disabled
-		
-			for i in children:
-				i.visible = !i.visible
+		for b in on_beats:
+			if beat_count == b:
+				for i in child_collisions:
+					i.disabled = false
 			
+				for i in children:
+					i.visible = true
+		
+		for v in off_beats:
+			if beat_count == v:
+				for i in child_collisions:
+					i.disabled = true
+			
+				for i in children:
+					i.visible = false
+		
+		
+		if beat_count >= beat_interval:
 			beat_count = 0
 		
 	
