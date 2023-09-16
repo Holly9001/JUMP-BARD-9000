@@ -20,12 +20,18 @@ var horizontal_speed :float= 6
 var vertical_speed :float= 2
 
 var y_velocity :float= 0
+var x_velocity :float= 0
 
 var max_coyote_frames := 32
 var coyote_frames := 0
 
 var max_jump_hold := 10
 var jump_hold := 0
+
+var climb_speed := 6
+
+var max_climb_time = 60*3.5
+var climb_time = 0
 
 ## ability booleans
 # for double jump bools and shit, gonna make one for hold jump too.
@@ -38,6 +44,9 @@ var jump_hold := 0
 func _physics_process(delta):
 	
 	movement_vector = Input.get_vector("left", "right", "down", "up")# normalized()
+#	for i in ['x','y']:
+#		movement_vector[i] = round(movement_vector[i])
+	
 	
 	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
 	
@@ -52,6 +61,7 @@ func _physics_process(delta):
 	
 	if on_floor and jump_hold <= 0:  
 		coyote_frames = max_coyote_frames
+		climb_time = max_climb_time
 		jump_hold = 0
 		velocity.y = 0
 		if Input.is_action_just_pressed('jump'):
@@ -85,7 +95,43 @@ func _physics_process(delta):
 	
 	if y_velocity > -max_vertical_speed * gravity:
 		
-		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)		
+		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
+	
+	if x_velocity != 0:
+		x_velocity = lerp(x_velocity,0.0,0.08)
+	
+	
+	## climbing/jumoing here
+	
+	$DebugUI/ClimbTime.text = str('climb_time: ',climb_time) ## using $ in code is horrible practice but this is just a debug test
+	
+	if Input.is_action_pressed('climb'):
+		
+		if is_on_wall():
+			velocity.y = 0 ## kind of a placeholder, this wouldnt b needed if we made a state machine
+			climb_time -= 1.5
+			y_velocity = movement_vector.y * climb_speed 
+			
+			print(movement_vector.y)
+			
+			if movement_vector.y >= 0:
+					y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
+			else:
+				y_velocity = movement_vector.y * climb_speed * 2 
+		
+		## so technically if u only jump ine the jump buffer range, u dont lose climb time. bug? feature? idk
+		
+		if test_move(global_transform,Vector3.RIGHT * delta * 10):
+			if Input.is_action_just_pressed('jump'):
+				climb_time -= 16
+				x_velocity = -jump_height/7 + (movement_vector.x/7)
+				y_velocity = jump_height + abs(movement_vector.x)
+		elif test_move(global_transform,Vector3.LEFT * delta * 2):
+			if Input.is_action_just_pressed('jump'):
+				climb_time -= 16
+				x_velocity = jump_height/7 + (movement_vector.x/7)
+				y_velocity = jump_height + abs(movement_vector.x)
+		
 	
 
 	
@@ -103,7 +149,7 @@ func _physics_process(delta):
 			velocity.x -= velocity.y
 			velocity.y +=1
 	
-	velocity.x = lerp(velocity.x,movement_vector.x * horizontal_speed * delta * 60,0.2)
+	velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60,0.2)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
 	

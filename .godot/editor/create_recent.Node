@@ -1,3 +1,5 @@
+Label
+Control
 CollisionShape3D
 Area3D
 RayCast3D
