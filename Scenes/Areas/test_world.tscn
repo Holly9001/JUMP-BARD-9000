@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=20 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
 [ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props/on_off_props.tscn" id="3_o4vv3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://wqbss1j8p52s" path="res://UI/debug_ui.tscn" id="7_4y0cq"]
 [ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="7_r204x"]
 [ext_resource type="Script" path="res://Scripts/testscoredisplay.gd" id="10_dpucs"]
+[ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="11_u2dt7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb5vy"]
 size = Vector3(1, 15, 1)
@@ -232,11 +233,15 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 [node name="MusicController" parent="." instance=ExtResource("6_225av")]
 
 [node name="testscoredisplay" type="Label" parent="."]
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -43.0
 offset_top = 3.0
 offset_right = -3.0
 offset_bottom = 26.0
+text = "0"
 script = ExtResource("10_dpucs")
+
+[node name="collectable" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5, 0.5)

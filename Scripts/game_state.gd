@@ -2,8 +2,8 @@ extends Node
 
 signal points_changed
 
-var test_points:int = 0
+var points:int = 0
 
 func set_points(pts):
+	points = pts
 	points_changed.emit()
-	test_points = pts
