@@ -10,6 +10,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var HeadRayL :RayCast3D= $HeadBonkRayL
 @onready var initial_parent = self.get_parent()
 @onready var wall_check_ray = $wall_check
+@onready var wall_check_lower_ray = $wall_check_lower
 
 const ground_accel:float = 12
 const air_accel:float = 3
@@ -131,7 +132,13 @@ func _physics_process(delta):
 			velocity.x -= velocity.y
 			velocity.y +=1
 	
-	if Input.is_action_pressed('climb') and wall_check_ray.is_colliding() and climb_time > 0:
+	if Input.is_action_pressed('climb') and (wall_check_ray.is_colliding() or wall_check_lower_ray.is_colliding()) and climb_time > 0:
+	
+		var collider
+		if wall_check_ray.is_colliding():
+			collider = wall_check_ray.get_collider()
+		else: collider = wall_check_lower_ray.get_collider()
+		
 		x_velocity = 0
 		y_velocity = 0
 		velocity.y = 0
@@ -140,9 +147,9 @@ func _physics_process(delta):
 			y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
 		else:
 			y_velocity = movement_vector.y * climb_speed * 2 
-		if get_parent() != wall_check_ray.get_collider():
+		if get_parent() != collider:
 			var global_trans = self.global_transform
-			attached = wall_check_ray.get_collider()
+			attached = collider
 			self.get_parent().remove_child(self)
 			attached.add_child(self)
 			self.set_owner(attached)
@@ -168,8 +175,10 @@ func _physics_process(delta):
 			self.global_transform = global_trans
 		if velocity.x > 0:
 			wall_check_ray.scale.x = 1
+			wall_check_lower_ray.scale.x = 1
 		elif velocity.x < 0:
 			wall_check_ray.scale.x = -1
+			wall_check_lower_ray.scale.x = -1
 
 	if on_floor:
 		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * ground_accel)

@@ -20,6 +20,7 @@ jump_curve = SubResource("Curve_tboxv")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.158, 0, 0, 0, 0.167, 0, -0.136405, 0)
+visible = false
 texture_filter = 0
 texture = ExtResource("2_ntqn3")
 
@@ -66,4 +67,9 @@ text = "hlleo"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 7.08907)
 
 [node name="wall_check" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213116, 0)
+target_position = Vector3(0.5, 0, 0)
+
+[node name="wall_check_lower" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.633884, 0)
 target_position = Vector3(0.5, 0, 0)
