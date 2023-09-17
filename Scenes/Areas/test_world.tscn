@@ -245,3 +245,30 @@ script = ExtResource("10_dpucs")
 
 [node name="collectable" parent="." instance=ExtResource("11_u2dt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5, 0.5)
+
+[node name="collectable2" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 8, 0.5)
+
+[node name="collectable3" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 14, 0.5)
+
+[node name="collectable4" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 19.5, 0.5)
+
+[node name="collectable5" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 28.5, 0.5)
+
+[node name="collectable6" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 16, 0.5)
+
+[node name="collectable7" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 19.5, 0.5)
+
+[node name="collectable8" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 23, 0.5)
+
+[node name="collectable9" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 23, 0.5)
+
+[node name="collectable10" parent="." instance=ExtResource("11_u2dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 23, 0.5)
