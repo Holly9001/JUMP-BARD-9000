@@ -66,4 +66,4 @@ text = "hlleo"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 7.08907)
 
 [node name="wall_check" type="RayCast3D" parent="."]
-target_position = Vector3(0.5, 0, 0)
+target_position = Vector3(0.42, 0, 0)

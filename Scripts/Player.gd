@@ -9,12 +9,15 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var HeadRayR :RayCast3D= $HeadBonkRayR
 @onready var HeadRayL :RayCast3D= $HeadBonkRayL
 @onready var initial_parent = self.get_parent()
+@onready var wall_check_ray = $wall_check
 
 const ground_accel:float = 12
 const air_accel:float = 3
 
 const ground_friction:float = 4.8
 const air_friction:float = 2.4
+
+const wall_attach_jump_cooldown:float = 0.1
 
 var movement_vector :Vector2= Vector2.ZERO
 
@@ -128,16 +131,6 @@ func _physics_process(delta):
 #
 #		## so technically if u only jump ine the jump buffer range, u dont lose climb time. bug? feature? idk
 #
-#		if test_move(global_transform,Vector3.RIGHT * delta * 10):
-#			if Input.is_action_just_pressed('jump'):
-#				climb_time -= 16
-#				x_velocity = -jump_height/7 + (movement_vector.x/7)
-#				y_velocity = jump_height + abs(movement_vector.x)
-#		elif test_move(global_transform,Vector3.LEFT * delta * 2):
-#			if Input.is_action_just_pressed('jump'):
-#				climb_time -= 16
-#				x_velocity = jump_height/7 + (movement_vector.x/7)
-#				y_velocity = jump_height + abs(movement_vector.x)
 
 	
 	if is_on_ceiling():
@@ -161,13 +154,37 @@ func _physics_process(delta):
 		
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
-	if Input.is_action_pressed('climb') and $wall_check.is_colliding():
-		var global_pos = self.global_position
-		attached = $wall_check.get_collider()
-		self.get_parent().remove_child(self)
-		attached.add_child(self)
-		self.set_owner(attached)
-		self.global_position = global_pos
+	if velocity.x > 0:
+		wall_check_ray.scale.x = 1
+	elif velocity.x < 0:
+		wall_check_ray.scale.x = -1
+	
+	if Input.is_action_pressed('climb') and wall_check_ray.is_colliding():
+		if get_parent() != wall_check_ray.get_collider():
+			var global_pos = self.global_position
+			attached = wall_check_ray.get_collider()
+			self.get_parent().remove_child(self)
+			attached.add_child(self)
+			self.set_owner(attached)
+			self.global_position = global_pos
+		if test_move(global_transform,Vector3.RIGHT * delta * 10):
+			if Input.is_action_just_pressed('jump'):
+				climb_time -= 16
+				x_velocity = -jump_height/6 + (movement_vector.x/7)
+				y_velocity = jump_height + abs(movement_vector.x)
+				wall_check_ray.enabled = false
+				var tween = get_tree().create_tween()
+				tween.tween_callback(enable_wallcheck).set_delay(0.1)
+				move_and_slide()
+		elif test_move(global_transform,Vector3.LEFT * delta * 2):
+			if Input.is_action_just_pressed('jump'):
+				climb_time -= 16
+				x_velocity = jump_height/6 + (movement_vector.x/7)
+				y_velocity = jump_height + abs(movement_vector.x)
+				wall_check_ray.enabled = false
+				var tween = get_tree().create_tween()
+				tween.tween_callback(enable_wallcheck).set_delay(0.1)
+				move_and_slide()
 	else:
 		if self.get_parent() == attached:
 			var global_pos = self.global_position
@@ -178,4 +195,6 @@ func _physics_process(delta):
 		#set_as_top_level(true)
 		move_and_slide()
 
+func enable_wallcheck():
+	wall_check_ray.enabled = true
 
