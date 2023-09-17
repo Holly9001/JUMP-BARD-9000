@@ -9,6 +9,12 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var HeadRayR :RayCast3D= $HeadBonkRayR
 @onready var HeadRayL :RayCast3D= $HeadBonkRayL
 
+const ground_accel:float = 12
+const air_accel:float = 3
+
+const ground_friction:float = 4.8
+const air_friction:float = 2.4
+
 var movement_vector :Vector2= Vector2.ZERO
 
 var max_horizontal_speed :float= 3
@@ -18,12 +24,6 @@ var jump_height :float= 12
 
 var horizontal_speed :float= 6
 var vertical_speed :float= 2
-
-var ground_accel:float = 12
-var air_accel:float = 3
-
-var ground_friction:float = 4.8
-var air_friction:float = 2.4
 
 var y_velocity :float= 0
 var x_velocity :float= 0
