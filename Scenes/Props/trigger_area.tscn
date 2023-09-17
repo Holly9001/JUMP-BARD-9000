@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ce3chjko8ue20"]
 
-[ext_resource type="Script" path="res://Scenes/Areas/area_trigger.gd" id="1_83mpa"]
+[ext_resource type="Script" path="res://Scripts/area_trigger.gd" id="1_pb44d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vp5xh"]
 size = Vector3(2, 1, 1)
 
 [node name="Area3D" type="Area3D"]
-script = ExtResource("1_83mpa")
+script = ExtResource("1_pb44d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vp5xh")

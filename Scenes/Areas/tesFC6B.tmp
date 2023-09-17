@@ -232,11 +232,6 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 [node name="MusicController" parent="." instance=ExtResource("6_225av")]
 
 [node name="testscoredisplay" type="Label" parent="."]
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -43.0
-offset_top = 3.0
-offset_right = -3.0
-offset_bottom = 26.0
+offset_right = 40.0
+offset_bottom = 23.0
 script = ExtResource("10_dpucs")

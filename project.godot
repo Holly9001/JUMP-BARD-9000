@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 MusicStates="*res://Scripts/music_states.gd"
+GameState="*res://Scripts/game_state.gd"
 
 [display]
 

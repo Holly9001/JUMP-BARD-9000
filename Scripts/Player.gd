@@ -44,7 +44,6 @@ var climb_time = 0
 
 
 
-
 @export var jump_curve:Curve
 
 func _physics_process(delta):
