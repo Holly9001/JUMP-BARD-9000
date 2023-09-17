@@ -115,20 +115,6 @@ func _physics_process(delta):
 	## climbing/jumoing here
 	
 	$DebugUI/ClimbTime.text = str('climb_time: ',climb_time) ## using $ in code is horrible practice but this is just a debug test
-	
-#		if is_on_wall():
-#			velocity.y = 0 ## kind of a placeholder, this wouldnt b needed if we made a state machine
-#			climb_time -= 90 * delta
-#			y_velocity = movement_vector.y * climb_speed 
-#			#print(movement_vector.y)
-#
-#			if movement_vector.y >= 0:
-#					y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
-#			else:
-#				y_velocity = movement_vector.y * climb_speed * 2 
-#
-#		## so technically if u only jump ine the jump buffer range, u dont lose climb time. bug? feature? idk
-#
 
 	
 	if is_on_ceiling():
@@ -155,12 +141,12 @@ func _physics_process(delta):
 		else:
 			y_velocity = movement_vector.y * climb_speed * 2 
 		if get_parent() != wall_check_ray.get_collider():
-			var global_pos = self.global_position
+			var global_trans = self.global_transform
 			attached = wall_check_ray.get_collider()
 			self.get_parent().remove_child(self)
 			attached.add_child(self)
 			self.set_owner(attached)
-			self.global_position = global_pos
+			self.global_transform = global_trans
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
 			if Input.is_action_just_pressed('jump'):
 				climb_time -= 16
@@ -175,11 +161,11 @@ func _physics_process(delta):
 				wall_check_ray.scale.x = 1
 	else:
 		if self.get_parent() == attached:
-			var global_pos = self.global_position
+			var global_trans = self.global_transform
 			self.get_parent().remove_child(self)
 			initial_parent.add_child(self)
 			self.set_owner(initial_parent)
-			self.global_position = global_pos
+			self.global_transform = global_trans
 		if velocity.x > 0:
 			wall_check_ray.scale.x = 1
 		elif velocity.x < 0:
