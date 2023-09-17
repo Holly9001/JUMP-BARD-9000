@@ -19,11 +19,11 @@ var jump_height :float= 12
 var horizontal_speed :float= 6
 var vertical_speed :float= 2
 
-var ground_accel:float = 0.2
-var air_accel:float = 0.05
+var ground_accel:float = 12
+var air_accel:float = 3
 
-var ground_friction:float = 0.08
-var air_friction:float = 0.04
+var ground_friction:float = 4.8
+var air_friction:float = 2.4
 
 var y_velocity :float= 0
 var x_velocity :float= 0
@@ -106,7 +106,7 @@ func _physics_process(delta):
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
 	
 	if x_velocity != 0:
-		x_velocity = lerp(x_velocity,0.0,friction)
+		x_velocity = lerp(x_velocity,0.0, friction * delta)
 	
 	
 	## climbing/jumoing here
@@ -138,8 +138,6 @@ func _physics_process(delta):
 				climb_time -= 16
 				x_velocity = jump_height/7 + (movement_vector.x/7)
 				y_velocity = jump_height + abs(movement_vector.x)
-		
-	
 
 	
 	if is_on_ceiling():
@@ -157,9 +155,9 @@ func _physics_process(delta):
 			velocity.y +=1
 			
 	if on_floor:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60,ground_accel)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * ground_accel)
 	else:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60,air_accel)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * air_accel)
 		
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
