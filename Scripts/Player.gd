@@ -109,10 +109,9 @@ func _physics_process(delta):
 		
 		if is_on_wall():
 			velocity.y = 0 ## kind of a placeholder, this wouldnt b needed if we made a state machine
-			climb_time -= 1.5
+			climb_time -= 90 * delta
 			y_velocity = movement_vector.y * climb_speed 
-			
-			print(movement_vector.y)
+			#print(movement_vector.y)
 			
 			if movement_vector.y >= 0:
 					y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
