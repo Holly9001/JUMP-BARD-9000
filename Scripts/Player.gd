@@ -22,6 +22,9 @@ var vertical_speed :float= 2
 var ground_accel:float = 0.2
 var air_accel:float = 0.05
 
+var ground_friction:float = 0.08
+var air_friction:float = 0.04
+
 var y_velocity :float= 0
 var x_velocity :float= 0
 
@@ -57,6 +60,8 @@ func _physics_process(delta):
 	
 	## is_on_floor() is jank as fuck sometimes lol, this is better.
 	var on_floor = test_move(global_transform,Vector3.DOWN * delta * 10)
+	
+	var friction = ground_friction if on_floor else air_accel
 	
 	###
 	
@@ -100,8 +105,8 @@ func _physics_process(delta):
 		
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
 	
-	if x_velocity != 0 and on_floor:
-		x_velocity = lerp(x_velocity,0.0,0.08)
+	if x_velocity != 0:
+		x_velocity = lerp(x_velocity,0.0,friction)
 	
 	
 	## climbing/jumoing here
