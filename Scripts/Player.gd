@@ -19,6 +19,9 @@ var jump_height :float= 12
 var horizontal_speed :float= 6
 var vertical_speed :float= 2
 
+var ground_accel:float = 0.2
+var air_accel:float = 0.05
+
 var y_velocity :float= 0
 var x_velocity :float= 0
 
@@ -147,8 +150,12 @@ func _physics_process(delta):
 			print('move right')
 			velocity.x -= velocity.y
 			velocity.y +=1
-	
-	velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60,0.2)
+			
+	if on_floor:
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60,ground_accel)
+	else:
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60,air_accel)
+		
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
 	
