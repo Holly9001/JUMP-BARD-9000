@@ -100,7 +100,7 @@ func _physics_process(delta):
 		
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
 	
-	if x_velocity != 0:
+	if x_velocity != 0 and on_floor:
 		x_velocity = lerp(x_velocity,0.0,0.08)
 	
 	
