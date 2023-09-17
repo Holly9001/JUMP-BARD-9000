@@ -8,6 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var HeadRayMR :RayCast3D= $HeadBonkRayMidR
 @onready var HeadRayR :RayCast3D= $HeadBonkRayR
 @onready var HeadRayL :RayCast3D= $HeadBonkRayL
+@onready var initial_parent = self.get_parent()
 
 const ground_accel:float = 12
 const air_accel:float = 3
@@ -38,6 +39,8 @@ var climb_speed := 6
 
 var max_climb_time = 60*3.5
 var climb_time = 0
+
+var attached
 
 ## ability booleans
 # for double jump bools and shit, gonna make one for hold jump too.
@@ -112,31 +115,29 @@ func _physics_process(delta):
 	
 	$DebugUI/ClimbTime.text = str('climb_time: ',climb_time) ## using $ in code is horrible practice but this is just a debug test
 	
-	if Input.is_action_pressed('climb'):
-		
-		if is_on_wall():
-			velocity.y = 0 ## kind of a placeholder, this wouldnt b needed if we made a state machine
-			climb_time -= 90 * delta
-			y_velocity = movement_vector.y * climb_speed 
-			#print(movement_vector.y)
-			
-			if movement_vector.y >= 0:
-					y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
-			else:
-				y_velocity = movement_vector.y * climb_speed * 2 
-		
-		## so technically if u only jump ine the jump buffer range, u dont lose climb time. bug? feature? idk
-		
-		if test_move(global_transform,Vector3.RIGHT * delta * 10):
-			if Input.is_action_just_pressed('jump'):
-				climb_time -= 16
-				x_velocity = -jump_height/7 + (movement_vector.x/7)
-				y_velocity = jump_height + abs(movement_vector.x)
-		elif test_move(global_transform,Vector3.LEFT * delta * 2):
-			if Input.is_action_just_pressed('jump'):
-				climb_time -= 16
-				x_velocity = jump_height/7 + (movement_vector.x/7)
-				y_velocity = jump_height + abs(movement_vector.x)
+#		if is_on_wall():
+#			velocity.y = 0 ## kind of a placeholder, this wouldnt b needed if we made a state machine
+#			climb_time -= 90 * delta
+#			y_velocity = movement_vector.y * climb_speed 
+#			#print(movement_vector.y)
+#
+#			if movement_vector.y >= 0:
+#					y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
+#			else:
+#				y_velocity = movement_vector.y * climb_speed * 2 
+#
+#		## so technically if u only jump ine the jump buffer range, u dont lose climb time. bug? feature? idk
+#
+#		if test_move(global_transform,Vector3.RIGHT * delta * 10):
+#			if Input.is_action_just_pressed('jump'):
+#				climb_time -= 16
+#				x_velocity = -jump_height/7 + (movement_vector.x/7)
+#				y_velocity = jump_height + abs(movement_vector.x)
+#		elif test_move(global_transform,Vector3.LEFT * delta * 2):
+#			if Input.is_action_just_pressed('jump'):
+#				climb_time -= 16
+#				x_velocity = jump_height/7 + (movement_vector.x/7)
+#				y_velocity = jump_height + abs(movement_vector.x)
 
 	
 	if is_on_ceiling():
@@ -160,7 +161,21 @@ func _physics_process(delta):
 		
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
-	
-	move_and_slide()
+	if Input.is_action_pressed('climb') and $wall_check.is_colliding():
+		var global_pos = self.global_position
+		attached = $wall_check.get_collider()
+		self.get_parent().remove_child(self)
+		attached.add_child(self)
+		self.set_owner(attached)
+		self.global_position = global_pos
+	else:
+		if self.get_parent() == attached:
+			var global_pos = self.global_position
+			self.get_parent().remove_child(self)
+			initial_parent.add_child(self)
+			self.set_owner(initial_parent)
+			self.global_position = global_pos
+		#set_as_top_level(true)
+		move_and_slide()
 
 
