@@ -12,8 +12,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var wall_check_arm = $wall_check_arm
 @onready var wall_check_foot = $wall_check_foot
 
-const ground_accel:float = 12
-const air_accel:float = 3
+const x_ground_accel:float = 12
+const x_air_accel:float = 3
+
+const y_accel:float = 12
 
 const ground_friction:float = 4.8
 const air_friction:float = 2.4
@@ -65,7 +67,7 @@ func _physics_process(delta):
 	## is_on_floor() is jank as fuck sometimes lol, this is better.
 	var on_floor = test_move(global_transform,Vector3.DOWN * delta * 10)
 	
-	var friction = ground_friction if on_floor else air_accel
+	var friction = ground_friction if on_floor else air_friction
 	
 	###
 	
@@ -181,10 +183,10 @@ func _physics_process(delta):
 			wall_check_foot.scale.x = -1
 
 	if on_floor:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * ground_accel)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_ground_accel)
 	else:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * air_accel)
-	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_air_accel)
+	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60, y_accel * delta)
 	
 	move_and_slide()
 
