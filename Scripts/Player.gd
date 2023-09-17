@@ -17,8 +17,6 @@ const air_accel:float = 3
 const ground_friction:float = 4.8
 const air_friction:float = 2.4
 
-const wall_attach_jump_cooldown:float = 0.1
-
 var movement_vector :Vector2= Vector2.ZERO
 
 var max_horizontal_speed :float= 3
@@ -146,20 +144,16 @@ func _physics_process(delta):
 			print('move right')
 			velocity.x -= velocity.y
 			velocity.y +=1
-			
-	if on_floor:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * ground_accel)
-	else:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * air_accel)
-		
-	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
 	
-	if velocity.x > 0:
-		wall_check_ray.scale.x = 1
-	elif velocity.x < 0:
-		wall_check_ray.scale.x = -1
-	
-	if Input.is_action_pressed('climb') and wall_check_ray.is_colliding():
+	if Input.is_action_pressed('climb') and wall_check_ray.is_colliding() and climb_time > 0:
+		x_velocity = 0
+		y_velocity = 0
+		velocity.y = 0
+		climb_time -= 90 * delta
+		if movement_vector.y >= 0:
+			y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
+		else:
+			y_velocity = movement_vector.y * climb_speed * 2 
 		if get_parent() != wall_check_ray.get_collider():
 			var global_pos = self.global_position
 			attached = wall_check_ray.get_collider()
@@ -172,19 +166,13 @@ func _physics_process(delta):
 				climb_time -= 16
 				x_velocity = -jump_height/6 + (movement_vector.x/7)
 				y_velocity = jump_height + abs(movement_vector.x)
-				wall_check_ray.enabled = false
-				var tween = get_tree().create_tween()
-				tween.tween_callback(enable_wallcheck).set_delay(0.1)
-				move_and_slide()
-		elif test_move(global_transform,Vector3.LEFT * delta * 2):
+				wall_check_ray.scale.x = -1
+		elif test_move(global_transform,Vector3.LEFT * delta * 10):
 			if Input.is_action_just_pressed('jump'):
 				climb_time -= 16
 				x_velocity = jump_height/6 + (movement_vector.x/7)
 				y_velocity = jump_height + abs(movement_vector.x)
-				wall_check_ray.enabled = false
-				var tween = get_tree().create_tween()
-				tween.tween_callback(enable_wallcheck).set_delay(0.1)
-				move_and_slide()
+				wall_check_ray.scale.x = 1
 	else:
 		if self.get_parent() == attached:
 			var global_pos = self.global_position
@@ -192,9 +180,17 @@ func _physics_process(delta):
 			initial_parent.add_child(self)
 			self.set_owner(initial_parent)
 			self.global_position = global_pos
-		#set_as_top_level(true)
-		move_and_slide()
+		if velocity.x > 0:
+			wall_check_ray.scale.x = 1
+		elif velocity.x < 0:
+			wall_check_ray.scale.x = -1
 
-func enable_wallcheck():
-	wall_check_ray.enabled = true
+	if on_floor:
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * ground_accel)
+	else:
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * air_accel)
+	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60,0.2)
+	
+	print(velocity.y)
+	move_and_slide()
 
