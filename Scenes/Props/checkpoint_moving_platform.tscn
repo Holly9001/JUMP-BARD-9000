@@ -25,6 +25,9 @@ func _process(delta):
 				enabled = false 
 			target_idx = (target_idx + 1) % (checkpoints.size())
 			prev_result = MusicStates[beat_type]
+
+func trigger():
+	enabled = true;
 "
 
 [node name="checkpoint_moving_platform" type="PathFollow3D"]
