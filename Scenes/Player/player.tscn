@@ -33,6 +33,9 @@ collision_mask = 8
 spring_length = 8.0
 script = ExtResource("3_cvtvs")
 
+[node name="Camera3D" type="Camera3D" parent="SpringArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.08907)
+
 [node name="HeadBonkRayMidR" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312, 0)
 target_position = Vector3(0.25, 0.1, 0)
@@ -68,6 +71,3 @@ target_position = Vector3(0.5, 0, 0)
 [node name="wall_check_foot" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 target_position = Vector3(0.5, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 7.08907)

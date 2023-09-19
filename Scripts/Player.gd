@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var initial_parent = self.get_parent()
 @onready var wall_check_arm = $wall_check_arm
 @onready var wall_check_foot = $wall_check_foot
+@onready var camera_arm = $SpringArm
 
 const x_ground_accel:float = 12
 const x_air_accel:float = 3
@@ -189,4 +190,5 @@ func _physics_process(delta):
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60, y_accel * delta)
 	
 	move_and_slide()
+	camera_arm.player_pos = position
 
