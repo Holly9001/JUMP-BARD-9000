@@ -155,16 +155,16 @@ func _physics_process(delta):
 			self.global_transform = global_trans
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
-				climb_time -= 16
-				x_velocity = -jump_height/6 + (movement_vector.x/7)
-				y_velocity = jump_height + abs(movement_vector.x)
+				climb_time -= 8
+				velocity.x = -jump_height * 0.6
+				y_velocity = jump_height * 0.9
 				wall_check_arm.scale.x = -1
 				wall_check_foot.scale.x = -1
 		elif test_move(global_transform,Vector3.LEFT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
-				climb_time -= 16
-				x_velocity = jump_height/6 + (movement_vector.x/7)
-				y_velocity = jump_height + abs(movement_vector.x)
+				climb_time -= 8
+				velocity.x = jump_height * 0.6
+				y_velocity = jump_height * 0.9
 				wall_check_arm.scale.x = 1
 				wall_check_foot.scale.x = 1
 	else:
@@ -187,7 +187,7 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0.0, delta * friction)
 		if movement_vector.x != 0 and not (sign(velocity.x) == sign(movement_vector.x) and abs(velocity.x) > horizontal_speed):
 			velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_air_accel)
-	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60, y_accel * delta)
+	velocity.y = lerp(velocity.y,y_velocity * vertical_speed, y_accel * delta)
 	
 	move_and_slide()
 	camera_arm.player_pos = global_position
