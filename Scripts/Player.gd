@@ -16,12 +16,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 const x_ground_accel:float = 12
 const x_air_accel:float = 6
 
-const platform_vtransfer_multiplier = 3.0
-
 const y_accel:float = 12
 
 const ground_friction:float = 4.8
-const air_friction:float = 5.0
+const air_friction:float = 2.4
 
 var movement_vector :Vector2= Vector2.ZERO
 
@@ -42,7 +40,7 @@ var coyote_frames := 0
 var max_jump_hold := 10
 var jump_hold := 0
 
-var climb_speed := 12
+var climb_speed := 6
 
 var max_climb_time = 60*3.5
 var climb_time = 0
@@ -66,13 +64,11 @@ func _physics_process(delta):
 	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
 	
 	## OK THIS IS CODE I WANNA KEEP YAYAYAYAYYAYAY! THIS SHOULD REMAIN
-	## is_on_floor() is jank as fuck sometimes lol, this is better.
 	
+	## is_on_floor() is jank as fuck sometimes lol, this is better.
 	var on_floor = test_move(global_transform,Vector3.DOWN * delta * 10)
 	
-	
 	var friction = ground_friction if on_floor else air_friction
-
 	
 	###
 	
@@ -113,7 +109,9 @@ func _physics_process(delta):
 		get_tree().reload_current_scene()
 	
 	if y_velocity > -max_vertical_speed * gravity:
+		
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
+	
 	if x_velocity != 0:
 		x_velocity = lerp(x_velocity,0.0, friction * delta)
 	
@@ -184,14 +182,11 @@ func _physics_process(delta):
 		elif velocity.x < 0:
 			wall_check_arm.scale.x = -1
 			wall_check_foot.scale.x = -1
+
 	if on_floor:
 		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_ground_accel)
 	else:
-		var goal_velocity_x = lerp(velocity.x,(movement_vector.x) * horizontal_speed * delta * 60, delta * x_air_accel)
-		if abs(velocity.x) > abs(goal_velocity_x) and goal_velocity_x != 0:
-			x_velocity = (abs(velocity.x) - abs(goal_velocity_x)) * sign(velocity.x) * platform_vtransfer_multiplier
-		velocity.x = goal_velocity_x
-		print(x_velocity)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_air_accel)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60, y_accel * delta)
 	
 	move_and_slide()
