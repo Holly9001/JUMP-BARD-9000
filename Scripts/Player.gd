@@ -14,7 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera_arm = $SpringArm
 
 const x_ground_accel:float = 12
-const x_air_accel:float = 6
+const x_air_accel:float = 50
 
 const y_accel:float = 12
 
@@ -186,7 +186,8 @@ func _physics_process(delta):
 	if on_floor:
 		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_ground_accel)
 	else:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_air_accel)
+		if movement_vector.x != 0:
+			velocity.x = move_toward(velocity.x, movement_vector.x * horizontal_speed, x_air_accel * delta)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60, y_accel * delta)
 	
 	move_and_slide()
