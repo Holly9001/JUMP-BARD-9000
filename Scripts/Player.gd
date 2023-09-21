@@ -41,7 +41,7 @@ var coyote_frames := 0
 var max_jump_hold := 10
 var jump_hold := 0
 
-var climb_speed := 6
+var climb_speed := 10
 
 var max_climb_time = 60*3.5
 var climb_time = 0
@@ -58,9 +58,6 @@ var attached
 func _physics_process(delta):
 	
 	movement_vector = Input.get_vector("left", "right", "down", "up")# normalized()
-#	for i in ['x','y']:
-#		movement_vector[i] = round(movement_vector[i])
-	
 	
 	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
 	

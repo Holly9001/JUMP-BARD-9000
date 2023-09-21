@@ -137,7 +137,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 [node name="Node3D5" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
 
 [node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2765, 10, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2765, 9.5, 0.5)
 curve = SubResource("Curve3D_8ibov")
 
 [node name="moving_platform" parent="Path3D2" instance=ExtResource("5_bjkqj")]
@@ -178,7 +178,7 @@ curve = SubResource("Curve3D_1qluv")
 [node name="checkpoint_moving_platform" parent="Path3D3" instance=ExtResource("6_7f8cv")]
 beat_type = "bass_1"
 checkpoints = Array[float]([0.0, 0.5, 1.0, 0.5])
-checkpoint_move_speeds = Array[float]([5.0, 5.0, 5.0, 5.0])
+checkpoint_move_speeds = Array[float]([2.0, 2.0, 2.0, 2.0])
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D3/checkpoint_moving_platform"]
 axis_lock_linear_z = true
