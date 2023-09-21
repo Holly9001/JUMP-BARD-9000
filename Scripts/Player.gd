@@ -14,7 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera_arm = $SpringArm
 
 const x_ground_accel:float = 12
-const x_air_accel:float = 3
+const x_air_accel:float = 6
 
 const y_accel:float = 12
 
