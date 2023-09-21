@@ -19,7 +19,7 @@ const x_air_accel:float = 50
 const y_accel:float = 12
 
 const ground_friction:float = 4.8
-const air_friction:float = 2.4
+const air_friction:float = 0.5
 
 var movement_vector :Vector2= Vector2.ZERO
 
@@ -186,7 +186,8 @@ func _physics_process(delta):
 	if on_floor:
 		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_ground_accel)
 	else:
-		if movement_vector.x != 0:
+		velocity.x = lerp(velocity.x, 0.0, delta * friction)
+		if movement_vector.x != 0 and not (sign(velocity.x) == sign(movement_vector.x) and abs(velocity.x) > horizontal_speed):
 			velocity.x = move_toward(velocity.x, movement_vector.x * horizontal_speed, x_air_accel * delta)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60, y_accel * delta)
 	
