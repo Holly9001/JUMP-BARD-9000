@@ -13,13 +13,13 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var wall_check_foot = $wall_check_foot
 @onready var camera_arm = $SpringArm
 
-const x_ground_accel:float = 12
-const x_air_accel:float = 6
+const x_ground_accel:float = 720
+const x_air_accel:float = 180
 
 const y_accel:float = 12
 
 const ground_friction:float = 4.8
-const air_friction:float = 2.4
+const air_friction:float = 4.8
 
 var movement_vector :Vector2= Vector2.ZERO
 
@@ -28,7 +28,8 @@ var max_vertical_speed :float= 1.3
 
 var jump_height :float= 12
 
-var horizontal_speed :float= 6
+var horizontal_speed_air :float= 3
+var horizontal_speed_ground:float = 6
 var vertical_speed :float= 2
 
 var y_velocity :float= 0
@@ -55,7 +56,6 @@ var attached
 @export var jump_curve:Curve
 
 func _physics_process(delta):
-	
 	movement_vector = Input.get_vector("left", "right", "down", "up")# normalized()
 #	for i in ['x','y']:
 #		movement_vector[i] = round(movement_vector[i])
@@ -112,8 +112,8 @@ func _physics_process(delta):
 		
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
 	
-	if x_velocity != 0:
-		x_velocity = lerp(x_velocity,0.0, friction * delta)
+	if velocity.x != 0 and on_floor:
+		velocity.x = lerp(velocity.x,0.0, friction * delta)
 	
 	
 	## climbing/jumoing here
@@ -184,9 +184,10 @@ func _physics_process(delta):
 			wall_check_foot.scale.x = -1
 
 	if on_floor:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_ground_accel)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed_ground * delta, delta * x_ground_accel)
 	else:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_air_accel)
+		if movement_vector.x != 0:
+			velocity.x = move_toward(velocity.x, movement_vector.x * horizontal_speed_air, x_air_accel * delta)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60, y_accel * delta)
 	
 	move_and_slide()
