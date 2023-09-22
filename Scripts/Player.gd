@@ -22,6 +22,11 @@ const y_accel:float = 12
 const ground_friction:float = 4.8
 const air_friction:float = 0.5
 
+# dunno what to call this. used to be friction but needs to be a seperate value for tweaking.
+# either that or x_velocity needs to be changed to something else? I kind of like it how it is though
+# but the name is definitely weird :/
+const x_velocity_decay:float = 4.8
+
 var movement_vector :Vector2= Vector2.ZERO
 
 var max_horizontal_speed :float= 3
@@ -111,7 +116,7 @@ func _physics_process(delta):
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
 	
 	if x_velocity != 0:
-		x_velocity = lerp(x_velocity,0.0, friction * delta)
+		x_velocity = lerp(x_velocity,0.0, x_velocity_decay * delta)
 	
 	
 	## climbing/jumoing here
@@ -156,14 +161,14 @@ func _physics_process(delta):
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				velocity.x = -jump_height * 0.6
+				x_velocity = -jump_height * 0.6
 				y_velocity = jump_height * 0.9
 				wall_check_arm.scale.x = -1
 				wall_check_foot.scale.x = -1
 		elif test_move(global_transform,Vector3.LEFT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				velocity.x = jump_height * 0.6
+				x_velocity = jump_height * 0.6
 				y_velocity = jump_height * 0.9
 				wall_check_arm.scale.x = 1
 				wall_check_foot.scale.x = 1
