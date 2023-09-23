@@ -13,19 +13,13 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var wall_check_foot = $wall_check_foot
 @onready var camera_arm = $SpringArm
 
-
 const x_ground_accel:float = 12
 const x_air_accel:float = 3
 
 const y_accel:float = 12
 
 const ground_friction:float = 4.8
-const air_friction:float = 0.5
-
-# dunno what to call this. used to be friction but needs to be a seperate value for tweaking.
-# either that or x_velocity needs to be changed to something else? I kind of like it how it is though
-# but the name is definitely weird :/
-const x_velocity_decay:float = 4.8
+const air_friction:float = 2.4
 
 var movement_vector :Vector2= Vector2.ZERO
 
@@ -46,7 +40,7 @@ var coyote_frames := 0
 var max_jump_hold := 10
 var jump_hold := 0
 
-var climb_speed := 10
+var climb_speed := 6
 
 var max_climb_time = 60*3.5
 var climb_time = 0
@@ -63,6 +57,9 @@ var attached
 func _physics_process(delta):
 	
 	movement_vector = Input.get_vector("left", "right", "down", "up")# normalized()
+#	for i in ['x','y']:
+#		movement_vector[i] = round(movement_vector[i])
+	
 	
 	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
 	
@@ -116,7 +113,7 @@ func _physics_process(delta):
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
 	
 	if x_velocity != 0:
-		x_velocity = lerp(x_velocity,0.0, x_velocity_decay * delta)
+		x_velocity = lerp(x_velocity,0.0, friction * delta)
 	
 	
 	## climbing/jumoing here
@@ -159,7 +156,6 @@ func _physics_process(delta):
 			self.set_owner(attached)
 			self.global_transform = global_trans
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
-<<<<<<< HEAD
 			if Input.is_action_just_pressed('jump'): #and (!is_on_floor() and !on_floor)
 				climb_time -= 16
 				x_velocity = -jump_height/6 + (movement_vector.x/7)
@@ -171,19 +167,6 @@ func _physics_process(delta):
 				climb_time -= 16
 				x_velocity = jump_height/6 + (movement_vector.x/7)
 				y_velocity = jump_height + abs(movement_vector.x)
-=======
-			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
-				climb_time -= 8
-				x_velocity = -jump_height * 0.6
-				y_velocity = jump_height * 0.9
-				wall_check_arm.scale.x = -1
-				wall_check_foot.scale.x = -1
-		elif test_move(global_transform,Vector3.LEFT * delta * 10):
-			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
-				climb_time -= 8
-				x_velocity = jump_height * 0.6
-				y_velocity = jump_height * 0.9
->>>>>>> 13258232f8b2ac83927191f4fb40d8ef4e5a8621
 				wall_check_arm.scale.x = 1
 				wall_check_foot.scale.x = 1
 	else:
@@ -201,12 +184,10 @@ func _physics_process(delta):
 			wall_check_foot.scale.x = -1
 
 	if on_floor:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_ground_accel)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_ground_accel)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, delta * friction)
-		if movement_vector.x != 0 and not (sign(velocity.x) == sign(movement_vector.x) and abs(velocity.x) > horizontal_speed):
-			velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_air_accel)
-	velocity.y = lerp(velocity.y,y_velocity * vertical_speed, y_accel * delta)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed * delta * 60, delta * x_air_accel)
+	velocity.y = lerp(velocity.y,y_velocity * vertical_speed * delta * 60, y_accel * delta)
 	
 	move_and_slide()
 	camera_arm.player_pos = global_position
