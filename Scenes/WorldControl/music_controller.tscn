@@ -132,5 +132,3 @@ libraries = {
 script = ExtResource("2_hwmsn")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_bf146")
-volume_db = 1.33

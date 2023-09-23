@@ -16,7 +16,7 @@ var children
 var prev_state
 
 func _ready():
-	child_collisions = Utils.get_children_of_type(self, "CollisionShape3D")
+	child_collisions = get_children_of_type(self, "CollisionShape3D")
 	children = get_children()
 	prev_state = MusicStates[beat_type]
 	
@@ -49,3 +49,12 @@ func _process(_delta):
 		
 	
 	$BeatLabel.text = str(beat_count,' / ',beat_interval)
+
+
+
+func get_children_of_type(in_node, type, arr:=[]):
+	if in_node.get_class() == type:
+		arr.push_back(in_node)
+	for child in in_node.get_children():
+		arr = get_children_of_type(child, type, arr)
+	return arr
