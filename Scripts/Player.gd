@@ -161,14 +161,14 @@ func _physics_process(delta):
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				x_velocity = -jump_height * 0.6
+				velocity.x = -jump_height * 0.6
 				y_velocity = jump_height * 0.9
 				wall_check_arm.scale.x = -1
 				wall_check_foot.scale.x = -1
 		elif test_move(global_transform,Vector3.LEFT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				x_velocity = jump_height * 0.6
+				velocity.x = jump_height * 0.6
 				y_velocity = jump_height * 0.9
 				wall_check_arm.scale.x = 1
 				wall_check_foot.scale.x = 1
@@ -189,7 +189,7 @@ func _physics_process(delta):
 	if on_floor:
 		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_ground_accel)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, delta * friction)
+		velocity.x = lerp(velocity.x, 0.0 + x_velocity, delta * friction)
 		if movement_vector.x != 0 and not (sign(velocity.x) == sign(movement_vector.x) and abs(velocity.x) > horizontal_speed):
 			velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_air_accel)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed, y_accel * delta)
