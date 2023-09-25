@@ -93,8 +93,8 @@ skeleton = NodePath("../Player")
 transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_nn6ks")
 
-[node name="Player" parent="." instance=ExtResource("1_i1lek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7397, 6.0154, 0.574021)
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_i1lek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9798, 35.8906, 0.574021)
 
 [node name="on_off_props" parent="." instance=ExtResource("3_o4vv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0.5)

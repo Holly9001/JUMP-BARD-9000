@@ -63,6 +63,14 @@ var attached
 
 @export var jump_curve:Curve
 
+func reset_parent():
+	var global_trans = self.global_transform
+	self.get_parent().remove_child(self)
+	initial_parent.add_child(self)
+	self.set_owner(initial_parent)
+	self.global_transform = global_trans
+
+
 func _physics_process(delta):
 	
 	movement_vector = Input.get_vector("left", "right", "down", "up")# normalized()
@@ -156,11 +164,12 @@ func _physics_process(delta):
 		else:
 			y_velocity = movement_vector.y * climb_speed * 2 
 		if get_parent() != attached:
-			var global_trans = self.global_transform
-			self.get_parent().remove_child(self)
-			attached.add_child(self)
-			self.set_owner(attached)
-			self.global_transform = global_trans
+			if attached:
+				var global_trans = self.global_transform
+				self.get_parent().remove_child(self)
+				attached.add_child(self)
+				self.set_owner(attached)
+				self.global_transform = global_trans
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
@@ -177,11 +186,7 @@ func _physics_process(delta):
 				wall_check_foot.scale.x = 1
 	else:
 		if self.get_parent() == attached:
-			var global_trans = self.global_transform
-			self.get_parent().remove_child(self)
-			initial_parent.add_child(self)
-			self.set_owner(initial_parent)
-			self.global_transform = global_trans
+			reset_parent()
 		if velocity.x > 0:
 			wall_check_arm.scale.x = 1
 			wall_check_foot.scale.x = 1
