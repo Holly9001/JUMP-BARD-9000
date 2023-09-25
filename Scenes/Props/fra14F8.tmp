@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0tk0sd8hlusg"]
+
+[ext_resource type="Script" path="res://Scripts/fragile_platform.gd" id="1_05l6n"]
+
+[node name="fragile_platform" type="Node3D"]
+script = ExtResource("1_05l6n")

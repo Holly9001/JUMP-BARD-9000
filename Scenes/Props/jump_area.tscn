@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxjhgpqshpg5r"]
+
+[ext_resource type="Script" path="res://Scripts/jump_area.gd" id="1_fl05u"]
+
+[node name="JumpArea" type="Area3D"]
+script = ExtResource("1_fl05u")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

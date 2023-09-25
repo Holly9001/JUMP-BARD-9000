@@ -27,6 +27,9 @@ const air_friction:float = 0.5
 # but the name is definitely weird :/
 const x_velocity_decay:float = 4.8
 
+const walljump_force_y:float = 10.0
+const walljump_force_x:float = 8.0
+
 var movement_vector :Vector2= Vector2.ZERO
 
 var max_horizontal_speed :float= 3
@@ -60,6 +63,19 @@ var attached
 
 @export var jump_curve:Curve
 
+func reset_parent():
+	var global_trans = self.global_transform
+	self.get_parent().remove_child(self)
+	initial_parent.add_child(self)
+	self.set_owner(initial_parent)
+	self.global_transform = global_trans
+
+func jump():
+	jump_hold = max_jump_hold
+	y_velocity = jump_height
+	coyote_frames = 0
+
+
 func _physics_process(delta):
 	
 	movement_vector = Input.get_vector("left", "right", "down", "up")# normalized()
@@ -83,10 +99,7 @@ func _physics_process(delta):
 		jump_hold = 0
 		velocity.y = 0
 		if Input.is_action_just_pressed('jump'):
-			jump_hold = max_jump_hold
-			
-			y_velocity = jump_height
-			coyote_frames = 0
+			jump()
 #	elif is_on_ceiling():
 #		y_velocity = 0
 #		velocity.y = velocity.y/2
@@ -153,43 +166,29 @@ func _physics_process(delta):
 		else:
 			y_velocity = movement_vector.y * climb_speed * 2 
 		if get_parent() != attached:
-			var global_trans = self.global_transform
-			self.get_parent().remove_child(self)
-			attached.add_child(self)
-			self.set_owner(attached)
-			self.global_transform = global_trans
+			if attached:
+				var global_trans = self.global_transform
+				self.get_parent().remove_child(self)
+				attached.add_child(self)
+				self.set_owner(attached)
+				self.global_transform = global_trans
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
-			if Input.is_action_just_pressed('jump'): #and (!is_on_floor() and !on_floor)
-				climb_time -= 16
-				x_velocity = -jump_height/6 + (movement_vector.x/7)
-				y_velocity = jump_height + abs(movement_vector.x)
-				wall_check_arm.scale.x = -1
-				wall_check_foot.scale.x = -1
-		elif test_move(global_transform,Vector3.LEFT * delta * 10):
-			if Input.is_action_just_pressed('jump'): #and (!is_on_floor() and !on_floor)
-				climb_time -= 16
-				x_velocity = jump_height/6 + (movement_vector.x/7)
-				y_velocity = jump_height + abs(movement_vector.x)
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				x_velocity = -jump_height * 0.6
-				y_velocity = jump_height * 0.9
+				velocity.x = -walljump_force_x
+				y_velocity = walljump_force_y
 				wall_check_arm.scale.x = -1
 				wall_check_foot.scale.x = -1
 		elif test_move(global_transform,Vector3.LEFT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				x_velocity = jump_height * 0.6
-				y_velocity = jump_height * 0.9
+				velocity.x = walljump_force_x
+				y_velocity = walljump_force_y
 				wall_check_arm.scale.x = 1
 				wall_check_foot.scale.x = 1
 	else:
 		if self.get_parent() == attached:
-			var global_trans = self.global_transform
-			self.get_parent().remove_child(self)
-			initial_parent.add_child(self)
-			self.set_owner(initial_parent)
-			self.global_transform = global_trans
+			reset_parent()
 		if velocity.x > 0:
 			wall_check_arm.scale.x = 1
 			wall_check_foot.scale.x = 1
@@ -200,7 +199,7 @@ func _physics_process(delta):
 	if on_floor:
 		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_ground_accel)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, delta * friction)
+		velocity.x = lerp(velocity.x, 0.0 + x_velocity, delta * friction)
 		if movement_vector.x != 0 and not (sign(velocity.x) == sign(movement_vector.x) and abs(velocity.x) > horizontal_speed):
 			velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_air_accel)
 	velocity.y = lerp(velocity.y,y_velocity * vertical_speed, y_accel * delta)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=32 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
 [ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props.tscn" id="3_o4vv3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/testscoredisplay.gd" id="10_dpucs"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="11_u2dt7"]
 [ext_resource type="PackedScene" uid="uid://0tk0sd8hlusg" path="res://Scenes/Props/fragile_platform.tscn" id="12_qirnp"]
+[ext_resource type="PackedScene" uid="uid://bxjhgpqshpg5r" path="res://Scenes/Props/jump_area.tscn" id="13_o0eu7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb5vy"]
 size = Vector3(1, 15, 1)
@@ -73,6 +74,8 @@ material = SubResource("StandardMaterial3D_1f4vm")
 [sub_resource type="BoxMesh" id="BoxMesh_nej1j"]
 material = SubResource("StandardMaterial3D_6vvos")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ij7vf"]
+
 [node name="TestWorld" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -93,8 +96,8 @@ skeleton = NodePath("../Player")
 transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_nn6ks")
 
-[node name="Player" parent="." instance=ExtResource("1_i1lek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7397, 6.0154, 0.574021)
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_i1lek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 5.14682, 0.5)
 
 [node name="on_off_props" parent="." instance=ExtResource("3_o4vv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0.5)
@@ -467,3 +470,39 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform2/StaticBody3D"]
 shape = SubResource("BoxShape3D_svea3")
+
+[node name="JumpArea" parent="." instance=ExtResource("13_o0eu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 16.2131, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea"]
+shape = SubResource("BoxShape3D_ij7vf")
+
+[node name="JumpArea2" parent="." instance=ExtResource("13_o0eu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 19.7131, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea2"]
+shape = SubResource("BoxShape3D_ij7vf")
+
+[node name="JumpArea3" parent="." instance=ExtResource("13_o0eu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 23.2131, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea3"]
+shape = SubResource("BoxShape3D_ij7vf")
+
+[node name="JumpArea4" parent="." instance=ExtResource("13_o0eu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 29.7131, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea4"]
+shape = SubResource("BoxShape3D_ij7vf")
+
+[node name="JumpArea6" parent="." instance=ExtResource("13_o0eu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 32.7131, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea6"]
+shape = SubResource("BoxShape3D_ij7vf")
+
+[node name="JumpArea5" parent="." instance=ExtResource("13_o0eu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 26.7131, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea5"]
+shape = SubResource("BoxShape3D_ij7vf")
