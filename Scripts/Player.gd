@@ -27,6 +27,9 @@ const air_friction:float = 0.5
 # but the name is definitely weird :/
 const x_velocity_decay:float = 4.8
 
+const walljump_force_y:float = 10.0
+const walljump_force_x:float = 8.0
+
 var movement_vector :Vector2= Vector2.ZERO
 
 var max_horizontal_speed :float= 3
@@ -161,15 +164,15 @@ func _physics_process(delta):
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				velocity.x = -jump_height * 0.6
-				y_velocity = jump_height * 0.9
+				velocity.x = -walljump_force_x
+				y_velocity = walljump_force_y
 				wall_check_arm.scale.x = -1
 				wall_check_foot.scale.x = -1
 		elif test_move(global_transform,Vector3.LEFT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				velocity.x = jump_height * 0.6
-				y_velocity = jump_height * 0.9
+				velocity.x = walljump_force_x
+				y_velocity = walljump_force_y
 				wall_check_arm.scale.x = 1
 				wall_check_foot.scale.x = 1
 	else:
