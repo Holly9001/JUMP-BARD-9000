@@ -159,7 +159,6 @@ func _physics_process(delta):
 			self.set_owner(attached)
 			self.global_transform = global_trans
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
-<<<<<<< HEAD
 			if Input.is_action_just_pressed('jump'): #and (!is_on_floor() and !on_floor)
 				climb_time -= 16
 				x_velocity = -jump_height/6 + (movement_vector.x/7)
@@ -171,7 +170,6 @@ func _physics_process(delta):
 				climb_time -= 16
 				x_velocity = jump_height/6 + (movement_vector.x/7)
 				y_velocity = jump_height + abs(movement_vector.x)
-=======
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
 				x_velocity = -jump_height * 0.6
@@ -183,7 +181,6 @@ func _physics_process(delta):
 				climb_time -= 8
 				x_velocity = jump_height * 0.6
 				y_velocity = jump_height * 0.9
->>>>>>> 13258232f8b2ac83927191f4fb40d8ef4e5a8621
 				wall_check_arm.scale.x = 1
 				wall_check_foot.scale.x = 1
 	else:
