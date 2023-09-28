@@ -568,7 +568,21 @@ libraries = {
 "": SubResource("AnimationLibrary_2r1aq")
 }
 
+[node name="Lead_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="Lead_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
 [node name="Bass_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="Bass_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="Drum_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="Drum_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="Backing_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="Backing_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
 [node name="Node" type="Node" parent="."]
 

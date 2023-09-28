@@ -15,6 +15,10 @@ func _ready():
 func _process(_delta):
 	pass
 
+## func where u choose song, and tracks. song is string (just the animation name) and tracks will be an enum maybe?
+
+
+
 func _bass_1():
 	MusicStates.state_array['bass_1'] = !MusicStates.state_array['bass_1']
 func _bass_2():
