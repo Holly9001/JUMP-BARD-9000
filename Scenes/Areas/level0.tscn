@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_c48as"]
 [ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props.tscn" id="3_0q4oh"]
 [ext_resource type="PackedScene" uid="uid://cerexfrjsycev" path="res://grid_meshes.tscn" id="4_te6p6"]
-[ext_resource type="PackedScene" uid="uid://b633jbtar6pl6" path="res://Scenes/Props/continuous_moving_platform.tscn" id="5_1u7to"]
+[ext_resource type="PackedScene" uid="uid://0k3kmccchs2w" path="res://Scenes/Props/continuous_moving_platform.tscn" id="5_1u7to"]
 [ext_resource type="PackedScene" uid="uid://bob661mynbg6t" path="res://Scenes/Props/checkpoint_moving_platform.tscn" id="6_diu13"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_1521j"]
 [ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="8_gj4xn"]
@@ -276,8 +276,9 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 [node name="collectable16" parent="Path3D4/checkpoint_moving_platform/AnimatableBody3D" instance=ExtResource("7_1521j")]
 transform = Transform3D(-4.37115e-08, -1, 0, 1.00001, -4.37116e-08, 0, 0, 0, 1, -4.00001, 5.72205e-06, 0)
 
-[node name="Area3D" parent="." instance=ExtResource("8_gj4xn")]
+[node name="Area3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_gj4xn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.008, 16.049, 0.5)
+target = NodePath("../zoom/checkpoint_moving_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_nvi0f")
@@ -395,8 +396,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 18, 0)
 [node name="fragile_platform" parent="." instance=ExtResource("12_xtxki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 33.5, 0.5)
 
-[node name="triggerarea" parent="fragile_platform" instance=ExtResource("8_gj4xn")]
+[node name="triggerarea" parent="fragile_platform" node_paths=PackedStringArray("target") instance=ExtResource("8_gj4xn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform/triggerarea"]
 shape = SubResource("BoxShape3D_ocqva")
@@ -413,8 +415,9 @@ shape = SubResource("BoxShape3D_svea3")
 [node name="fragile_platform3" parent="." instance=ExtResource("12_xtxki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 33.5, 0.5)
 
-[node name="triggerarea" parent="fragile_platform3" instance=ExtResource("8_gj4xn")]
+[node name="triggerarea" parent="fragile_platform3" node_paths=PackedStringArray("target") instance=ExtResource("8_gj4xn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform3/triggerarea"]
 shape = SubResource("BoxShape3D_ocqva")
@@ -431,8 +434,9 @@ shape = SubResource("BoxShape3D_svea3")
 [node name="fragile_platform2" parent="." instance=ExtResource("12_xtxki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 33.5, 0.5)
 
-[node name="triggerarea" parent="fragile_platform2" instance=ExtResource("8_gj4xn")]
+[node name="triggerarea" parent="fragile_platform2" node_paths=PackedStringArray("target") instance=ExtResource("8_gj4xn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform2/triggerarea"]
 shape = SubResource("BoxShape3D_ocqva")
