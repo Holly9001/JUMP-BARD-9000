@@ -2,16 +2,8 @@ extends Node
 
 signal points_changed
 
-const initial_life:float = 5.0
-var life:float = initial_life
+var points:int = 0
 
-func reset_life():
-	life = initial_life
-	points_changed.emit()
-	
-func _process(delta):
-	if delta > life:
-		reset_life()
-		get_tree().reload_current_scene()
-	life -= delta
+func set_points(pts):
+	points = pts
 	points_changed.emit()
