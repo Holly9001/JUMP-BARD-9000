@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ylwxm623t6vu"]
+
+[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_cps4q"]
+[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_ayuk0"]
+
+[node name="level1" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_cps4q")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(-131072, 0, 0, -65537, 0, 0, -131070, 0, 0, -65538, 0, 0, -131071, 0, 0, -65539, 0, 0)
+}
+
+[node name="Player" parent="." instance=ExtResource("2_ayuk0")]

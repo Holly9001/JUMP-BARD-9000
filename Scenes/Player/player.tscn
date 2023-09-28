@@ -13,7 +13,7 @@ point_count = 2
 size = Vector3(0.8, 1, 0.8)
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.646821, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 0.5)
 axis_lock_linear_z = true
 script = ExtResource("1_wkf5m")
 jump_curve = SubResource("Curve_tboxv")
@@ -35,6 +35,7 @@ script = ExtResource("3_cvtvs")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.08907)
+current = true
 
 [node name="HeadBonkRayMidR" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312, 0)

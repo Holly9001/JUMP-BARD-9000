@@ -1,18 +1,15 @@
-[gd_scene load_steps=32 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=29 format=3 uid="uid://dn0yjrso1mreb"]
 
-[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_i1lek"]
-[ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props.tscn" id="3_o4vv3"]
-[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="4_4gpr5"]
-[ext_resource type="PackedScene" uid="uid://cerexfrjsycev" path="res://grid_meshes.tscn" id="4_gk4iu"]
-[ext_resource type="PackedScene" uid="uid://b633jbtar6pl6" path="res://Scenes/Props/continuous_moving_platform.tscn" id="5_bjkqj"]
-[ext_resource type="PackedScene" uid="uid://bob661mynbg6t" path="res://Scenes/Props/checkpoint_moving_platform.tscn" id="6_7f8cv"]
-[ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="6_225av"]
-[ext_resource type="PackedScene" uid="uid://wqbss1j8p52s" path="res://UI/debug_ui.tscn" id="7_4y0cq"]
-[ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="7_r204x"]
-[ext_resource type="Script" path="res://Scripts/testscoredisplay.gd" id="10_dpucs"]
-[ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="11_u2dt7"]
-[ext_resource type="PackedScene" uid="uid://0tk0sd8hlusg" path="res://Scenes/Props/fragile_platform.tscn" id="12_qirnp"]
-[ext_resource type="PackedScene" uid="uid://bxjhgpqshpg5r" path="res://Scenes/Props/jump_area.tscn" id="13_o0eu7"]
+[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_f8l2k"]
+[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_c48as"]
+[ext_resource type="PackedScene" uid="uid://b7w6eam7k048p" path="res://Scenes/Props/on_off_props.tscn" id="3_0q4oh"]
+[ext_resource type="PackedScene" uid="uid://cerexfrjsycev" path="res://grid_meshes.tscn" id="4_te6p6"]
+[ext_resource type="PackedScene" uid="uid://b633jbtar6pl6" path="res://Scenes/Props/continuous_moving_platform.tscn" id="5_1u7to"]
+[ext_resource type="PackedScene" uid="uid://bob661mynbg6t" path="res://Scenes/Props/checkpoint_moving_platform.tscn" id="6_diu13"]
+[ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_1521j"]
+[ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="8_gj4xn"]
+[ext_resource type="PackedScene" uid="uid://0tk0sd8hlusg" path="res://Scenes/Props/fragile_platform.tscn" id="12_xtxki"]
+[ext_resource type="PackedScene" uid="uid://bxjhgpqshpg5r" path="res://Scenes/Props/jump_area.tscn" id="13_kdg0r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb5vy"]
 size = Vector3(1, 15, 1)
@@ -76,10 +73,10 @@ material = SubResource("StandardMaterial3D_6vvos")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ij7vf"]
 
-[node name="TestWorld" type="Node3D"]
+[node name="level0" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("4_4gpr5")
+mesh_library = ExtResource("1_f8l2k")
 cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(196619, 0, 0, 196599, 0, 1441793, 458757, 0, 1441792, 458756, 0, 1441792, 458755, 0, 1441792, 458754, 0, 1441792, 458753, 0, 1441792, 524272, 0, 0, 524273, 0, 0, 524274, 0, 0, 524275, 0, 0, 131076, 0, 0, 131077, 0, 0, 262133, 0, 0, 262134, 0, 0, 262135, 0, 0, 262136, 0, 0, 262132, 0, 0, 327666, 0, 0, 327665, 0, 0, 327664, 0, 0, 196609, 0, 0, 196610, 0, 0, 1376255, 0, 0, 1310719, 0, 0, 1245183, 0, 0, 1179647, 0, 0, 1114111, 0, 0, 917502, 0, 0, 917503, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1441791, 0, 0, 1507327, 0, 0, 851968, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1114122, 0, 0, 1114121, 0, 0, 1245216, 0, 0, 1179680, 0, 0, 1114144, 0, 0, 1048608, 0, 0, 1048599, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1114120, 0, 0, 1179656, 0, 0, 1245193, 0, 0, 1310729, 0, 0, 1245194, 0, 0, 1310730, 0, 0, 1376266, 0, 0, 1441802, 0, 0, 1572887, 0, 0, 1572889, 0, 0, 1441814, 0, 0, 1376278, 0, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1441818, 0, 0, 327663, 0, 0, 327662, 0, 0, 327661, 0, 0, 327660, 0, 0, 327659, 0, 0, 327658, 0, 0, 327657, 0, 0, 327656, 0, 0, 393194, 0, 0, 458730, 0, 0, 524266, 0, 0, 589802, 0, 0, 327655, 0, 0, 327654, 0, 0, 327653, 0, 0, 327652, 0, 0, 327651, 0, 0, 327650, 0, 0, 393186, 0, 0, 458722, 0, 0, 524258, 0, 0, 589794, 0, 0, 589793, 0, 0, 589792, 0, 0, 589791, 0, 0, 589790, 0, 0, 393197, 0, 0, 458733, 0, 0, 786398, 0, 0, 851934, 0, 0, 917470, 0, 0, 983006, 0, 0, 1048542, 0, 0, 1114078, 0, 0, 1179614, 0, 0, 1245150, 0, 0, 1310686, 0, 0, 1376222, 0, 0, 1441758, 0, 0, 786401, 0, 0, 851937, 0, 0, 917473, 0, 0, 983009, 0, 0, 1048545, 0, 0, 1114081, 0, 0, 1179617, 0, 0, 1245153, 0, 0, 1310689, 0, 0, 1376225, 0, 0, 1441761, 0, 0, 1441762, 0, 0, 1441765, 0, 0, 1441764, 0, 0, 1441763, 0, 0, 1507301, 0, 0, 1572837, 0, 0, 1638373, 0, 0, 1703909, 0, 0, 1769445, 0, 0, 1834981, 0, 0, 1900517, 0, 0, 1966053, 0, 0, 2031589, 0, 0, 1638369, 0, 0, 1703905, 0, 0, 1769441, 0, 0, 1834977, 0, 0, 1900513, 0, 0, 1966049, 0, 0, 2031585, 0, 0, 2097121, 0, 0, 2162657, 0, 0, 2228193, 0, 0, 2097125, 0, 0, 2162661, 0, 0, 2228197, 0, 0, 2228211, 0, 0, 2228212, 0, 0, 2228213, 0, 0)
@@ -96,54 +93,54 @@ skeleton = NodePath("../Player")
 transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_nn6ks")
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_i1lek")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_c48as")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 5.14682, 0.5)
 
-[node name="on_off_props" parent="." instance=ExtResource("3_o4vv3")]
+[node name="on_off_props" parent="." instance=ExtResource("3_0q4oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.5, 0.5)
 beat_type = "bass_1"
 beat_interval = 4
 on_beats = [1, 2]
 off_beats = [3, 4]
 
-[node name="Node3D" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+[node name="Node3D" parent="on_off_props" instance=ExtResource("4_te6p6")]
 
-[node name="Node3D2" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+[node name="Node3D2" parent="on_off_props" instance=ExtResource("4_te6p6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Node3D3" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+[node name="Node3D3" parent="on_off_props" instance=ExtResource("4_te6p6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Node3D4" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+[node name="Node3D4" parent="on_off_props" instance=ExtResource("4_te6p6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="Node3D5" parent="on_off_props" instance=ExtResource("4_gk4iu")]
+[node name="Node3D5" parent="on_off_props" instance=ExtResource("4_te6p6")]
 
-[node name="on_off_props2" parent="." instance=ExtResource("3_o4vv3")]
+[node name="on_off_props2" parent="." instance=ExtResource("3_0q4oh")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.5, 3.5, 0.5)
 beat_type = "bass_1"
 beat_interval = 4
 on_beats = [1, 2]
 off_beats = [3, 4]
 
-[node name="Node3D" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
+[node name="Node3D" parent="on_off_props2" instance=ExtResource("4_te6p6")]
 
-[node name="Node3D2" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
+[node name="Node3D2" parent="on_off_props2" instance=ExtResource("4_te6p6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Node3D3" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
+[node name="Node3D3" parent="on_off_props2" instance=ExtResource("4_te6p6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Node3D4" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
+[node name="Node3D4" parent="on_off_props2" instance=ExtResource("4_te6p6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="Node3D5" parent="on_off_props2" instance=ExtResource("4_gk4iu")]
+[node name="Node3D5" parent="on_off_props2" instance=ExtResource("4_te6p6")]
 
 [node name="Path3D2" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2765, 9.5, 0.5)
 curve = SubResource("Curve3D_8ibov")
 
-[node name="moving_platform" parent="Path3D2" instance=ExtResource("5_bjkqj")]
+[node name="moving_platform" parent="Path3D2" instance=ExtResource("5_1u7to")]
 cubic_interp = false
 tilt_enabled = false
 move_time = 5.0
@@ -178,7 +175,7 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6735, 8, 0.5)
 curve = SubResource("Curve3D_1qluv")
 
-[node name="checkpoint_moving_platform" parent="Path3D3" instance=ExtResource("6_7f8cv")]
+[node name="checkpoint_moving_platform" parent="Path3D3" instance=ExtResource("6_diu13")]
 beat_type = "bass_1"
 checkpoints = Array[float]([0.0, 0.5, 1.0, 0.5])
 checkpoint_move_speeds = Array[float]([2.0, 2.0, 2.0, 2.0])
@@ -211,7 +208,7 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 29, 29, 0.5)
 curve = SubResource("Curve3D_1qluv")
 
-[node name="checkpoint_moving_platform" parent="Path3D4" instance=ExtResource("6_7f8cv")]
+[node name="checkpoint_moving_platform" parent="Path3D4" instance=ExtResource("6_diu13")]
 beat_type = "bass_1"
 checkpoints = Array[float]([0.0, 0.5, 1.0, 0.5])
 checkpoint_move_speeds = Array[float]([5.0, 5.0, 5.0, 5.0])
@@ -276,12 +273,11 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 transform = Transform3D(-1, 8.74228e-08, -1.42109e-14, -8.74228e-08, -1, -1.24236e-21, 0, 0, 1, -2, 9.53674e-06, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
 
-[node name="collectable16" parent="Path3D4/checkpoint_moving_platform/AnimatableBody3D" instance=ExtResource("11_u2dt7")]
+[node name="collectable16" parent="Path3D4/checkpoint_moving_platform/AnimatableBody3D" instance=ExtResource("7_1521j")]
 transform = Transform3D(-4.37115e-08, -1, 0, 1.00001, -4.37116e-08, 0, 0, 0, 1, -4.00001, 5.72205e-06, 0)
 
-[node name="Area3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_r204x")]
+[node name="Area3D" parent="." instance=ExtResource("8_gj4xn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.008, 16.049, 0.5)
-target = NodePath("../zoom/checkpoint_moving_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_nvi0f")
@@ -290,7 +286,7 @@ shape = SubResource("BoxShape3D_nvi0f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 14.949, 0.5)
 curve = SubResource("Curve3D_my6hu")
 
-[node name="checkpoint_moving_platform" parent="zoom" instance=ExtResource("6_7f8cv")]
+[node name="checkpoint_moving_platform" parent="zoom" instance=ExtResource("6_diu13")]
 beat_type = "bass_1"
 checkpoints = Array[float]([1.0])
 checkpoint_move_speeds = Array[float]([0.05])
@@ -330,96 +326,77 @@ shape = SubResource("ConcavePolygonShape3D_32pno")
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
 
-[node name="DebugUI" parent="." instance=ExtResource("7_4y0cq")]
-
-[node name="MusicController" parent="." instance=ExtResource("6_225av")]
-
-[node name="testscoredisplay" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -43.0
-offset_top = 3.0
-offset_right = -3.0
-offset_bottom = 26.0
-text = "0"
-script = ExtResource("10_dpucs")
-
 [node name="collectables" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, 0.5)
 
-[node name="collectable" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 0)
 
-[node name="collectable2" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable2" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 0)
 
-[node name="collectable16" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable16" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 30, 0)
 
-[node name="collectable17" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable17" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 30, 0)
 
-[node name="collectable18" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable18" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 30, 0)
 
-[node name="collectable19" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable19" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 30, 0)
 
-[node name="collectable21" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable21" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 30, 0)
 
-[node name="collectable20" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable20" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 30, 0)
 
-[node name="collectable3" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable3" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 9, 0)
 
-[node name="collectable4" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable4" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 14.5, 0)
 
-[node name="collectable5" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable5" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 23.5, 0)
 
-[node name="collectable6" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable6" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
 
-[node name="collectable11" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable11" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 
-[node name="collectable15" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable15" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="collectable12" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable12" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 11.5, 0)
 
-[node name="collectable13" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable13" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 0)
 
-[node name="collectable14" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable14" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 5, 0)
 
-[node name="collectable7" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable7" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 14.5, 0)
 
-[node name="collectable8" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable8" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 18, 0)
 
-[node name="collectable9" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable9" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 18, 0)
 
-[node name="collectable10" parent="collectables" instance=ExtResource("11_u2dt7")]
+[node name="collectable10" parent="collectables" instance=ExtResource("7_1521j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 18, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, -8.5)
-
-[node name="fragile_platform" parent="." instance=ExtResource("12_qirnp")]
+[node name="fragile_platform" parent="." instance=ExtResource("12_xtxki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 33.5, 0.5)
 
-[node name="triggerarea" parent="fragile_platform" node_paths=PackedStringArray("target") instance=ExtResource("7_r204x")]
+[node name="triggerarea" parent="fragile_platform" instance=ExtResource("8_gj4xn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform/triggerarea"]
 shape = SubResource("BoxShape3D_ocqva")
@@ -433,12 +410,11 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform/StaticBody3D"]
 shape = SubResource("BoxShape3D_svea3")
 
-[node name="fragile_platform3" parent="." instance=ExtResource("12_qirnp")]
+[node name="fragile_platform3" parent="." instance=ExtResource("12_xtxki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 33.5, 0.5)
 
-[node name="triggerarea" parent="fragile_platform3" node_paths=PackedStringArray("target") instance=ExtResource("7_r204x")]
+[node name="triggerarea" parent="fragile_platform3" instance=ExtResource("8_gj4xn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform3/triggerarea"]
 shape = SubResource("BoxShape3D_ocqva")
@@ -452,12 +428,11 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform3/StaticBody3D"]
 shape = SubResource("BoxShape3D_svea3")
 
-[node name="fragile_platform2" parent="." instance=ExtResource("12_qirnp")]
+[node name="fragile_platform2" parent="." instance=ExtResource("12_xtxki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 33.5, 0.5)
 
-[node name="triggerarea" parent="fragile_platform2" node_paths=PackedStringArray("target") instance=ExtResource("7_r204x")]
+[node name="triggerarea" parent="fragile_platform2" instance=ExtResource("8_gj4xn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform2/triggerarea"]
 shape = SubResource("BoxShape3D_ocqva")
@@ -471,37 +446,37 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform2/StaticBody3D"]
 shape = SubResource("BoxShape3D_svea3")
 
-[node name="JumpArea" parent="." instance=ExtResource("13_o0eu7")]
+[node name="JumpArea" parent="." instance=ExtResource("13_kdg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 16.2131, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea"]
 shape = SubResource("BoxShape3D_ij7vf")
 
-[node name="JumpArea2" parent="." instance=ExtResource("13_o0eu7")]
+[node name="JumpArea2" parent="." instance=ExtResource("13_kdg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 19.7131, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea2"]
 shape = SubResource("BoxShape3D_ij7vf")
 
-[node name="JumpArea3" parent="." instance=ExtResource("13_o0eu7")]
+[node name="JumpArea3" parent="." instance=ExtResource("13_kdg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 23.2131, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea3"]
 shape = SubResource("BoxShape3D_ij7vf")
 
-[node name="JumpArea4" parent="." instance=ExtResource("13_o0eu7")]
+[node name="JumpArea4" parent="." instance=ExtResource("13_kdg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 29.7131, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea4"]
 shape = SubResource("BoxShape3D_ij7vf")
 
-[node name="JumpArea6" parent="." instance=ExtResource("13_o0eu7")]
+[node name="JumpArea6" parent="." instance=ExtResource("13_kdg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 32.7131, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea6"]
 shape = SubResource("BoxShape3D_ij7vf")
 
-[node name="JumpArea5" parent="." instance=ExtResource("13_o0eu7")]
+[node name="JumpArea5" parent="." instance=ExtResource("13_kdg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 26.7131, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpArea5"]
