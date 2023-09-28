@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://7vog8io13utl"]
+[gd_scene load_steps=5 format=3 uid="uid://7vog8io13utl"]
 
 [ext_resource type="AudioStream" uid="uid://cdgsv58n2abcp" path="res://Audio/Music/Stems/Bass_1/Forest1_Bass_1.wav" id="2_fmxj5"]
 [ext_resource type="Script" path="res://Scripts/MusicController.gd" id="2_hwmsn"]
@@ -10,7 +10,7 @@ loop_mode = 1
 step = 0.0166667
 tracks/0/type = "audio"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("AnimationPlayer/Bass_1_Player")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -450,109 +450,6 @@ _data = {
 "Forest1": SubResource("Animation_d748t")
 }
 
-[sub_resource type="Animation" id="Animation_rikk4"]
-resource_name = "Forest1"
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lead_1/AudioStreamPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [],
-"times": PackedFloat32Array()
-}
-tracks/0/use_blend = true
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("Lead_1/AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [],
-"times": PackedFloat32Array()
-}
-tracks/1/use_blend = true
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ao1bf"]
-_data = {
-"Forest1": SubResource("Animation_rikk4")
-}
-
-[sub_resource type="Animation" id="Animation_qb3nv"]
-resource_name = "Forest1"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdgkg"]
-_data = {
-"Forest1": SubResource("Animation_qb3nv")
-}
-
-[sub_resource type="Animation" id="Animation_1t0ol"]
-resource_name = "Forest1"
-length = 74.09
-loop_mode = 1
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bass_1/AudioStreamPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": null
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_akxtu"]
-_data = {
-"Forest1": SubResource("Animation_1t0ol")
-}
-
-[sub_resource type="Animation" id="Animation_l0abi"]
-resource_name = "Forest1"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwupf"]
-_data = {
-"Forest1": SubResource("Animation_l0abi")
-}
-
-[sub_resource type="Animation" id="Animation_nevja"]
-resource_name = "Forest1"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvku7"]
-_data = {
-"Forest1": SubResource("Animation_nevja")
-}
-
-[sub_resource type="Animation" id="Animation_7sgvm"]
-resource_name = "Forest1"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_70gp4"]
-_data = {
-"Forest1": SubResource("Animation_7sgvm")
-}
-
-[sub_resource type="Animation" id="Animation_fhn0l"]
-resource_name = "Forest1"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uj7hw"]
-_data = {
-"Forest1": SubResource("Animation_fhn0l")
-}
-
-[sub_resource type="Animation" id="Animation_hpshq"]
-resource_name = "Forest1"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_m7o4g"]
-_data = {
-"Forest1": SubResource("Animation_hpshq")
-}
-
 [node name="MusicPlayer" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -583,69 +480,3 @@ libraries = {
 [node name="Backing_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
 [node name="Backing_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
-
-[node name="Node" type="Node" parent="."]
-
-[node name="Lead_1" type="AnimationPlayer" parent="Node"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_ao1bf")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node/Lead_1"]
-
-[node name="Lead_2" type="AnimationPlayer" parent="Node"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_qdgkg")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node/Lead_2"]
-
-[node name="Bass_1" type="AnimationPlayer" parent="Node"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_akxtu")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node/Bass_1"]
-
-[node name="Bass_2" type="AnimationPlayer" parent="Node"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_kwupf")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node/Bass_2"]
-
-[node name="Backing_1" type="AnimationPlayer" parent="Node"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_dvku7")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node/Backing_1"]
-
-[node name="Backing_2" type="AnimationPlayer" parent="Node"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_70gp4")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node/Backing_2"]
-
-[node name="Drum_1" type="AnimationPlayer" parent="Node"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_uj7hw")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node/Drum_1"]
-
-[node name="Drum_2" type="AnimationPlayer" parent="Node"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_m7o4g")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node/Drum_2"]
