@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://obf4s5hxd57p"
-path="res://.godot/imported/Forest1_Drums_1.wav-3ffae41b4dbbca11055efa334116b38d.sample"
+path="res://.godot/imported/Forest1_Drum_1.wav-fb82da680623b18b255589bd1f46778e.sample"
 
 [deps]
 
-source_file="res://Audio/Music/Stems/Drum_1/Forest1_Drums_1.wav"
-dest_files=["res://.godot/imported/Forest1_Drums_1.wav-3ffae41b4dbbca11055efa334116b38d.sample"]
+source_file="res://Audio/Music/Stems/Drum_1/Forest1_Drum_1.wav"
+dest_files=["res://.godot/imported/Forest1_Drum_1.wav-fb82da680623b18b255589bd1f46778e.sample"]
 
 [params]
 
