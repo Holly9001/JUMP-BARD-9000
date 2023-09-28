@@ -18,12 +18,12 @@ var prev_state
 func _ready():
 	child_collisions = Utils.get_children_of_type(self, "CollisionShape3D")
 	children = get_children()
-	prev_state = MusicStates[beat_type]
+	prev_state = MusicStates.state_array[beat_type]
 	
 
 func _process(_delta):
-	if MusicStates[beat_type] != prev_state:
-		prev_state = MusicStates[beat_type]
+	if MusicStates.state_array[beat_type] != prev_state:
+		prev_state = MusicStates.state_array[beat_type]
 		
 		beat_count += 1
 		

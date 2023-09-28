@@ -16,7 +16,7 @@ func _process(delta):
 	self.progress_ratio = position_curve.sample(fmod(elapsed / move_time, 1.0))
 	for i in children:
 		i.global_position = self.global_position
-	if MusicStates[beat_type]:
+	if MusicStates.state_array[beat_type]:
 		elapsed += boost_time_scale * delta
 	else:
 		elapsed += delta * default_time_scale

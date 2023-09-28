@@ -15,20 +15,20 @@ func _ready():
 	for i in get_child_count():
 		children.append(get_child)
 	
-	temp_beat = MusicStates[beat_type]
+	temp_beat = MusicStates.state_array[beat_type]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
 	
-	if MusicStates[beat_type] != temp_beat:
+	if MusicStates.state_array[beat_type] != temp_beat:
 		interval_count += 1
 		
 		if interval_count >= beat_interval:
 			_beat_action()
 		
-		temp_beat = MusicStates[beat_type]
+		temp_beat = MusicStates.state_array[beat_type]
 
 func _beat_action():
 	for i in children:
