@@ -70,10 +70,11 @@ func reset_parent():
 	self.set_owner(initial_parent)
 	self.global_transform = global_trans
 
-func jump():
+func jump(boost):
 	jump_hold = max_jump_hold
 	y_velocity = jump_height
 	coyote_frames = 0
+	velocity.y += jump_height * boost
 
 
 func _physics_process(delta):
@@ -99,7 +100,7 @@ func _physics_process(delta):
 		jump_hold = 0
 		velocity.y = 0
 		if Input.is_action_just_pressed('jump'):
-			jump()
+			jump(0)
 #	elif is_on_ceiling():
 #		y_velocity = 0
 #		velocity.y = velocity.y/2
