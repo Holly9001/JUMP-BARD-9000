@@ -29,7 +29,7 @@ extends Control
 
 
 func _ready():
-	_set_song('Forest1',[])
+	_set_song('Forest1',['bass_1'])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
