@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://so6ovsk2v7su"]
+[gd_scene load_steps=7 format=3 uid="uid://so6ovsk2v7su"]
+
+[ext_resource type="Script" path="res://Scenes/Props/projectile_shooter.gd" id="1_8s41f"]
+[ext_resource type="PackedScene" uid="uid://dawd4ehgoxvhf" path="res://Scenes/Props/projectile_test.tscn" id="2_0yl6x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xo2c6"]
+albedo_color = Color(0.164706, 0.886275, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0binx"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iym03"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_52osv"]
+size = Vector3(1, 0.2, 0.2)
+
 [node name="ProjectileShooter" type="Node3D"]
+script = ExtResource("1_8s41f")
+projectile = ExtResource("2_0yl6x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xo2c6")
 mesh = SubResource("BoxMesh_0binx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495374, 0, 0)
+material_override = SubResource("StandardMaterial3D_iym03")
+mesh = SubResource("BoxMesh_52osv")

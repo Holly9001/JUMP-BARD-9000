@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dawd4ehgoxvhf"]
+[gd_scene load_steps=11 format=3 uid="uid://dawd4ehgoxvhf"]
 
 [ext_resource type="Script" path="res://Projectile_1.gd" id="1_go1gh"]
+[ext_resource type="Texture2D" uid="uid://ckpuwcs56f5kp" path="res://Art/Sprite3Ds/bee_sheet.png" id="2_5r76u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htmyd"]
 vertex_color_use_as_albedo = true
@@ -18,10 +19,58 @@ scale_max = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_cxv5j"]
 
-[node name="Projectile_Test" type="Node3D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_btunu"]
+atlas = ExtResource("2_5r76u")
+region = Rect2(0, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yp0m"]
+atlas = ExtResource("2_5r76u")
+region = Rect2(24, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01e5w"]
+atlas = ExtResource("2_5r76u")
+region = Rect2(48, 0, 24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgbxf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btunu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yp0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01e5w")
+}],
+"loop": true,
+"name": &"bee_1",
+"speed": 10.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7b7gr"]
+radius = 0.15
+
+[node name="Projectile_1" type="Node3D"]
 script = ExtResource("1_go1gh")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_htmyd")
+lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_vfr5k")
 draw_pass_1 = SubResource("QuadMesh_cxv5j")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, -5.24537e-07, 1.74846e-07, 5.24537e-07, 2, 4.58564e-14, -1.74846e-07, -3.38813e-21, 2, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_dgbxf")
+animation = &"bee_1"
+autoplay = "bee_1"
+
+[node name="HurtBox" type="Area3D" parent="." groups=["player_hurt"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("SphereShape3D_7b7gr")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=7 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
 [ext_resource type="Texture2D" uid="uid://dx6kmx4r6nn6k" path="res://Textures/Sprite3Ds/ppoint image_3.png" id="2_ntqn3"]
@@ -12,7 +12,11 @@ point_count = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_mxlaw"]
 size = Vector3(0.8, 1, 0.8)
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_06hc2"]
+radius = 0.4
+height = 0.9
+
+[node name="Player" type="CharacterBody3D" groups=["projectile_passthrough"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.646821, 0)
 axis_lock_linear_z = true
 script = ExtResource("1_wkf5m")
@@ -20,6 +24,7 @@ jump_curve = SubResource("Curve_tboxv")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.158, 0, 0, 0, 0.167, 0, -0.136405, 0)
+visible = false
 texture_filter = 0
 texture = ExtResource("2_ntqn3")
 
@@ -71,3 +76,11 @@ target_position = Vector3(0.5, 0, 0)
 [node name="wall_check_foot" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 target_position = Vector3(0.5, 0, 0)
+
+[node name="HitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165432, 0)
+shape = SubResource("CapsuleShape3D_06hc2")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
