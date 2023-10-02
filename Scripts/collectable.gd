@@ -3,5 +3,5 @@ extends Node3D
 
 func _on_area_3d_body_entered(body):
 	if body.get_class() == "CharacterBody3D":
-		GameState.set_points(GameState.points + 1)
+		GameState.reset_life()
 		self.queue_free()

@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://ylwxm623t6vu"]
+
+[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_cps4q"]
+[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_ayuk0"]
+[ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="3_f8lhl"]
+[ext_resource type="PackedScene" uid="uid://bob661mynbg6t" path="res://Scenes/Props/checkpoint_moving_platform.tscn" id="5_0tcdv"]
+
+[sub_resource type="Curve3D" id="Curve3D_14mxw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 3, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6jgpi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_twkxw"]
+
+[node name="level1" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_cps4q")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(-131072, 0, 0, -65537, 0, 0, -131070, 0, 0, -65538, 0, 0, -131071, 0, 0, -65539, 0, 0, -131064, 0, 0, -131065, 0, 0, -131059, 0, 0, -131058, 0, 0)
+}
+
+[node name="Player" parent="." instance=ExtResource("2_ayuk0")]
+
+[node name="collectables" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 0.5)
+
+[node name="collectable" parent="collectables" instance=ExtResource("3_f8lhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.853, 0)
+
+[node name="collectable2" parent="collectables" instance=ExtResource("3_f8lhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.853, 0)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+curve = SubResource("Curve3D_14mxw")
+
+[node name="checkpoint_moving_platform" parent="Path3D" instance=ExtResource("5_0tcdv")]
+transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 3, 0)
+beat_type = "bass_1"
+checkpoints = Array[float]([0.0, 1.0, 0.0])
+checkpoint_move_speeds = Array[float]([10.0, 10.0, 10.0])
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D/checkpoint_moving_platform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/checkpoint_moving_platform/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_6jgpi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/checkpoint_moving_platform/AnimatableBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_twkxw")
+skeleton = NodePath("../..")
