@@ -121,6 +121,9 @@ func _physics_process(delta):
 		coyote_frames = clamp(coyote_frames-1,0,max_coyote_frames)
 		velocity.y = lerp(velocity.y,-max_vertical_speed * vertical_speed * delta * 60,0.15)
 	
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
+	
 	if y_velocity > -max_vertical_speed * gravity:
 		
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
