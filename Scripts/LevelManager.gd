@@ -16,6 +16,7 @@ func load_level(idx):
 	
 func reload_level():
 	load_level(current_level)
+	MusicStates.reset_states()
 
 func _ready():
 	music_controller = music_controller.get_child(0)

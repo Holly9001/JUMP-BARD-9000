@@ -472,29 +472,29 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D"]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -3.8147e-06, 0, 0)
-mesh = SubResource("BoxMesh_fjj8o")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D"]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, 0.999996, 0, 0)
-mesh = SubResource("BoxMesh_fjj8o")
-skeleton = NodePath("../..")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D"]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D/CollisionShape3D"]
+transform = Transform3D(1, 0, -7.10547e-15, 0, 1, 0, 0, 0, 1, -3.8147e-06, 0, 0)
 mesh = SubResource("BoxMesh_fjj8o")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
 
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D/CollisionShape3D3"]
+transform = Transform3D(1, 0, -7.10547e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_fjj8o")
+skeleton = NodePath("../../..")
+
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_32pno")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="zoom/checkpoint_moving_platform/AnimatableBody3D/CollisionShape3D2"]
+transform = Transform3D(1, 0, -7.10547e-15, 0, 1, 0, 0, 0, 1, -3.8147e-06, 0, 0)
+mesh = SubResource("BoxMesh_fjj8o")
+skeleton = NodePath("../../..")
