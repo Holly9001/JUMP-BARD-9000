@@ -17,3 +17,6 @@ func _process(delta):
 	else:
 		life -= delta
 		life_changed.emit()
+
+func restart():
+	reset_level.emit()

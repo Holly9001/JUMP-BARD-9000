@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://lniiyj0oi1sc"]
+[gd_scene load_steps=5 format=3 uid="uid://lniiyj0oi1sc"]
 
 [ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_gef6y"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_c3q12"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="3_msfaq"]
+[ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="4_emtdj"]
 
 [node name="level_1" type="Node3D"]
 
@@ -18,6 +19,22 @@ data = {
 }
 
 [node name="Player" parent="." instance=ExtResource("2_c3q12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 1)
 
-[node name="collectable" parent="." instance=ExtResource("3_msfaq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 0)
+[node name="ProjectileShooter" parent="." instance=ExtResource("4_emtdj")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.5, -1, 1)
+
+[node name="ProjectileShooter2" parent="." instance=ExtResource("4_emtdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 1)
+
+[node name="ProjectileShooter3" parent="." instance=ExtResource("4_emtdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2, 1)
+
+[node name="collectables" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 1)
+
+[node name="collectable" parent="collectables" instance=ExtResource("3_msfaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -2, 0)
+
+[node name="collectable2" parent="collectables" instance=ExtResource("3_msfaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 0)

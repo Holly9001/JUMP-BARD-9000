@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://so6ovsk2v7su"]
 
-[ext_resource type="Script" path="res://Scenes/Props/projectile_shooter.gd" id="1_8s41f"]
+[ext_resource type="Script" path="res://Scripts/projectile_shooter.gd" id="1_3uxc1"]
 [ext_resource type="PackedScene" uid="uid://dawd4ehgoxvhf" path="res://Scenes/Props/projectile_test.tscn" id="2_0yl6x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xo2c6"]
@@ -15,7 +15,7 @@ albedo_color = Color(1, 0, 0, 1)
 size = Vector3(1, 0.2, 0.2)
 
 [node name="ProjectileShooter" type="Node3D"]
-script = ExtResource("1_8s41f")
+script = ExtResource("1_3uxc1")
 projectile = ExtResource("2_0yl6x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -211,4 +211,4 @@ func _physics_process(delta):
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group('player_hurt'):
-		print('AHH.. OWW... ooh.. i should be dead now.. ooh....')
+		GameState.restart()
