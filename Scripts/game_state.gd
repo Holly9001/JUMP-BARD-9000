@@ -1,9 +1,19 @@
 extends Node
 
-signal points_changed
+signal life_changed
+signal reset_level
 
-var points:int = 0
+const max_life:float = 3.0
 
-func set_points(pts):
-	points = pts
-	points_changed.emit()
+var life:float = max_life
+
+
+func reset_life():
+	life = max_life
+	
+func _process(delta):
+	if delta > life:
+		reset_level.emit()
+	else:
+		life -= delta
+		life_changed.emit()

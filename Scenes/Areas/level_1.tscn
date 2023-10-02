@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://lniiyj0oi1sc"]
+
+[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_gef6y"]
+[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_c3q12"]
+[ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="3_msfaq"]
+
+[node name="level_1" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.552592, 0.833452, 0, -0.833452, 0.552592, 0, 2.0318, 0)
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 0.5)
+mesh_library = ExtResource("1_gef6y")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(-65537, 0, 0, -131072, 0, 0, -65538, 0, 0, -131071, 0, 0, -131070, 0, 0, -65539, 0, 0, -131065, 0, 0, -131064, 0, 0, -131061, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -131059, 0, 0, -131060, 0, 0, 13, 0, 0, 65549, 0, 0, 131085, 0, 0)
+}
+
+[node name="Player" parent="." instance=ExtResource("2_c3q12")]
+
+[node name="collectable" parent="." instance=ExtResource("3_msfaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 0)
