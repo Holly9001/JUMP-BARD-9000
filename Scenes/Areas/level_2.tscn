@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://dijbug3ilp6j8"]
+
+[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_t2pkj"]
+[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_weanv"]
+[ext_resource type="PackedScene" uid="uid://0tk0sd8hlusg" path="res://Scenes/Props/fragile_platform.tscn" id="5_00ita"]
+[ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="6_3rmeu"]
+[ext_resource type="PackedScene" uid="uid://de4pcos7v2egj" path="res://Scenes/Props/progress_trigger.tscn" id="7_4u0db"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v2utk"]
+size = Vector3(3.5, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8vof"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8am6e"]
+material = SubResource("StandardMaterial3D_k8vof")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywlr6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyaww"]
+size = Vector3(1, 0.5, 1)
+
+[node name="level_1" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.552592, 0.833452, 0, -0.833452, 0.552592, 0, 2.0318, 0)
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh_library = ExtResource("1_t2pkj")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(-2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -3, 0, 0, 65533, 0, 0, 131069, 0, 0, 196605, 0, 0, 262141, 0, 0, 262140, 0, 0, 262139, 0, 0, 262138, 0, 0, 262137, 0, 0, -7, 0, 0, 65529, 0, 0, 131065, 0, 0, 196601, 0, 0)
+}
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_weanv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 0)
+
+[node name="Exit" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, 0)
+pixel_size = 0.049
+text = "nice
+"
+
+[node name="TriggerArea" parent="Exit" node_paths=PackedStringArray("target") instance=ExtResource("6_3rmeu")]
+target = NodePath("../progress_trigger")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit/TriggerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.5)
+shape = SubResource("BoxShape3D_v2utk")
+
+[node name="progress_trigger" parent="Exit" instance=ExtResource("7_4u0db")]
+
+[node name="fragile_platform" parent="." instance=ExtResource("5_00ita")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="fragile_platform"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="fragile_platform/StaticBody3D"]
+mesh = SubResource("BoxMesh_8am6e")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform/StaticBody3D"]
+shape = SubResource("BoxShape3D_ywlr6")
+
+[node name="TriggerArea" parent="fragile_platform" node_paths=PackedStringArray("target") instance=ExtResource("6_3rmeu")]
+target = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform/TriggerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_yyaww")

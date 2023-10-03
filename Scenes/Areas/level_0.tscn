@@ -169,7 +169,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 33.5, 0.5)
 
 [node name="triggerarea" parent="fragile_platform3" node_paths=PackedStringArray("target") instance=ExtResource("3_jbqdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target = NodePath("../../collectables/collectable21")
+target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform3/triggerarea"]
 shape = SubResource("BoxShape3D_ocqva")
@@ -188,7 +188,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 33.5, 0.5)
 
 [node name="triggerarea" parent="fragile_platform2" node_paths=PackedStringArray("target") instance=ExtResource("3_jbqdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target = NodePath("../../collectables/collectable10")
+target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform2/triggerarea"]
 shape = SubResource("BoxShape3D_ocqva")

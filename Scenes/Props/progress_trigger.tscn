@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://de4pcos7v2egj"]
+
+[ext_resource type="Script" path="res://Scripts/progress_trigger.gd" id="1_o76kw"]
+
+[node name="progress_trigger" type="Node"]
+script = ExtResource("1_o76kw")

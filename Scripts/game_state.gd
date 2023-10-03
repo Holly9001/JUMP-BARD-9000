@@ -2,6 +2,7 @@ extends Node
 
 signal life_changed
 signal reset_level
+signal next_level
 
 const max_life:float = 3.0
 
@@ -20,3 +21,6 @@ func _process(delta):
 
 func restart():
 	reset_level.emit()
+
+func level_progress():
+	next_level.emit()

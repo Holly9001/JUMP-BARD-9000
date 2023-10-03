@@ -22,10 +22,16 @@ func _ready():
 	music_controller = music_controller.get_child(0)
 	load_level(0)
 	GameState.reset_level.connect(reload_level)
+	GameState.next_level.connect(load_next)
+
+func load_next():
+	load_level(current_level + 1)
 	
 func _process(delta):
 	if Input.is_action_just_pressed("debug_lvl_0"):
 		load_level(0)
 	if Input.is_action_just_pressed("debug_lvl_1"):
 		load_level(1)
+	if Input.is_action_just_pressed("debug_lvl_2"):
+		load_next()
 		
