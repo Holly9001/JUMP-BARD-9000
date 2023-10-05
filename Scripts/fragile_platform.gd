@@ -6,6 +6,7 @@ extends Node3D
 
 var child_meshes
 var player
+var tween:Tween
 
 func _ready():
 	child_meshes = Utils.get_children_of_type(self, "MeshInstance3D")
@@ -14,8 +15,12 @@ func _ready():
 		var mat = i.mesh.material
 		mat.albedo_color = Color.WHITE
 
+func _exit_tree():
+	if tween != null:
+		tween.kill()
+
 func trigger():
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 	for i in child_meshes:
 		var mat = i.mesh.material
 		tween.tween_property(mat, "albedo_color", Color.RED, break_time)
