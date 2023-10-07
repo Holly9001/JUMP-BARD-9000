@@ -1,23 +1,18 @@
 extends Node
 
-signal life_changed
+signal score_changed()
 signal reset_level
 signal next_level
 
-const max_life:float = 3.0
+var score = 0
 
-var life:float = max_life
+func reset_score():
+	score = 0
+	score_changed.emit()
 
-
-func reset_life():
-	life = max_life
-	
-func _process(delta):
-	if delta > life:
-		reset_level.emit()
-	else:
-		life -= delta
-		life_changed.emit()
+func increase_score():
+	score += 1
+	score_changed.emit()
 
 func restart():
 	reset_level.emit()

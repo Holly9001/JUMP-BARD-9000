@@ -9,7 +9,7 @@ func load_level(idx):
 	current_level = idx
 	music_controller.seek(0, true) 
 	MusicStates.reset_states()
-	GameState.reset_life()
+	GameState.reset_score()
 	for c in get_children():
 		c.queue_free()
 	var scene = levels[idx].instantiate()

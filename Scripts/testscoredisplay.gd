@@ -1,7 +1,7 @@
 extends Label
 
 func _ready():
-	GameState.life_changed.connect(update_value)
+	GameState.score_changed.connect(update_value)
 	
 func update_value():
-	self.text = str(GameState.life)
+	self.text = str(GameState.score)
