@@ -2,8 +2,6 @@ extends CharacterBody3D
 # this is the single greatest comment of all time no comment is better
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 @onready var HeadRayML :RayCast3D= $HeadBonkRayMidL
 @onready var HeadRayMR :RayCast3D= $HeadBonkRayMidR
 @onready var HeadRayR :RayCast3D= $HeadBonkRayR
@@ -13,18 +11,16 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var wall_check_foot = $wall_check_foot
 @onready var camera_arm = $SpringArm
 
+const WALK_SPEED:float = 6.0
 
-const X_GROUND_ACCEL:float = 12
-const X_AIR_ACCEL:float = 3
+const X_GROUND_ACCEL:float = WALK_SPEED / 0.1
+const X_AIR_ACCEL:float = WALK_SPEED / 0.15
 
 const Y_ACCEL:float = 12
 
 const GROUND_FRICTION:float = 4.8
 const AIR_FRICTION:float = 0.5
 
-# dunno what to call this. used to be friction but needs to be a seperate value for tweaking.
-# either that or x_velocity needs to be changed to something else? I kind of like it how it is though
-# but the name is definitely weird :/
 const X_VELOCITY_DECAY:float = 4.8
 
 const WALLJUMP_FORCE_Y:float = 10.0
@@ -32,28 +28,26 @@ const WALLJUMP_FORCE_X:float = 8.0
 
 const DASH_FORCE:float = 20.0
 
+const GRAVITY:float = 20.0
+
+const JUMP_BOOST :float= 30.0
+const JUMP_IMPULSE:float = 5.0
+
+const MAX_CLIMB_TIME = 3.5
+const CLIMB_JUMP_PENALTY = 0.1
+
+const CLIMB_SPEED = 2.0
+const CLIMB_ACCEL = CLIMB_SPEED / 0.2
+
+var max_jump_hold:float = 0.2
+var jump_hold:float = 0
+
 var movement_vector :Vector2= Vector2.ZERO
-
-var max_horizontal_speed :float= 3
-var max_vertical_speed :float= 1.3
-
-var jump_height :float= 12
-
-var horizontal_speed :float= 6
-var vertical_speed :float= 2
-
-var y_velocity :float= 0
-var x_velocity :float= 0
 
 var max_coyote_frames := 32
 var coyote_frames := 0
 
-var max_jump_hold := 10
-var jump_hold := 0
-
-var climb_speed := 10
-
-var max_climb_time = 60*3.5
+var is_climbing:bool = false
 var climb_time = 0
 
 var attached
@@ -74,88 +68,20 @@ func reset_parent():
 
 func jump():
 	jump_hold = max_jump_hold
-	y_velocity = jump_height
 	coyote_frames = 0
+	velocity.y = JUMP_IMPULSE
 
 
 func _physics_process(delta):
 	
 	movement_vector = Input.get_vector("left", "right", "down", "up").normalized()
-	
-	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
-	
-	## OK THIS IS CODE I WANNA KEEP YAYAYAYAYYAYAY! THIS SHOULD REMAIN
-	
-	## is_on_floor() is jank as fuck sometimes lol, this is better.
-	var on_floor = test_move(global_transform,Vector3.DOWN * delta * 10)
-	
-	var friction = GROUND_FRICTION if on_floor else AIR_FRICTION
-	
-	###
-	
-	###
-	
-	if Input.is_action_just_pressed("dash"):
-		y_velocity = movement_vector.y * DASH_FORCE
-		velocity.x = movement_vector.x * DASH_FORCE
-	
-	if on_floor and jump_hold <= 0:  
-		coyote_frames = max_coyote_frames
-		climb_time = max_climb_time
-		jump_hold = 0
-		velocity.y = 0
-		if Input.is_action_just_pressed('jump'):
-			jump()
-#	elif is_on_ceiling():
-#		y_velocity = 0
-#		velocity.y = velocity.y/2
-##	elif is_on_wall():
-##		pass
-	else:
-		if coyote_frames >= max_coyote_frames*0.9 and Input.is_action_just_pressed('jump'):
-			jump_hold = max_jump_hold
-			y_velocity = jump_height     ## THIS IS SO FUCKING SCUFFED ALL THESE IFS THIS CODE IS SO UGLY IM SORRY FUCK
-			coyote_frames = 0
-		
-		
-		if Input.is_action_pressed('jump') and jump_hold > 0:
-			jump_hold -= 1
-			y_velocity = jump_height
-		else: jump_hold = 0
-#		if Input.is_action_just_released('jump'): jump_hold = 0
-		
-		coyote_frames = clamp(coyote_frames-1,0,max_coyote_frames)
-		velocity.y = lerp(velocity.y,-max_vertical_speed * vertical_speed * delta * 60,0.15)
+	handle_coyote_frames()
 	
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 	
-	if y_velocity > -max_vertical_speed * gravity:
-		
-		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
-	
-	if x_velocity != 0:
-		x_velocity = lerp(x_velocity,0.0, X_VELOCITY_DECAY * delta)
-	
-	
-	## climbing/jumoing here
-	
-	$DebugUI/ClimbTime.text = str('climb_time: ',climb_time) ## using $ in code is horrible practice but this is just a debug test
-
-	
 	if is_on_ceiling():
-		if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
-			y_velocity = 0
-			velocity.y = velocity.y/2
-			print('stop')
-		elif HeadRayR.is_colliding():
-			velocity.x += velocity.y
-			velocity.y +=1
-			print('move left')
-		elif HeadRayL.is_colliding():
-			print('move right')
-			velocity.x -= velocity.y
-			velocity.y +=1
+		handle_ceiling_bump()
 	
 	if wall_check_arm.is_colliding():
 		attached = wall_check_arm.get_collider()
@@ -163,57 +89,102 @@ func _physics_process(delta):
 		attached = wall_check_foot.get_collider()
 	
 	if Input.is_action_pressed('climb') and (wall_check_arm.is_colliding() or wall_check_foot.is_colliding()) and climb_time > 0:
-		x_velocity = 0
-		y_velocity = 0
-		velocity.y = max(velocity.y, 0)
-		climb_time -= 90 * delta
-		if movement_vector.y >= 0:
-			y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
-		else:
-			y_velocity = movement_vector.y * climb_speed * 2 
-		if get_parent() != attached:
-			if attached:
-				var global_trans = self.global_transform
-				self.get_parent().remove_child(self)
-				attached.add_child(self)
-				self.set_owner(attached)
-				self.global_transform = global_trans
-		if test_move(global_transform,Vector3.RIGHT * delta * 10):
-			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
-				climb_time -= 8
-				velocity.x = -WALLJUMP_FORCE_X
-				y_velocity = WALLJUMP_FORCE_Y
-				wall_check_arm.scale.x = -1
-				wall_check_foot.scale.x = -1
-		elif test_move(global_transform,Vector3.LEFT * delta * 10):
-			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
-				climb_time -= 8
-				velocity.x = WALLJUMP_FORCE_X
-				y_velocity = WALLJUMP_FORCE_Y
-				wall_check_arm.scale.x = 1
-				wall_check_foot.scale.x = 1
+		handle_climbing(delta)
+		is_climbing = true
 	else:
-		if self.get_parent() == attached:
-			reset_parent()
-		if velocity.x > 0:
-			wall_check_arm.scale.x = 1
-			wall_check_foot.scale.x = 1
-		elif velocity.x < 0:
-			wall_check_arm.scale.x = -1
-			wall_check_foot.scale.x = -1
-
-	if on_floor:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * X_GROUND_ACCEL)
-	else:
-		velocity.x = lerp(velocity.x, 0.0 + x_velocity, delta * friction)
-		if movement_vector.x != 0 and not (sign(velocity.x) == sign(movement_vector.x) and abs(velocity.x) > horizontal_speed):
-			velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * X_AIR_ACCEL)
-	velocity.y = lerp(velocity.y,y_velocity * vertical_speed, Y_ACCEL * delta)
+		is_climbing = false
+		detach()
 	
+	if !is_on_floor() and !is_climbing:
+		velocity.y -= GRAVITY * delta
+	
+	handle_movement_inputs(delta)
+	handle_friction(delta)
 	move_and_slide()
 	camera_arm.player_pos = global_position
 
+func handle_movement_inputs(delta):
+	var x_accel = X_GROUND_ACCEL if is_on_floor() else X_AIR_ACCEL
+	jump_hold -= delta
+	if Input.is_action_pressed('jump') and jump_hold > 0:
+		velocity.y += JUMP_BOOST * delta
+	
+	if is_on_floor():
+		climb_time = MAX_CLIMB_TIME
+		if Input.is_action_just_pressed("jump"):
+			jump()
+	
+	velocity.x = move_toward(velocity.x, movement_vector.x * WALK_SPEED, x_accel * delta)
+		
+		
+func handle_friction(delta):
+	var friction = GROUND_FRICTION if is_on_floor() else AIR_FRICTION
 
+func handle_climbing(delta):
+	velocity.y = move_toward(velocity.y, CLIMB_SPEED, CLIMB_ACCEL * delta)
+	climb_time -= delta
+	if get_parent() != attached:
+		if attached:
+			var global_trans = self.global_transform
+			self.get_parent().remove_child(self)
+			attached.add_child(self)
+			self.set_owner(attached)
+			self.global_transform = global_trans
+	if test_move(global_transform,Vector3.RIGHT * delta * 10):
+		if Input.is_action_just_pressed('jump') and (!is_on_floor()):
+			climb_time -= CLIMB_JUMP_PENALTY
+			velocity.x = -WALLJUMP_FORCE_X
+			velocity.y = WALLJUMP_FORCE_Y
+			wall_check_arm.scale.x = -1
+			wall_check_foot.scale.x = -1
+	elif test_move(global_transform,Vector3.LEFT * delta * 10):
+		if Input.is_action_just_pressed('jump') and (!is_on_floor()):
+			climb_time -= CLIMB_JUMP_PENALTY
+			velocity.x = WALLJUMP_FORCE_X
+			velocity.y = WALLJUMP_FORCE_Y
+			wall_check_arm.scale.x = 1
+			wall_check_foot.scale.x = 1
+
+func handle_ceiling_bump():
+#	if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
+#		y_velocity = 0
+#		velocity.y = velocity.y/2
+#		print('stop')
+#	elif HeadRayR.is_colliding():
+#		velocity.x += velocity.y
+#		velocity.y +=1
+#		print('move left')
+#	elif HeadRayL.is_colliding():
+#		print('move right')
+#		velocity.x -= velocity.y
+#		velocity.y +=1
+	pass
+
+func handle_coyote_frames():
+#	if on_floor and jump_hold <= 0:  
+#		coyote_frames = max_coyote_frames
+#		climb_time = max_climb_time
+#		jump_hold = 0
+#		velocity.y = 0
+#		if Input.is_action_just_pressed('jump'):
+#			jump()
+#	else:
+#		if coyote_frames >= max_coyote_frames*0.9 and Input.is_action_just_pressed('jump'):
+#			jump_hold = max_jump_hold
+#			y_velocity = jump_height
+#			coyote_frames = 0
+#		coyote_frames = clamp(coyote_frames-1,0,max_coyote_frames)
+	pass
+
+func detach():
+	if self.get_parent() == attached:
+		reset_parent()
+	if velocity.x > 0:
+		wall_check_arm.scale.x = 1
+		wall_check_foot.scale.x = 1
+	elif velocity.x < 0:
+		wall_check_arm.scale.x = -1
+		wall_check_foot.scale.x = -1
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group('player_hurt'):
