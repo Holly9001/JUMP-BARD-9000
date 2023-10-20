@@ -14,21 +14,23 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera_arm = $SpringArm
 
 
-const x_ground_accel:float = 12
-const x_air_accel:float = 3
+const X_GROUND_ACCEL:float = 12
+const X_AIR_ACCEL:float = 3
 
-const y_accel:float = 12
+const Y_ACCEL:float = 12
 
-const ground_friction:float = 4.8
-const air_friction:float = 0.5
+const GROUND_FRICTION:float = 4.8
+const AIR_FRICTION:float = 0.5
 
 # dunno what to call this. used to be friction but needs to be a seperate value for tweaking.
 # either that or x_velocity needs to be changed to something else? I kind of like it how it is though
 # but the name is definitely weird :/
-const x_velocity_decay:float = 4.8
+const X_VELOCITY_DECAY:float = 4.8
 
-const walljump_force_y:float = 10.0
-const walljump_force_x:float = 8.0
+const WALLJUMP_FORCE_Y:float = 10.0
+const WALLJUMP_FORCE_X:float = 8.0
+
+const DASH_FORCE:float = 20.0
 
 var movement_vector :Vector2= Vector2.ZERO
 
@@ -78,7 +80,7 @@ func jump():
 
 func _physics_process(delta):
 	
-	movement_vector = Input.get_vector("left", "right", "down", "up")# normalized()
+	movement_vector = Input.get_vector("left", "right", "down", "up").normalized()
 	
 	## FUCK THIS SHIT I QUIT!! BASIC PLATFORMER MOVEMENT IS TOO HATRD IM DROPPING OUT OF COLLEGE FUCK!!!
 	
@@ -87,11 +89,15 @@ func _physics_process(delta):
 	## is_on_floor() is jank as fuck sometimes lol, this is better.
 	var on_floor = test_move(global_transform,Vector3.DOWN * delta * 10)
 	
-	var friction = ground_friction if on_floor else air_friction
+	var friction = GROUND_FRICTION if on_floor else AIR_FRICTION
 	
 	###
 	
 	###
+	
+	if Input.is_action_just_pressed("dash"):
+		y_velocity = movement_vector.y * DASH_FORCE
+		velocity.x = movement_vector.x * DASH_FORCE
 	
 	if on_floor and jump_hold <= 0:  
 		coyote_frames = max_coyote_frames
@@ -129,7 +135,7 @@ func _physics_process(delta):
 		y_velocity = lerp(y_velocity,-max_vertical_speed*gravity,jump_curve.sample(velocity.y+1.8)+0.015-coyote_frames*0.0008)
 	
 	if x_velocity != 0:
-		x_velocity = lerp(x_velocity,0.0, x_velocity_decay * delta)
+		x_velocity = lerp(x_velocity,0.0, X_VELOCITY_DECAY * delta)
 	
 	
 	## climbing/jumoing here
@@ -159,7 +165,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed('climb') and (wall_check_arm.is_colliding() or wall_check_foot.is_colliding()) and climb_time > 0:
 		x_velocity = 0
 		y_velocity = 0
-		velocity.y = 0
+		velocity.y = max(velocity.y, 0)
 		climb_time -= 90 * delta
 		if movement_vector.y >= 0:
 			y_velocity = movement_vector.y * climb_speed - (1 - sign(climb_time))*4
@@ -175,15 +181,15 @@ func _physics_process(delta):
 		if test_move(global_transform,Vector3.RIGHT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				velocity.x = -walljump_force_x
-				y_velocity = walljump_force_y
+				velocity.x = -WALLJUMP_FORCE_X
+				y_velocity = WALLJUMP_FORCE_Y
 				wall_check_arm.scale.x = -1
 				wall_check_foot.scale.x = -1
 		elif test_move(global_transform,Vector3.LEFT * delta * 10):
 			if Input.is_action_just_pressed('jump') and (!is_on_floor() and !on_floor):
 				climb_time -= 8
-				velocity.x = walljump_force_x
-				y_velocity = walljump_force_y
+				velocity.x = WALLJUMP_FORCE_X
+				y_velocity = WALLJUMP_FORCE_Y
 				wall_check_arm.scale.x = 1
 				wall_check_foot.scale.x = 1
 	else:
@@ -197,12 +203,12 @@ func _physics_process(delta):
 			wall_check_foot.scale.x = -1
 
 	if on_floor:
-		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_ground_accel)
+		velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * X_GROUND_ACCEL)
 	else:
 		velocity.x = lerp(velocity.x, 0.0 + x_velocity, delta * friction)
 		if movement_vector.x != 0 and not (sign(velocity.x) == sign(movement_vector.x) and abs(velocity.x) > horizontal_speed):
-			velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * x_air_accel)
-	velocity.y = lerp(velocity.y,y_velocity * vertical_speed, y_accel * delta)
+			velocity.x = lerp(velocity.x,(movement_vector.x + x_velocity) * horizontal_speed, delta * X_AIR_ACCEL)
+	velocity.y = lerp(velocity.y,y_velocity * vertical_speed, Y_ACCEL * delta)
 	
 	move_and_slide()
 	camera_arm.player_pos = global_position
