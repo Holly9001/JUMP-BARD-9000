@@ -13,36 +13,58 @@ extends CharacterBody3D
 
 const WALK_SPEED:float = 6.0
 
+# Because of the division, this is how fast in seconds the player will take to
+# accelerate to WALK_SPEED. However, this does not account for friction so
+# the actual time will be a bit different.
 const X_GROUND_ACCEL:float = WALK_SPEED / 0.1
 const X_AIR_ACCEL:float = WALK_SPEED / 0.15
 
-const Y_ACCEL:float = 12
-
+# How fast the player will go from velocity v = n to v = 0, with n being any
+# constant. Obviously this is only true if the velocity isn't affected by
+# something else.
 const GROUND_FRICTION:float = 1 / 0.1
 const AIR_FRICTION:float = 1 / 0.5
 
-const X_VELOCITY_DECAY:float = 4.8
-
+# Impulse forces applied when wall jumping
 const WALLJUMP_FORCE_Y:float = 10.0
 const WALLJUMP_FORCE_X:float = 8.0
 
+# Impulse force applied when dashing. This is multiplied by the x and y of
+# movement vector, so the diagonal magnitude is actually higher than
+# vertical or horizontal alone. Maybe this should change? If you want to test,
+# just add "normalize()" after the movement vector assignment in
+# physics_process.
 const DASH_FORCE:float = 20.0
 
+# Gravity force applied per second when the player is airborne.
 const GRAVITY:float = 30.0
 
+# JUMP_BOOST is the force applied per second during the jump_hold duration
+# JUMP_IMPULSE is an impulse applied immediately.
 const JUMP_BOOST :float= 50.0
 const JUMP_IMPULSE:float = 10.0
 
+# MAX_CLIMB_TIME is the time in seconds you can stay climbing assuming you
+# don't jump. CLIMB_JUMP_PENALTY is a penalty applied to the climb time when
+# you walljump.
 const MAX_CLIMB_TIME:float = 3.5
 const CLIMB_JUMP_PENALTY:float = 0.1
 
+# Same as the normal accel and movement, but on a wall, see the top of this
+# script.
 const CLIMB_SPEED:float = 2.0
 const CLIMB_ACCEL:float = CLIMB_SPEED / 0.2
 
+# Dash cooldown is the time in seconds it takes for dash to reset
 const DASH_COOLDOWN:float = 2
+
+# If you keep the jump key held down, you will get JUMP_BOOST force per second
+# added to velocity.y. This boost is available for MAX_JUMP_HOLD seconds after
+# a jump is executed.
+const MAX_JUMP_HOLD:float = 0.2
+
 var dash_time:float = DASH_COOLDOWN
 
-const MAX_JUMP_HOLD:float = 0.2
 var jump_hold:float = 0
 
 var movement_vector :Vector2= Vector2.ZERO
