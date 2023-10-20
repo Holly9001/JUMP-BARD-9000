@@ -33,13 +33,16 @@ const GRAVITY:float = 20.0
 const JUMP_BOOST :float= 30.0
 const JUMP_IMPULSE:float = 5.0
 
-const MAX_CLIMB_TIME = 3.5
-const CLIMB_JUMP_PENALTY = 0.1
+const MAX_CLIMB_TIME:float = 3.5
+const CLIMB_JUMP_PENALTY:float = 0.1
 
-const CLIMB_SPEED = 2.0
-const CLIMB_ACCEL = CLIMB_SPEED / 0.2
+const CLIMB_SPEED:float = 2.0
+const CLIMB_ACCEL:float = CLIMB_SPEED / 0.2
 
-var max_jump_hold:float = 0.2
+const DASH_COOLDOWN:float = 2
+var dash_time:float = DASH_COOLDOWN
+
+const MAX_JUMP_HOLD:float = 0.2
 var jump_hold:float = 0
 
 var movement_vector :Vector2= Vector2.ZERO
@@ -54,7 +57,7 @@ var attached
 
 ## ability booleans
 # for double jump bools and shit, gonna make one for hold jump too.
-
+var can_dash:bool = true
 
 
 @export var jump_curve:Curve
@@ -67,7 +70,7 @@ func reset_parent():
 	self.global_transform = global_trans
 
 func jump():
-	jump_hold = max_jump_hold
+	jump_hold = MAX_JUMP_HOLD
 	coyote_frames = 0
 	velocity.y = JUMP_IMPULSE
 
@@ -88,7 +91,9 @@ func _physics_process(delta):
 	elif wall_check_foot.is_colliding():
 		attached = wall_check_foot.get_collider()
 	
-	if Input.is_action_pressed('climb') and (wall_check_arm.is_colliding() or wall_check_foot.is_colliding()) and climb_time > 0:
+	if Input.is_action_pressed('climb')\
+	 and (wall_check_arm.is_colliding() or wall_check_foot.is_colliding())\
+	 and climb_time > 0:
 		handle_climbing(delta)
 		is_climbing = true
 	else:
@@ -99,9 +104,18 @@ func _physics_process(delta):
 		velocity.y -= GRAVITY * delta
 	
 	handle_movement_inputs(delta)
+	handle_abilities(delta)
 	handle_friction(delta)
 	move_and_slide()
 	camera_arm.player_pos = global_position
+
+func handle_abilities(delta):
+	if can_dash:
+		if Input.is_action_just_pressed("dash") and dash_time < 0:
+			velocity = Vector3(movement_vector.x, movement_vector.y, 0) * DASH_FORCE
+			dash_time = DASH_COOLDOWN
+		if dash_time > 0:
+			dash_time -= delta
 
 func handle_movement_inputs(delta):
 	var x_accel = X_GROUND_ACCEL if is_on_floor() else X_AIR_ACCEL
