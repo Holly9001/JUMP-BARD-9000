@@ -18,8 +18,8 @@ const X_AIR_ACCEL:float = WALK_SPEED / 0.15
 
 const Y_ACCEL:float = 12
 
-const GROUND_FRICTION:float = 4.8
-const AIR_FRICTION:float = 0.5
+const GROUND_FRICTION:float = 1 / 0.1
+const AIR_FRICTION:float = 1 / 0.5
 
 const X_VELOCITY_DECAY:float = 4.8
 
@@ -28,10 +28,10 @@ const WALLJUMP_FORCE_X:float = 8.0
 
 const DASH_FORCE:float = 20.0
 
-const GRAVITY:float = 20.0
+const GRAVITY:float = 30.0
 
-const JUMP_BOOST :float= 30.0
-const JUMP_IMPULSE:float = 5.0
+const JUMP_BOOST :float= 50.0
+const JUMP_IMPULSE:float = 10.0
 
 const MAX_CLIMB_TIME:float = 3.5
 const CLIMB_JUMP_PENALTY:float = 0.1
@@ -77,7 +77,7 @@ func jump():
 
 func _physics_process(delta):
 	
-	movement_vector = Input.get_vector("left", "right", "down", "up").normalized()
+	movement_vector = Input.get_vector("left", "right", "down", "up")
 	handle_coyote_frames()
 	
 	if Input.is_action_just_pressed("restart"):
@@ -102,17 +102,21 @@ func _physics_process(delta):
 	
 	if !is_on_floor() and !is_climbing:
 		velocity.y -= GRAVITY * delta
-	
+		
+	# Friction goes before the other stuff so it doesn't affect impulses immediately
+	handle_friction(delta)
 	handle_movement_inputs(delta)
 	handle_abilities(delta)
-	handle_friction(delta)
 	move_and_slide()
 	camera_arm.player_pos = global_position
 
 func handle_abilities(delta):
 	if can_dash:
 		if Input.is_action_just_pressed("dash") and dash_time < 0:
-			velocity = Vector3(movement_vector.x, movement_vector.y, 0) * DASH_FORCE
+			print(movement_vector.x)
+			print(movement_vector.y)
+			velocity.x = movement_vector.x * DASH_FORCE
+			velocity.y = movement_vector.y * DASH_FORCE
 			dash_time = DASH_COOLDOWN
 		if dash_time > 0:
 			dash_time -= delta
@@ -128,11 +132,15 @@ func handle_movement_inputs(delta):
 		if Input.is_action_just_pressed("jump"):
 			jump()
 	
-	velocity.x = move_toward(velocity.x, movement_vector.x * WALK_SPEED, x_accel * delta)
+	var new_vel_x = velocity.x + movement_vector.x * x_accel * delta
+	if abs(new_vel_x) < abs(velocity.x) or abs(new_vel_x) < WALK_SPEED:
+		velocity.x += movement_vector.x * x_accel * delta
 		
 		
 func handle_friction(delta):
 	var friction = GROUND_FRICTION if is_on_floor() else AIR_FRICTION
+	velocity.y = lerp(velocity.y, 0.0, friction * delta)
+	velocity.x = lerp(velocity.x, 0.0, friction * delta)
 
 func handle_climbing(delta):
 	velocity.y = move_toward(velocity.y, CLIMB_SPEED, CLIMB_ACCEL * delta)
