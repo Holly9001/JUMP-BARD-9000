@@ -87,11 +87,10 @@ var dash_unlocked:bool = true
 @export var jump_curve:Curve
 
 func _ready():
-	var lam_reset_dash = func(type): if type == DASH_BEAT_TYPE: reset_dash()
-	MusicStates.value_changed.connect(lam_reset_dash)
-	
-func reset_dash():
-	can_dash = true
+	var lam_enable_dash = func(type): if type == DASH_BEAT_TYPE: can_dash = true
+	var lam_disable_dash = func(type): if type == DASH_BEAT_TYPE: can_dash = false
+	MusicStates.pre_beat.connect(lam_enable_dash)
+	MusicStates.post_beat.connect(lam_disable_dash)
 
 func reset_parent():
 	var global_trans = self.global_transform
@@ -107,7 +106,7 @@ func jump():
 
 
 func _physics_process(delta):
-	
+	$DebugUI/ClimbTime.text = str(can_dash)
 	movement_vector = Input.get_vector("left", "right", "down", "up")
 	handle_coyote_frames()
 	

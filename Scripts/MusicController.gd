@@ -23,8 +23,19 @@ extends Control
 @onready var bk_2_p :AudioStreamPlayer= $AnimationPlayer/Backing_2_Player
 
 func _ready():
+	var animation: Animation = anim_player.get_animation("Forest1")
+	var key_index = animation.track_get_key_count(1) - 1
+	while key_index > 0:
+		var key_time = animation.track_get_key_time(1, key_index)
+		var key_value = animation.track_get_key_value(1, key_index)
+		if key_value:
+			key_value.args = [-1]
+			animation.track_insert_key(1, key_time - 0.1, key_value)
+			key_value.args = [1]
+			animation.track_insert_key(1, key_time + 0.1, key_value)
+			key_index -= 1
+		
 	_set_song('Forest1',['bass_1'])
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -49,10 +60,10 @@ func _set_song(song, instruments):
 
 ## KEYFRAME CHECKS CHANGE VISIBILITY OF AUDIO NODES, WHEN VIS CHANGES, SIGNAL EMITTED!! EZ!!
 
-func _bass_1():
+func _bass_1(timing = 0):
 	if bs_1_p.playing == true:
 		MusicStates.state_array['bass_1'] = !MusicStates.state_array['bass_1']
-		MusicStates.val_changed('bass_1')
+		MusicStates.beat_trigger('bass_1', timing)
 func _bass_2():
 	if bs_2_p.playing == true:
 		MusicStates.state_array['bass_2'] = !MusicStates.state_array['bass_2']

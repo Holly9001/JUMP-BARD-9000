@@ -12,7 +12,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MusicStates.value_changed.connect(on_beat)
+	MusicStates.on_beat.connect(on_beat)
 
 func on_beat(type):
 	if beat_type == type:
