@@ -63,7 +63,9 @@ const DASH_COOLDOWN:float = 2
 # a jump is executed.
 const MAX_JUMP_HOLD:float = 0.2
 
-var dash_time:float = DASH_COOLDOWN
+const DASH_BEAT_TYPE:String = "bass_1"
+
+var can_dash:bool = false
 
 var jump_hold:float = 0
 
@@ -79,10 +81,17 @@ var attached
 
 ## ability booleans
 # for double jump bools and shit, gonna make one for hold jump too.
-var can_dash:bool = true
+var dash_unlocked:bool = true
 
 
 @export var jump_curve:Curve
+
+func _ready():
+	var lam_reset_dash = func(type): if type == DASH_BEAT_TYPE: reset_dash()
+	MusicStates.value_changed.connect(lam_reset_dash)
+	
+func reset_dash():
+	can_dash = true
 
 func reset_parent():
 	var global_trans = self.global_transform
@@ -133,15 +142,13 @@ func _physics_process(delta):
 	camera_arm.player_pos = global_position
 
 func handle_abilities(delta):
-	if can_dash:
-		if Input.is_action_just_pressed("dash") and dash_time < 0:
+	if dash_unlocked:
+		if Input.is_action_just_pressed("dash") and can_dash:
 			print(movement_vector.x)
 			print(movement_vector.y)
 			velocity.x = movement_vector.x * DASH_FORCE
 			velocity.y = movement_vector.y * DASH_FORCE
-			dash_time = DASH_COOLDOWN
-		if dash_time > 0:
-			dash_time -= delta
+			can_dash = false
 
 func handle_movement_inputs(delta):
 	var x_accel = X_GROUND_ACCEL if is_on_floor() else X_AIR_ACCEL

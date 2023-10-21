@@ -7,23 +7,25 @@ extends Node3D
 @export var projectile_speed :float= 5
 
 @export var beat_type : String = 'bass_1'
-var prev_beat : bool
 
 ## IF WE ADD MORE PROJECTILES, ALLOW U TO EXPORT PROJECTILE SCENE.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	prev_beat = MusicStates.state_array[beat_type]
+	MusicStates.value_changed.connect(on_beat)
 
+func on_beat(type):
+	if beat_type == type:
+		_shoot()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	if MusicStates.state_array[beat_type] != prev_beat:
-		
-		_shoot()
-		
-		prev_beat = MusicStates.state_array[beat_type]
+#func _process(delta):
+#
+#	if MusicStates.state_array[beat_type] != prev_beat:
+#
+#		_shoot()
+#
+#		prev_beat = MusicStates.state_array[beat_type]
 
 
 func _shoot():

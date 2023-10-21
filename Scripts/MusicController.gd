@@ -22,12 +22,6 @@ extends Control
 @onready var bk_1_p :AudioStreamPlayer= $AnimationPlayer/Backing_1_Player
 @onready var bk_2_p :AudioStreamPlayer= $AnimationPlayer/Backing_2_Player
 
-# Called when the node enters the scene tree for the first time.
-
-
-### $Node    is just  a placeholdder incase my idea for 1 player doesnt work, plz do not delet 
-
-
 func _ready():
 	_set_song('Forest1',['bass_1'])
 
@@ -58,6 +52,7 @@ func _set_song(song, instruments):
 func _bass_1():
 	if bs_1_p.playing == true:
 		MusicStates.state_array['bass_1'] = !MusicStates.state_array['bass_1']
+		MusicStates.val_changed('bass_1')
 func _bass_2():
 	if bs_2_p.playing == true:
 		MusicStates.state_array['bass_2'] = !MusicStates.state_array['bass_2']
