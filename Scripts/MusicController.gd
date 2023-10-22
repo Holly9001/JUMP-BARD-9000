@@ -22,6 +22,8 @@ extends Control
 @onready var bk_1_p :AudioStreamPlayer= $AnimationPlayer/Backing_1_Player
 @onready var bk_2_p :AudioStreamPlayer= $AnimationPlayer/Backing_2_Player
 
+const beat_offset:float = 0.1
+
 func _ready():
 	var animation: Animation = anim_player.get_animation("Forest1")
 	var key_index = animation.track_get_key_count(1) - 1
@@ -30,12 +32,12 @@ func _ready():
 		var key_value = animation.track_get_key_value(1, key_index)
 		if key_value:
 			key_value.args = [-1]
-			animation.track_insert_key(1, key_time - 0.1, key_value)
+			animation.track_insert_key(1, key_time - beat_offset, key_value)
 			key_value.args = [1]
-			animation.track_insert_key(1, key_time + 0.1, key_value)
+			animation.track_insert_key(1, key_time + beat_offset, key_value)
 			key_index -= 1
 		
-	_set_song('Forest1',['bass_1'])
+	_set_song('Forest1',['bass_1', 'drum_1'])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -76,6 +78,7 @@ func _lead_2():
 		MusicStates.state_array['lead_2'] = !MusicStates.state_array['lead_2']
 
 func _drum_1():
+	print("drum")
 	if d_1_p.playing == true:
 		MusicStates.state_array['drum_1'] = !MusicStates.state_array['drum_1']
 func _drum_2():

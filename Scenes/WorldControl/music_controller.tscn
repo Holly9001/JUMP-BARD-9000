@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://7vog8io13utl"]
+[gd_scene load_steps=6 format=3 uid="uid://7vog8io13utl"]
 
 [ext_resource type="AudioStream" uid="uid://cdgsv58n2abcp" path="res://Audio/Music/Stems/Bass_1/Forest1_Bass_1.wav" id="2_fmxj5"]
 [ext_resource type="Script" path="res://Scripts/MusicController.gd" id="2_hwmsn"]
+[ext_resource type="AudioStream" uid="uid://obf4s5hxd57p" path="res://Audio/Music/Stems/Drum_1/Forest1_Drum_1.wav" id="3_s6a4w"]
 
 [sub_resource type="Animation" id="Animation_d748t"]
 resource_name = "Forest1"
@@ -10,7 +11,7 @@ loop_mode = 1
 step = 0.0166667
 tracks/0/type = "audio"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("AnimationPlayer/Bass_1_Player")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -440,10 +441,31 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+"times": PackedFloat32Array(3.3066, 3.8577),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_drum_1"
+}, {
+"args": [],
+"method": &"_drum_1"
+}]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Drum_1_Player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_s6a4w")
+}],
+"times": PackedFloat32Array(0.0167)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2r1aq"]
 _data = {
@@ -480,3 +502,25 @@ libraries = {
 [node name="Backing_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
 [node name="Backing_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationPlayer"]
+autoplay = "Forest1"
+libraries = {
+"": SubResource("AnimationLibrary_2r1aq")
+}
+
+[node name="Lead_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer/AnimationPlayer"]
+
+[node name="Lead_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer/AnimationPlayer"]
+
+[node name="Bass_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer/AnimationPlayer"]
+
+[node name="Bass_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer/AnimationPlayer"]
+
+[node name="Drum_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer/AnimationPlayer"]
+
+[node name="Drum_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer/AnimationPlayer"]
+
+[node name="Backing_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer/AnimationPlayer"]
+
+[node name="Backing_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer/AnimationPlayer"]
