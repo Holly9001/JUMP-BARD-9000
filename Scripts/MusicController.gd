@@ -24,20 +24,17 @@ extends Control
 
 const beat_offset:float = 0.1
 
-func _ready():
-	var animation: Animation = anim_player.get_animation("Forest1")
-	var key_index = animation.track_get_key_count(1) - 1
-	while key_index > 0:
-		var key_time = animation.track_get_key_time(1, key_index)
-		var key_value = animation.track_get_key_value(1, key_index)
-		if key_value:
-			key_value.args = [-1]
-			animation.track_insert_key(1, key_time - beat_offset, key_value)
-			key_value.args = [1]
-			animation.track_insert_key(1, key_time + beat_offset, key_value)
-			key_index -= 1
-		
-	_set_song('Forest1',['bass_1', 'drum_1'])
+func read_csv():
+	var csv = []
+	var file = FileAccess.open("res://keys/keys.csv", FileAccess.READ)
+	while !file.eof_reached():
+		var csv_rows = file.get_csv_line(" ")
+		csv.append(csv_rows)
+	file.close()
+	csv.pop_back()
+	csv.pop_front()
+	return csv
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -48,17 +45,18 @@ func _process(_delta):
 func _set_song(song, instruments):
 	anim_player.current_animation = song
 	
-	var track :Animation= anim_player.get_animation(anim_player.get_current_animation())
-	
-	for i in track_reference:
-		var track_id = track.find_track(track_reference[i],7)
-		track.track_set_enabled(track_id,0)
-	
-	for i in instruments:
-		var track_id = track.find_track(track_reference[i],7)
-		track.track_set_enabled(track_id,1)
-	
-		print(track.track_get_path(1))
+	# VERY SORRY IF THIS BREAKS SOMETHING I NEED IT  TO GO AWAY FOR NOW
+#	var track :Animation= anim_player.get_animation(anim_player.get_current_animation())
+#
+#	for i in track_reference:
+#		var track_id = track.find_track(track_reference[i],7)
+#		track.track_set_enabled(track_id,0)
+#
+#	for i in instruments:
+#		var track_id = track.find_track(track_reference[i],7)
+#		track.track_set_enabled(track_id,1)
+#
+#		print(track.track_get_path(1))
 
 ## KEYFRAME CHECKS CHANGE VISIBILITY OF AUDIO NODES, WHEN VIS CHANGES, SIGNAL EMITTED!! EZ!!
 
@@ -77,7 +75,7 @@ func _lead_2():
 	if l_2_p.playing == true:
 		MusicStates.state_array['lead_2'] = !MusicStates.state_array['lead_2']
 
-func _drum_1():
+func _drum_1(timing = 0):
 	print("drum")
 	if d_1_p.playing == true:
 		MusicStates.state_array['drum_1'] = !MusicStates.state_array['drum_1']
@@ -91,3 +89,32 @@ func _backing_1():
 func _backing_2():
 	if bk_2_p.playing == true:
 		MusicStates.state_array['backing_2'] = !MusicStates.state_array['backing_2']
+
+func generate_keys(keys, idx, animation, method):
+	animation.add_track(Animation.TYPE_METHOD, 0)
+	animation.track_set_path(0, ".")
+
+	for i in keys[idx]:
+		animation.track_insert_key(0, float(i), {"method": method,"args": []})
+
+func _ready():
+	var keys = read_csv()
+	var animation: Animation = anim_player.get_animation("Forest1")
+	generate_keys(keys, 5, animation, '_drum_1')
+	generate_keys(keys, 2, animation, '_bass_1')
+	for i in range(animation.get_track_count()):
+		print(animation.track_get_key_count(i))
+	var key_index = animation.track_get_key_count(0) - 1
+	print(key_index)
+	while key_index > 0:
+		var key_time = animation.track_get_key_time(0, key_index)
+		var key_value = animation.track_get_key_value(0, key_index)
+		if key_value:
+			print(key_value)
+			key_value.args = [-1]
+			animation.track_insert_key(0, key_time - beat_offset, key_value)
+			key_value.args = [1]
+			animation.track_insert_key(0, key_time + beat_offset, key_value)
+			key_index -= 1
+
+	#_set_song('Forest1',['bass_1', 'drum_1'])
