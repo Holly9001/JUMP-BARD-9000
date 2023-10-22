@@ -110,7 +110,7 @@ func _ready():
 		var key_time = animation.track_get_key_time(0, key_index)
 		var key_value = animation.track_get_key_value(0, key_index)
 		if key_value:
-			print(key_value)
+			# TODO: stop overlapping pre and post beats
 			key_value.args = [-1]
 			animation.track_insert_key(0, key_time - beat_offset, key_value)
 			key_value.args = [1]
