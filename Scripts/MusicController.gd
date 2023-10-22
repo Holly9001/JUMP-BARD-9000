@@ -30,9 +30,9 @@ func _ready():
 		var key_value = animation.track_get_key_value(1, key_index)
 		if key_value:
 			key_value.args = [-1]
-			animation.track_insert_key(1, key_time - 0.5, key_value)
+			animation.track_insert_key(1, key_time - 0.1, key_value)
 			key_value.args = [1]
-			animation.track_insert_key(1, key_time + 0.5, key_value)
+			animation.track_insert_key(1, key_time + 0.1, key_value)
 			key_index -= 1
 		
 	_set_song('Forest1',['bass_1'])

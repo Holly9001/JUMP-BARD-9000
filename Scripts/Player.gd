@@ -142,7 +142,7 @@ func _physics_process(delta):
 
 func handle_abilities(delta):
 	if dash_unlocked:
-		if Input.is_action_just_pressed("dash") and can_dash:
+		if Input.is_action_pressed("dash") and can_dash:
 			print(movement_vector.x)
 			print(movement_vector.y)
 			velocity.x = movement_vector.x * DASH_FORCE
