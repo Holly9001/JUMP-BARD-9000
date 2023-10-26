@@ -59,7 +59,7 @@ const CLIMB_ACCEL:float = CLIMB_SPEED / 0.2
 const DASH_COOLDOWN:float = 2
 
 # Force per second that you get pushed away from edges
-const EDGE_ADJUST_FORCE:float = 30.0
+const EDGE_ADJUST_FORCE:float = 45.0
 
 # If you keep the jump key held down, you will get JUMP_BOOST force per second
 # added to velocity.y. This boost is available for MAX_JUMP_HOLD seconds after
@@ -201,16 +201,13 @@ func handle_climbing(delta):
 
 func handle_ceiling_bump(delta):
 	if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
-		jump_hold = 0
 		velocity.y = -GRAVITY * delta
 		print('stop')
 	elif HeadRayR.is_colliding():
-		jump_hold = 0
 		velocity.x = -EDGE_ADJUST_FORCE * delta
 		velocity.y += JUMP_BOOST * delta
 		print(velocity.y)
 	elif HeadRayL.is_colliding():
-		jump_hold = 0
 		print('move right')
 		velocity.x = velocity.y
 		velocity.y += EDGE_ADJUST_FORCE * delta
