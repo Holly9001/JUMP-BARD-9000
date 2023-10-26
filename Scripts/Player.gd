@@ -204,13 +204,13 @@ func handle_ceiling_bump(delta):
 		velocity.y = -GRAVITY * delta
 		print('stop')
 	elif HeadRayR.is_colliding():
-		velocity.x = -EDGE_ADJUST_FORCE * delta
+		velocity.x = -EDGE_ADJUST_FORCE * delta * velocity.y
 		velocity.y += JUMP_BOOST * delta
 		print(velocity.y)
 	elif HeadRayL.is_colliding():
 		print('move right')
-		velocity.x = velocity.y
-		velocity.y += EDGE_ADJUST_FORCE * delta
+		velocity.x = EDGE_ADJUST_FORCE * delta * velocity.y
+		velocity.y += JUMP_BOOST * delta
 
 func handle_coyote_frames():
 #	if on_floor and jump_hold <= 0:  
