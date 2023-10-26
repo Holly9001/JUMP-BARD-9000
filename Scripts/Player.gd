@@ -58,6 +58,9 @@ const CLIMB_ACCEL:float = CLIMB_SPEED / 0.2
 # Dash cooldown is the time in seconds it takes for dash to reset
 const DASH_COOLDOWN:float = 2
 
+# Force per second that you get pushed away from edges
+const EDGE_ADJUST_FORCE:float = 30.0
+
 # If you keep the jump key held down, you will get JUMP_BOOST force per second
 # added to velocity.y. This boost is available for MAX_JUMP_HOLD seconds after
 # a jump is executed.
@@ -114,7 +117,7 @@ func _physics_process(delta):
 		get_tree().reload_current_scene()
 	
 	if is_on_ceiling():
-		handle_ceiling_bump()
+		handle_ceiling_bump(delta)
 	
 	if wall_check_arm.is_colliding():
 		attached = wall_check_arm.get_collider()
@@ -137,6 +140,7 @@ func _physics_process(delta):
 	handle_friction(delta)
 	handle_movement_inputs(delta)
 	handle_abilities(delta)
+	handle_ceiling_bump(delta)
 	move_and_slide()
 	camera_arm.player_pos = global_position
 
@@ -195,20 +199,21 @@ func handle_climbing(delta):
 			wall_check_arm.scale.x = 1
 			wall_check_foot.scale.x = 1
 
-func handle_ceiling_bump():
-#	if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
-#		y_velocity = 0
-#		velocity.y = velocity.y/2
-#		print('stop')
-#	elif HeadRayR.is_colliding():
-#		velocity.x += velocity.y
-#		velocity.y +=1
-#		print('move left')
-#	elif HeadRayL.is_colliding():
-#		print('move right')
-#		velocity.x -= velocity.y
-#		velocity.y +=1
-	pass
+func handle_ceiling_bump(delta):
+	if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
+		jump_hold = 0
+		velocity.y = -GRAVITY * delta
+		print('stop')
+	elif HeadRayR.is_colliding():
+		jump_hold = 0
+		velocity.x = -EDGE_ADJUST_FORCE * delta
+		velocity.y += JUMP_BOOST * delta
+		print(velocity.y)
+	elif HeadRayL.is_colliding():
+		jump_hold = 0
+		print('move right')
+		velocity.x = velocity.y
+		velocity.y += EDGE_ADJUST_FORCE * delta
 
 func handle_coyote_frames():
 #	if on_floor and jump_hold <= 0:  
