@@ -17,7 +17,7 @@ const WALK_SPEED:float = 6.0
 # accelerate to WALK_SPEED. However, this does not account for friction so
 # the actual time will be a bit different.
 const X_GROUND_ACCEL:float = WALK_SPEED / 0.1
-const X_AIR_ACCEL:float = WALK_SPEED / 0.15
+const X_AIR_ACCEL:float = WALK_SPEED / 0.2
 
 # How fast the player will go from velocity v = n to v = 0, with n being any
 # constant. Obviously this is only true if the velocity isn't affected by
@@ -59,7 +59,7 @@ const CLIMB_ACCEL:float = CLIMB_SPEED / 0.2
 const DASH_COOLDOWN:float = 2
 
 # Force per second that you get pushed away from edges
-const EDGE_ADJUST_FORCE:float = 45.0
+const EDGE_ADJUST_DIST:float = 0.03 
 
 # If you keep the jump key held down, you will get JUMP_BOOST force per second
 # added to velocity.y. This boost is available for MAX_JUMP_HOLD seconds after
@@ -202,16 +202,11 @@ func handle_climbing(delta):
 func handle_ceiling_bump(delta):
 	if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
 		velocity.y = -GRAVITY * delta
-		print('stop')
 	elif HeadRayR.is_colliding():
-		velocity.x = -EDGE_ADJUST_FORCE * delta * velocity.y
-		velocity.y += JUMP_BOOST * delta
+		move_and_collide(Vector3(-EDGE_ADJUST_DIST, 0, 0))
 		jump_hold += delta
-		print(velocity.y)
 	elif HeadRayL.is_colliding():
-		print('move right')
-		velocity.x = EDGE_ADJUST_FORCE * delta * velocity.y
-		velocity.y += JUMP_BOOST * delta
+		move_and_collide(Vector3(EDGE_ADJUST_DIST, 0, 0))
 		jump_hold += delta
 
 func handle_coyote_frames():
