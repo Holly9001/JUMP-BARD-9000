@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlovh00m0u25j"]
+[gd_scene load_steps=9 format=3 uid="uid://p0ppulxbd3ri"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_j017v"]
 [ext_resource type="MeshLibrary" uid="uid://chuvo3ttiixa6" path="res://3D/mesh_libraries/forest_1.tres" id="2_cl1aq"]
@@ -39,6 +39,6 @@ environment = SubResource("Environment_jhq81")
 [node name="sky_box" parent="." instance=ExtResource("3_ascaa")]
 
 [node name="ProjectileShooter" parent="." instance=ExtResource("4_xiroh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5168, 4.98175, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.517, 4.982, 0.5)
 
 [node name="MusicPlayer" parent="." instance=ExtResource("5_x6xiq")]
