@@ -53,7 +53,7 @@ const CLIMB_JUMP_PENALTY:float = 0.1
 # Same as the normal accel and movement, but on a wall, see the top of this
 # script.
 const CLIMB_SPEED:float = 2.0
-const CLIMB_ACCEL:float = CLIMB_SPEED / 0.2
+const CLIMB_ACCEL:float = CLIMB_SPEED / 0.05
 
 # Dash cooldown is the time in seconds it takes for dash to reset
 const DASH_COOLDOWN:float = 2
@@ -69,6 +69,10 @@ const DASH_BEAT_TYPE:String = "bass_1"
 
 const MAX_COYOTE_TIME:float = 0.075
 
+const CLIMB_UP_Y_OFFSET:float = 0.05
+
+const CLIMB_UP_X_FORCE:float = 2.0
+
 var can_dash:bool = false
 
 var jump_hold:float = 0
@@ -81,6 +85,8 @@ var is_climbing:bool = false
 var climb_time = 0
 
 var attached
+
+var climb_direction:float = -1
 
 ## ability booleans
 # for double jump bools and shit, gonna make one for hold jump too.
@@ -126,9 +132,14 @@ func _physics_process(delta):
 	if Input.is_action_pressed('climb')\
 	 and (wall_check_arm.is_colliding() or wall_check_foot.is_colliding())\
 	 and climb_time > 0:
-		handle_climbing(delta)
 		is_climbing = true
+		handle_climbing(delta)
 	else:
+		if is_climbing and sign(movement_vector.x) == sign(climb_direction):
+			move_and_collide(Vector3(0, CLIMB_UP_Y_OFFSET, 0))
+			velocity.x = CLIMB_UP_X_FORCE * climb_direction
+		else:
+			print(movement_vector.x)
 		is_climbing = false
 		detach()
 	print(coyote_time)
@@ -178,7 +189,7 @@ func handle_friction(delta):
 	velocity.x = lerp(velocity.x, 0.0, friction * delta)
 
 func handle_climbing(delta):
-	velocity.y = move_toward(velocity.y, CLIMB_SPEED, CLIMB_ACCEL * delta)
+	velocity.y = move_toward(velocity.y, CLIMB_SPEED * movement_vector.y, CLIMB_ACCEL * delta)
 	climb_time -= delta
 	if get_parent() != attached:
 		if attached:
@@ -188,19 +199,16 @@ func handle_climbing(delta):
 			self.set_owner(attached)
 			self.global_transform = global_trans
 	if test_move(global_transform,Vector3.RIGHT * delta * 10):
-		if Input.is_action_just_pressed('jump') and (!is_on_floor()):
-			climb_time -= CLIMB_JUMP_PENALTY
-			velocity.x = -WALLJUMP_FORCE_X
-			velocity.y = WALLJUMP_FORCE_Y
-			wall_check_arm.scale.x = -1
-			wall_check_foot.scale.x = -1
+		climb_direction = 1.0
 	elif test_move(global_transform,Vector3.LEFT * delta * 10):
-		if Input.is_action_just_pressed('jump') and (!is_on_floor()):
-			climb_time -= CLIMB_JUMP_PENALTY
-			velocity.x = WALLJUMP_FORCE_X
-			velocity.y = WALLJUMP_FORCE_Y
-			wall_check_arm.scale.x = 1
-			wall_check_foot.scale.x = 1
+		climb_direction = -1.0
+	if Input.is_action_just_pressed('jump') and (!is_on_floor()):
+		is_climbing = false
+		climb_time -= CLIMB_JUMP_PENALTY
+		velocity.x = -WALLJUMP_FORCE_X * climb_direction
+		velocity.y = WALLJUMP_FORCE_Y
+		wall_check_arm.scale.x = climb_direction
+		wall_check_foot.scale.x = climb_direction
 
 func handle_ceiling_bump(delta):
 	if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
