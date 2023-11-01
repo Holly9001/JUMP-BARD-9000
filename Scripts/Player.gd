@@ -58,7 +58,6 @@ const CLIMB_ACCEL:float = CLIMB_SPEED / 0.2
 # Dash cooldown is the time in seconds it takes for dash to reset
 const DASH_COOLDOWN:float = 2
 
-# Force per second that you get pushed away from edges
 const EDGE_ADJUST_DIST:float = 0.03 
 
 # If you keep the jump key held down, you will get JUMP_BOOST force per second
@@ -68,14 +67,15 @@ const MAX_JUMP_HOLD:float = 0.2
 
 const DASH_BEAT_TYPE:String = "bass_1"
 
+const MAX_COYOTE_TIME:float = 0.075
+
 var can_dash:bool = false
 
 var jump_hold:float = 0
 
 var movement_vector :Vector2= Vector2.ZERO
 
-var max_coyote_frames := 32
-var coyote_frames := 0
+var coyote_time:float = 0.0
 
 var is_climbing:bool = false
 var climb_time = 0
@@ -104,14 +104,13 @@ func reset_parent():
 
 func jump():
 	jump_hold = MAX_JUMP_HOLD
-	coyote_frames = 0
+	coyote_time = 0
 	velocity.y = JUMP_IMPULSE
 
 
 func _physics_process(delta):
 	$DebugUI/ClimbTime.text = str(can_dash)
 	movement_vector = Input.get_vector("left", "right", "down", "up")
-	handle_coyote_frames()
 	
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
@@ -132,7 +131,7 @@ func _physics_process(delta):
 	else:
 		is_climbing = false
 		detach()
-	
+	print(coyote_time)
 	if !is_on_floor() and !is_climbing:
 		velocity.y -= GRAVITY * delta
 		
@@ -159,8 +158,12 @@ func handle_movement_inputs(delta):
 	if Input.is_action_pressed('jump') and jump_hold > 0:
 		velocity.y += JUMP_BOOST * delta
 	
-	if is_on_floor():
-		climb_time = MAX_CLIMB_TIME
+	if is_on_floor() or coyote_time > 0.0:
+		if is_on_floor():
+			coyote_time = MAX_COYOTE_TIME
+			climb_time = MAX_CLIMB_TIME
+		else:
+			coyote_time -= delta
 		if Input.is_action_just_pressed("jump"):
 			jump()
 	
@@ -208,22 +211,6 @@ func handle_ceiling_bump(delta):
 	elif HeadRayL.is_colliding():
 		move_and_collide(Vector3(EDGE_ADJUST_DIST, 0, 0))
 		jump_hold += delta
-
-func handle_coyote_frames():
-#	if on_floor and jump_hold <= 0:  
-#		coyote_frames = max_coyote_frames
-#		climb_time = max_climb_time
-#		jump_hold = 0
-#		velocity.y = 0
-#		if Input.is_action_just_pressed('jump'):
-#			jump()
-#	else:
-#		if coyote_frames >= max_coyote_frames*0.9 and Input.is_action_just_pressed('jump'):
-#			jump_hold = max_jump_hold
-#			y_velocity = jump_height
-#			coyote_frames = 0
-#		coyote_frames = clamp(coyote_frames-1,0,max_coyote_frames)
-	pass
 
 func detach():
 	if self.get_parent() == attached:
