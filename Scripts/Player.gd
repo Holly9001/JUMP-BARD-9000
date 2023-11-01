@@ -52,7 +52,7 @@ const CLIMB_JUMP_PENALTY:float = 0.1
 
 # Same as the normal accel and movement, but on a wall, see the top of this
 # script.
-const CLIMB_SPEED:float = 2.0
+const CLIMB_SPEED:float = 4.0
 const CLIMB_ACCEL:float = CLIMB_SPEED / 0.05
 
 # Dash cooldown is the time in seconds it takes for dash to reset
