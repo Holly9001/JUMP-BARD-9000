@@ -73,6 +73,8 @@ const CLIMB_UP_Y_OFFSET:float = 0.05
 
 const CLIMB_UP_X_FORCE:float = 2.0
 
+const MAX_JUMP_BUFFER_TIME:float = 0.05
+
 var can_dash:bool = false
 
 var jump_hold:float = 0
@@ -91,6 +93,8 @@ var climb_direction:float = -1
 ## ability booleans
 # for double jump bools and shit, gonna make one for hold jump too.
 var dash_unlocked:bool = true
+
+var jump_buffer_time:float = 0.0
 
 
 @export var jump_curve:Curve
@@ -169,13 +173,18 @@ func handle_movement_inputs(delta):
 	if Input.is_action_pressed('jump') and jump_hold > 0:
 		velocity.y += JUMP_BOOST * delta
 	
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer_time = MAX_JUMP_BUFFER_TIME
+	else:
+		jump_buffer_time -= delta
+	
 	if is_on_floor() or coyote_time > 0.0:
 		if is_on_floor():
 			coyote_time = MAX_COYOTE_TIME
 			climb_time = MAX_CLIMB_TIME
 		else:
 			coyote_time -= delta
-		if Input.is_action_just_pressed("jump"):
+		if jump_buffer_time > 0.0:
 			jump()
 	
 	var new_vel_x = velocity.x + movement_vector.x * x_accel * delta
