@@ -116,8 +116,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 	
-##	if is_on_ceiling():
-#	handle_ceiling_bump(delta)
+	if is_on_ceiling():
+		handle_ceiling_bump(delta)
 	
 	if wall_check_arm.is_colliding():
 		attached = wall_check_arm.get_collider()
@@ -175,8 +175,7 @@ func handle_friction(delta):
 	velocity.x = lerp(velocity.x, 0.0, friction * delta)
 
 func handle_climbing(delta):
-	velocity.y = move_toward(velocity.y, CLIMB_SPEED*movement_vector.y, CLIMB_ACCEL * delta)
-	print(CLIMB_SPEED)
+	velocity.y = move_toward(velocity.y, CLIMB_SPEED, CLIMB_ACCEL * delta)
 	climb_time -= delta
 	if get_parent() != attached:
 		if attached:
@@ -201,18 +200,19 @@ func handle_climbing(delta):
 			wall_check_foot.scale.x = 1
 
 func handle_ceiling_bump(delta):
-#	if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
-#		velocity.y = -GRAVITY * delta
-#		print('stop')
-#	elif HeadRayR.is_colliding():
-#		velocity.x -= velocity.y/4
-#		velocity.y += 5
-#		print('move left')
-#	elif HeadRayL.is_colliding():
-#		print('move right')
-#		velocity.x += velocity.y/4
-#		velocity.y += 5
-	pass
+	if HeadRayML.is_colliding() or HeadRayMR.is_colliding(): #this solution is fucking stupid but areas werent cooperating
+		velocity.y = -GRAVITY * delta
+		print('stop')
+	elif HeadRayR.is_colliding():
+		velocity.x = -EDGE_ADJUST_FORCE * delta * velocity.y
+		velocity.y += JUMP_BOOST * delta
+		jump_hold += delta
+		print(velocity.y)
+	elif HeadRayL.is_colliding():
+		print('move right')
+		velocity.x = EDGE_ADJUST_FORCE * delta * velocity.y
+		velocity.y += JUMP_BOOST * delta
+		jump_hold += delta
 
 func handle_coyote_frames():
 #	if on_floor and jump_hold <= 0:  

@@ -1,72 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=7 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
-[ext_resource type="Texture2D" uid="uid://cue4c4moaaykp" path="res://Art/PlayerAnims/walkanimbeta-Sheet.png" id="2_e7pqf"]
+[ext_resource type="Texture2D" uid="uid://dx6kmx4r6nn6k" path="res://Textures/Sprite3Ds/ppoint image_3.png" id="2_ntqn3"]
 [ext_resource type="Script" path="res://Scripts/PlayerSpringArm.gd" id="3_cvtvs"]
-[ext_resource type="Script" path="res://Scenes/Player/PlayerVisuals.gd" id="3_qs7e1"]
 
 [sub_resource type="Curve" id="Curve_tboxv"]
 max_value = 0.04
 _data = [Vector2(0, 0.0206316), 0.0, 0.0, 0, 0, Vector2(1, 0.03), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rsugj"]
-atlas = ExtResource("2_e7pqf")
-region = Rect2(213, 0, 213, 280)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s85ad"]
-atlas = ExtResource("2_e7pqf")
-region = Rect2(0, 0, 213, 280)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dg8hv"]
-atlas = ExtResource("2_e7pqf")
-region = Rect2(426, 0, 213, 280)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h657v"]
-atlas = ExtResource("2_e7pqf")
-region = Rect2(639, 0, 213, 280)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbkau"]
-atlas = ExtResource("2_e7pqf")
-region = Rect2(852, 0, 213, 280)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ssw61"]
-atlas = ExtResource("2_e7pqf")
-region = Rect2(1065, 0, 213, 280)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5fu6m"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rsugj")
-}],
-"loop": true,
-"name": &"idle_1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s85ad")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rsugj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dg8hv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h657v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cbkau")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ssw61")
-}],
-"loop": true,
-"name": &"run_1",
-"speed": 5.0
-}]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mxlaw"]
 size = Vector3(0.8, 1, 0.8)
@@ -81,13 +22,10 @@ axis_lock_linear_z = true
 script = ExtResource("1_wkf5m")
 jump_curve = SubResource("Curve_tboxv")
 
-[node name="PlayerVisuals" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.158, 0, 0, 0, 0.167, 0, -0.136405, 0)
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_5fu6m")
-animation = &"idle_1"
-autoplay = "run_1"
-script = ExtResource("3_qs7e1")
+texture = ExtResource("2_ntqn3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.143811, 0)
@@ -96,7 +34,7 @@ shape = SubResource("BoxShape3D_mxlaw")
 [node name="SpringArm" type="SpringArm3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)
 collision_mask = 8
-spring_length = 6.5
+spring_length = 8.0
 script = ExtResource("3_cvtvs")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]
@@ -135,7 +73,7 @@ text = "hlleo"
 target_position = Vector3(0.5, 0, 0)
 
 [node name="wall_check_foot" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.631067, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 target_position = Vector3(0.5, 0, 0)
 
 [node name="HitBox" type="Area3D" parent="."]
