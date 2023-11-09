@@ -15,10 +15,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ocqva"]
 size = Vector3(1, 0.2, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5i8i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rcrf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ipslg"]
-material = SubResource("StandardMaterial3D_j5i8i")
+material = SubResource("StandardMaterial3D_3rcrf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_svea3"]
 

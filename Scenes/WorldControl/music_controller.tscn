@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://7vog8io13utl"]
+[gd_scene load_steps=8 format=3 uid="uid://7vog8io13utl"]
 
 [ext_resource type="AudioStream" uid="uid://cdgsv58n2abcp" path="res://Audio/Music/Stems/Bass_1/Forest1_Bass_1.wav" id="2_fmxj5"]
 [ext_resource type="Script" path="res://Scripts/MusicController.gd" id="2_hwmsn"]
 [ext_resource type="AudioStream" uid="uid://obf4s5hxd57p" path="res://Audio/Music/Stems/Drum_1/Forest1_Drum_1.wav" id="3_s6a4w"]
+[ext_resource type="AudioStream" uid="uid://dn0feudmom5t3" path="res://Audio/Music/Stems/Backing_1/Forest1_Backing_1.wav" id="4_g0dbl"]
+[ext_resource type="AudioStream" uid="uid://d0h16vodmolrn" path="res://Audio/Music/Stems/Bass_2/Forest1_Bass_2.wav" id="5_dyrt7"]
 
 [sub_resource type="Animation" id="Animation_d748t"]
 resource_name = "Forest1"
@@ -39,6 +41,36 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.0167)
 }
 tracks/1/use_blend = true
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Backing_1_Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_g0dbl")
+}],
+"times": PackedFloat32Array(0.0167)
+}
+tracks/2/use_blend = true
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Bass_2_Player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_dyrt7")
+}],
+"times": PackedFloat32Array(0.0167)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2r1aq"]
 _data = {
@@ -69,6 +101,7 @@ libraries = {
 [node name="Bass_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
 
 [node name="Drum_1_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
+volume_db = 6.559
 
 [node name="Drum_2_Player" type="AudioStreamPlayer" parent="AnimationPlayer"]
 

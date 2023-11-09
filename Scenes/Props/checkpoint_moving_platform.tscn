@@ -17,7 +17,7 @@ var target_idx = 0
 
 func _process(delta):
 	if enabled:
-		self.progress_ratio = lerp(progress_ratio, checkpoints[target_idx], delta * checkpoint_move_speeds[target_idx])
+		self.progress_ratio = move_toward(progress_ratio, checkpoints[target_idx], delta * checkpoint_move_speeds[target_idx])
 		for i in children:
 			i.global_position = self.global_position
 		if MusicStates.state_array[beat_type] != prev_result:
@@ -34,3 +34,4 @@ func trigger():
 transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 0, 0, 0)
 rotation_mode = 0
 script = SubResource("GDScript_64oqr")
+beat_type = "drum_1"

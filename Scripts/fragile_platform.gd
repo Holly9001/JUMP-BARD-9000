@@ -13,7 +13,11 @@ func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
 	for i in child_meshes:
 		var mat = i.mesh.material
+		print(mat)
+		if mat == null:
+			mat = i.mesh.surface_get_material(0)
 		mat.albedo_color = Color.WHITE
+ # Commented out to support tilset meshes
 
 func _exit_tree():
 	if tween != null:
@@ -22,11 +26,16 @@ func _exit_tree():
 func trigger():
 	tween = get_tree().create_tween()
 	for i in child_meshes:
-		var mat = i.mesh.material
+		var mat = i.mesh.material 
+		if mat == null:
+			mat = i.mesh.surface_get_material(0)
+		
 		tween.tween_property(mat, "albedo_color", Color.RED, break_time)
 	tween.tween_callback(destroy)
 	
+	print("triggered")
+	
 func destroy():
 	if player != null:
-		player.reset_parent()
+		player.reset_parent() #Resets player parent to avoid crashing while climbing
 	self.queue_free()

@@ -65,7 +65,7 @@ const EDGE_ADJUST_DIST:float = 0.03
 # a jump is executed.
 const MAX_JUMP_HOLD:float = 0.2
 
-const DASH_BEAT_TYPE:String = "bass_1"
+const DASH_BEAT_TYPE:String = "drum_1"
 
 const MAX_COYOTE_TIME:float = 0.075
 

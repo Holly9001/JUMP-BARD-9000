@@ -19,6 +19,7 @@ func _process(delta):
 	
 	if x_direction != 0:
 		animation = 'run_1'
+		print("run")
 		scale.x = sign(player.velocity.x) * default_scale.x
 		
 		speed_scale = clamp(abs(x_direction)/3,1,3)

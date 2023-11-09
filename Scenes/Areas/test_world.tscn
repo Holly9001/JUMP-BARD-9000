@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=10 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://bhbcv6aqgh1o2" path="res://Scenes/Areas/level_0.tscn" id="5_62yee"]
 [ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="6_225av"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wqbss1j8p52s" path="res://UI/debug_ui.tscn" id="7_4y0cq"]
 [ext_resource type="PackedScene" uid="uid://dijbug3ilp6j8" path="res://Scenes/Areas/level_2.tscn" id="7_ul4fg"]
 [ext_resource type="PackedScene" uid="uid://p0ppulxbd3ri" path="res://Scenes/Areas/level_7.tscn" id="8_kwvom"]
+[ext_resource type="PackedScene" uid="uid://dwofic45m8svb" path="res://Scenes/Areas/level_1r.tscn" id="9_agfq6"]
 [ext_resource type="Script" path="res://Scripts/testscoredisplay.gd" id="10_dpucs"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="15_i42sh"]
 
@@ -28,5 +29,5 @@ script = ExtResource("10_dpucs")
 
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("music_controller")]
 script = ExtResource("15_i42sh")
-levels = Array[PackedScene]([ExtResource("5_62yee"), ExtResource("6_dukvx"), ExtResource("7_ul4fg"), ExtResource("8_kwvom")])
+levels = Array[PackedScene]([ExtResource("5_62yee"), ExtResource("6_dukvx"), ExtResource("7_ul4fg"), ExtResource("8_kwvom"), ExtResource("9_agfq6")])
 music_controller = NodePath("../MusicController")

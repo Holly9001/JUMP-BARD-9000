@@ -64,7 +64,8 @@ func _bass_1(timing = 0):
 	if bs_1_p.playing == true:
 		MusicStates.state_array['bass_1'] = !MusicStates.state_array['bass_1']
 		MusicStates.beat_trigger('bass_1', timing)
-func _bass_2():
+func _bass_2(timing = 0):
+	print("bass 2")
 	if bs_2_p.playing == true:
 		MusicStates.state_array['bass_2'] = !MusicStates.state_array['bass_2']
 
@@ -76,9 +77,10 @@ func _lead_2():
 		MusicStates.state_array['lead_2'] = !MusicStates.state_array['lead_2']
 
 func _drum_1(timing = 0):
-	print("drum")
+	print("drum 1")
 	if d_1_p.playing == true:
 		MusicStates.state_array['drum_1'] = !MusicStates.state_array['drum_1']
+		MusicStates.beat_trigger('drum_1', timing)
 func _drum_2():
 	if d_2_p.playing == true:
 		MusicStates.state_array['drum_2'] = !MusicStates.state_array['drum_2']
