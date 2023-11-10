@@ -65,7 +65,7 @@ const EDGE_ADJUST_DIST:float = 0.03
 # a jump is executed.
 const MAX_JUMP_HOLD:float = 0.2
 
-const DASH_BEAT_TYPE:String = "drum_1"
+const DASH_BEAT_TYPE:String = "bass_1"
 
 const MAX_COYOTE_TIME:float = 0.075
 
@@ -119,7 +119,7 @@ func jump():
 
 
 func _physics_process(delta):
-	$DebugUI/ClimbTime.text = str(can_dash)
+	$DebugUI/ClimbTime.text = str(MusicStates.state_array["metronome"])
 	movement_vector = Input.get_vector("left", "right", "down", "up")
 	
 	if Input.is_action_just_pressed("restart"):
@@ -142,11 +142,11 @@ func _physics_process(delta):
 		if is_climbing and sign(movement_vector.x) == sign(climb_direction):
 			move_and_collide(Vector3(0, CLIMB_UP_Y_OFFSET, 0))
 			velocity.x = CLIMB_UP_X_FORCE * climb_direction
-		else:
-			print(movement_vector.x)
+		# else:
+			# print(movement_vector.x)
 		is_climbing = false
 		detach()
-	print(coyote_time)
+	# print(coyote_time)
 	if !is_on_floor() and !is_climbing:
 		velocity.y -= GRAVITY * delta
 		
@@ -161,8 +161,8 @@ func _physics_process(delta):
 func handle_abilities(delta):
 	if dash_unlocked:
 		if Input.is_action_just_pressed("dash") and can_dash:
-			print(movement_vector.x)
-			print(movement_vector.y)
+			#print(movement_vector.x)
+			#print(movement_vector.y)
 			velocity.x = movement_vector.x * DASH_FORCE
 			velocity.y = movement_vector.y * DASH_FORCE
 			can_dash = false

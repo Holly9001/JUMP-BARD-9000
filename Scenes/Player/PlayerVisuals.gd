@@ -26,4 +26,4 @@ func _process(delta):
 	else:
 		animation = 'idle_1'
 	
-	print(x_direction)
+	#print(x_direction)

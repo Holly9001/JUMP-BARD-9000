@@ -9,7 +9,7 @@ var state_array := {
 	'lead_1':false,
 	'lead_2':false,
 	'backing_1':false,
-	'backing_2':false
+	'metronome':false
 }
 
 signal pre_beat(beat_type)
