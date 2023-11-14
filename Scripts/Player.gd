@@ -104,6 +104,11 @@ func _ready():
 	var lam_disable_dash = func(type): if type == DASH_BEAT_TYPE: can_dash = false
 	MusicStates.pre_beat.connect(lam_enable_dash)
 	MusicStates.post_beat.connect(lam_disable_dash)
+	MusicStates.on_beat.connect(handle_on_beat)
+
+func handle_on_beat(type):
+	if type == "metronome":
+		print("gnomes in the metro")
 
 func reset_parent():
 	var global_trans = self.global_transform
@@ -119,7 +124,7 @@ func jump():
 
 
 func _physics_process(delta):
-	$DebugUI/ClimbTime.text = str(MusicStates.state_array["metronome"])
+	$DebugUI/ClimbTime.text = str(can_dash)
 	movement_vector = Input.get_vector("left", "right", "down", "up")
 	
 	if Input.is_action_just_pressed("restart"):
@@ -142,11 +147,8 @@ func _physics_process(delta):
 		if is_climbing and sign(movement_vector.x) == sign(climb_direction):
 			move_and_collide(Vector3(0, CLIMB_UP_Y_OFFSET, 0))
 			velocity.x = CLIMB_UP_X_FORCE * climb_direction
-		# else:
-			# print(movement_vector.x)
 		is_climbing = false
 		detach()
-	# print(coyote_time)
 	if !is_on_floor() and !is_climbing:
 		velocity.y -= GRAVITY * delta
 		
@@ -161,8 +163,6 @@ func _physics_process(delta):
 func handle_abilities(delta):
 	if dash_unlocked:
 		if Input.is_action_just_pressed("dash") and can_dash:
-			#print(movement_vector.x)
-			#print(movement_vector.y)
 			velocity.x = movement_vector.x * DASH_FORCE
 			velocity.y = movement_vector.y * DASH_FORCE
 			can_dash = false
