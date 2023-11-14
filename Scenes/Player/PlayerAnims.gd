@@ -22,7 +22,3 @@ func _process(delta):
 	else:
 		scale.x = orig_scale.x * sign(player_speed)
 		animation = 'run_1'
-	
-	print('speed',speed_scale)
-	
-	print(player_speed)
