@@ -311,7 +311,7 @@ cubic_interp = false
 tilt_enabled = false
 move_time = 5.0
 position_curve = SubResource("Curve_lbqyl")
-beat_type = "bass_1"
+beat_type = "drum_1"
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D2/moving_platform"]
 axis_lock_linear_z = true
@@ -348,7 +348,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6735, 8, 0.5)
 curve = SubResource("Curve3D_1qluv")
 
 [node name="checkpoint_moving_platform" parent="Path3D3" instance=ExtResource("11_7fwyh")]
-beat_type = "bass_1"
 checkpoints = Array[float]([0.0, 0.5, 1.0, 0.5])
 checkpoint_move_speeds = Array[float]([4.0, 4.0, 4.0, 4.0])
 
