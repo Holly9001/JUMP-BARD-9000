@@ -64,6 +64,7 @@ draw_pass_1 = SubResource("QuadMesh_cxv5j")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(2, -5.24537e-07, 1.74846e-07, 5.24537e-07, 2, 4.58564e-14, -1.74846e-07, -3.38813e-21, 2, 0, 0, 0)
 shaded = true
+double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_dgbxf")
 animation = &"bee_1"
