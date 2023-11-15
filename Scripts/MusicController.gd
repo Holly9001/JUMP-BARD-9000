@@ -60,6 +60,7 @@ func _set_song(song, instruments):
 
 func _bass_1(timing = 0):
 	if bs_1_p.playing == true:
+		print("bass 1")
 		MusicStates.state_array['bass_1'] = !MusicStates.state_array['bass_1']
 		MusicStates.beat_trigger('bass_1', timing)
 func _bass_2():
@@ -74,6 +75,7 @@ func _lead_2():
 		MusicStates.state_array['lead_2'] = !MusicStates.state_array['lead_2']
 
 func _drum_1(timing = 0): 
+	print("drum it up")
 	if d_1_p.playing == true:
 		MusicStates.state_array['drum_1'] = !MusicStates.state_array['drum_1']
 func _drum_2():
@@ -114,8 +116,8 @@ func _ready():
 	var keys = read_csv()
 	var animation: Animation = anim_player.get_animation("Forest1")
 	generate_keys(keys, 0, animation, 'metronome')
-	generate_keys(keys, 5, animation, '_drum_1')
-	generate_keys(keys, 2, animation, '_bass_1')
+	generate_keys(keys, 6, animation, '_drum_1')
+	generate_keys(keys, 3, animation, '_bass_1')
 	for i in range(animation.get_track_count()):
 		print(animation.track_get_key_count(i))
 
