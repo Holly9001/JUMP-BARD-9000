@@ -100,16 +100,20 @@ func generate_keys(keys, idx, animation, method):
 			animation.track_insert_key(0, float(keys[idx][i]), {"method": method,"args": []})
 		
 	var key_index = animation.track_get_key_count(0) - 1
+	var last_key_time = animation.track_get_key_time(0, key_index)
 	while key_index > 0:
 		var key_time = animation.track_get_key_time(0, key_index)
 		var key_value = animation.track_get_key_value(0, key_index)
 		if key_value:
-			# TODO: stop overlapping pre and post beats
 			key_value.args = [-1]
 			animation.track_insert_key(0, key_time - beat_offset, key_value)
-			key_value.args = [1]
-			animation.track_insert_key(0, key_time + beat_offset, key_value)
+			if key_time + beat_offset < last_key_time:
+				key_value.args = [1]
+				animation.track_insert_key(0, key_time + beat_offset, key_value)
+			last_key_time = animation.track_get_key_time(0, key_index)
 			key_index -= 1
+		
+		
 
 func _ready():
 	var keys = read_csv()
