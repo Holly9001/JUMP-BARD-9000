@@ -182,5 +182,5 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_ql1rj")
 
 [node name="ProjectileShooter" parent="." instance=ExtResource("9_is60o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 3.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7, 0)
 beat_type = "backing_1"

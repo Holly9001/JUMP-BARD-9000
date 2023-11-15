@@ -39,8 +39,8 @@ func reform():
 	add_child(node)
 	
 func destroy():
-	if player != null:
-		player.reset_parent() #Resets player parent to avoid crashing while climbing
+#	if player != null:
+#		player.reset_parent() #Resets player parent to avoid crashing while climbing
 	self.queue_free()
 	tween = get_tree().create_tween()
 	for i in child_meshes:

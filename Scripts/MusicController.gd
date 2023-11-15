@@ -87,6 +87,7 @@ func _backing_1():
 	MusicStates.beat_trigger('backing_1', 0)
 
 func _metronome():
+	MusicStates.state_array['metronome'] = !MusicStates.state_array['metronome']
 	MusicStates.beat_trigger('metronome', 0)
 	#print("we gnomin")
 
