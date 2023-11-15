@@ -17,7 +17,6 @@ signal on_beat(beat_type)
 signal post_beat(beat_type)
 
 func beat_trigger(beat_type, timing):
-	print(beat_type)
 	match timing:
 		-1: pre_beat.emit(beat_type)
 		0: on_beat.emit(beat_type)
