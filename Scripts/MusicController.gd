@@ -115,7 +115,7 @@ func _ready():
 	var animation: Animation = anim_player.get_animation("Forest1")
 	generate_keys(keys, 0, animation, 'metronome')
 	generate_keys(keys, 5, animation, '_drum_1')
-	generate_keys(keys, 2, animation, '_bass_1')
+	generate_keys(keys, 3, animation, '_bass_1')
 	for i in range(animation.get_track_count()):
 		print(animation.track_get_key_count(i))
 
