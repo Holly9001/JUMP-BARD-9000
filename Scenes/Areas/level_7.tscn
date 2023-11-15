@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_j017v"]
 [ext_resource type="MeshLibrary" uid="uid://chuvo3ttiixa6" path="res://3D/mesh_libraries/forest_1.tres" id="2_cl1aq"]
-[ext_resource type="PackedScene" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="3_ascaa"]
+[ext_resource type="PackedScene" uid="uid://bvif3aurils80" path="res://3D/sky_box.glb" id="3_ascaa"]
 [ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="4_xiroh"]
 [ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="5_x6xiq"]
 

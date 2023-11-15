@@ -208,6 +208,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l71d5")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g3tv0"]
+size = Vector3(1, 0.3, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_romcd"]
 resource_name = "grass_1"
 cull_mode = 2
@@ -273,9 +276,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_orw5w")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g3tv0"]
-size = Vector3(1, 0.3, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27oxn"]
 resource_name = "grass_1"
@@ -471,15 +471,15 @@ shape = SubResource("BoxShape3D_tugy1")
 
 [node name="grass_plat_L" type="Node3D" parent="."]
 
+[node name="StaticBody3D" type="StaticBody3D" parent="grass_plat_L"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="grass_plat_L/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34979, 0)
+shape = SubResource("BoxShape3D_g3tv0")
+
 [node name="grass_plat_L2" type="MeshInstance3D" parent="grass_plat_L"]
 mesh = SubResource("ArrayMesh_j6q2o")
 skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="grass_plat_L/grass_plat_L2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="grass_plat_L/grass_plat_L2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34979, 0)
-shape = SubResource("BoxShape3D_g3tv0")
 
 [node name="grass_plat_M" type="Node3D" parent="."]
 

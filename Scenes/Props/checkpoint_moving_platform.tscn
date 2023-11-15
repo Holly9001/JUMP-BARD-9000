@@ -15,24 +15,19 @@ script/source = "extends PathFollow3D
 var prev_result = false
 var target_idx = 0
 
-func _ready():
-	MusicStates.on_beat.connect(handle_on_beat)
-	
 func _process(delta):
 	if enabled:
 		self.progress_ratio = move_toward(progress_ratio, checkpoints[target_idx], delta * checkpoint_move_speeds[target_idx])
 		for i in children:
 			i.global_position = self.global_position
+		if MusicStates.state_array[beat_type] != prev_result:
+			if one_time and (target_idx >= checkpoints.size()):
+				enabled = false 
+			target_idx = (target_idx + 1) % (checkpoints.size())
+			prev_result = MusicStates.state_array[beat_type]
 
 func trigger():
 	enabled = true;
-
-func handle_on_beat(type):
-	if type == beat_type:
-		if one_time and (target_idx >= checkpoints.size()):
-				enabled = false 
-		target_idx = (target_idx + 1) % (checkpoints.size())
-		prev_result = MusicStates.state_array[beat_type]
 "
 
 [node name="checkpoint_moving_platform" type="PathFollow3D"]
