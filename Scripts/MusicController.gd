@@ -76,6 +76,7 @@ func _lead_2():
 func _drum_1(timing = 0): 
 	if d_1_p.playing == true:
 		MusicStates.state_array['drum_1'] = !MusicStates.state_array['drum_1']
+		MusicStates.beat_trigger('drum_1', timing)
 func _drum_2():
 	if d_2_p.playing == true:
 		MusicStates.state_array['drum_2'] = !MusicStates.state_array['drum_2']
