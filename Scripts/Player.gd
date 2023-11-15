@@ -128,7 +128,7 @@ func _physics_process(delta):
 	movement_vector = Input.get_vector("left", "right", "down", "up")
 	
 	if Input.is_action_just_pressed("restart"):
-		get_tree().reload_current_scene()
+		GameState.restart()
 	
 	if is_on_ceiling():
 		handle_ceiling_bump(delta)
