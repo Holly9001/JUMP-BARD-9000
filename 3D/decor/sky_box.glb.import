@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bvif3aurils80"
-path="res://.godot/imported/sky_box.glb-15f28f0470df80a16c0d1ed8edb6294e.scn"
+path="res://.godot/imported/sky_box.glb-817d319781c8cc3bf977df8db678942d.scn"
 
 [deps]
 
-source_file="res://3D/sky_box.glb"
-dest_files=["res://.godot/imported/sky_box.glb-15f28f0470df80a16c0d1ed8edb6294e.scn"]
+source_file="res://3D/decor/sky_box.glb"
+dest_files=["res://.godot/imported/sky_box.glb-817d319781c8cc3bf977df8db678942d.scn"]
 
 [params]
 

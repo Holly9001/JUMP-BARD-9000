@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wfy2igxm16ri"
-path.s3tc="res://.godot/imported/sky_box_sky_box_test_1.png-1f11735c11c0be46408ad17f99cc5538.s3tc.ctex"
+uid="uid://nvtxp7km58xe"
+path.s3tc="res://.godot/imported/walkanimbeta-color-sheet.png-cbe75e953664f16a93eef00bc889c5cd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://3D/sky_box_sky_box_test_1.png"
-dest_files=["res://.godot/imported/sky_box_sky_box_test_1.png-1f11735c11c0be46408ad17f99cc5538.s3tc.ctex"]
+source_file="res://Art/PlayerAnims/walkanimbeta-color-sheet.png"
+dest_files=["res://.godot/imported/walkanimbeta-color-sheet.png-cbe75e953664f16a93eef00bc889c5cd.s3tc.ctex"]
 
 [params]
 
