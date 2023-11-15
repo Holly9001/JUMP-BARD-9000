@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
-[ext_resource type="Texture2D" uid="uid://cue4c4moaaykp" path="res://Art/PlayerAnims/walkanimbeta-Sheet.png" id="2_7oo3w"]
+[ext_resource type="Texture2D" uid="uid://nvtxp7km58xe" path="res://Art/PlayerAnims/walkanimbeta-color-sheet.png" id="2_bfbly"]
 [ext_resource type="Script" path="res://Scripts/PlayerSpringArm.gd" id="3_cvtvs"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerAnims.gd" id="3_ut24s"]
 
@@ -10,35 +10,35 @@ max_value = 0.04
 _data = [Vector2(0, 0.0206316), 0.0, 0.0, 0, 0, Vector2(1, 0.03), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbsqr"]
-atlas = ExtResource("2_7oo3w")
-region = Rect2(0, 0, 213, 280)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q341"]
+atlas = ExtResource("2_bfbly")
+region = Rect2(0, 0, 193, 242)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xa8hv"]
-atlas = ExtResource("2_7oo3w")
-region = Rect2(213, 0, 213, 280)
+[sub_resource type="AtlasTexture" id="AtlasTexture_owxer"]
+atlas = ExtResource("2_bfbly")
+region = Rect2(193, 0, 193, 242)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8h0f7"]
-atlas = ExtResource("2_7oo3w")
-region = Rect2(426, 0, 213, 280)
+[sub_resource type="AtlasTexture" id="AtlasTexture_270dg"]
+atlas = ExtResource("2_bfbly")
+region = Rect2(386, 0, 193, 242)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gnb7b"]
-atlas = ExtResource("2_7oo3w")
-region = Rect2(639, 0, 213, 280)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtkg4"]
+atlas = ExtResource("2_bfbly")
+region = Rect2(579, 0, 193, 242)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wyyow"]
-atlas = ExtResource("2_7oo3w")
-region = Rect2(852, 0, 213, 280)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpr03"]
+atlas = ExtResource("2_bfbly")
+region = Rect2(772, 0, 193, 242)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yp35k"]
-atlas = ExtResource("2_7oo3w")
-region = Rect2(1065, 0, 213, 280)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovnau"]
+atlas = ExtResource("2_bfbly")
+region = Rect2(965, 0, 193, 242)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c6ywq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lbsqr")
+"texture": SubResource("AtlasTexture_6q341")
 }],
 "loop": true,
 "name": &"idle_1",
@@ -46,22 +46,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lbsqr")
+"texture": SubResource("AtlasTexture_6q341")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xa8hv")
+"texture": SubResource("AtlasTexture_owxer")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8h0f7")
+"texture": SubResource("AtlasTexture_270dg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gnb7b")
+"texture": SubResource("AtlasTexture_rtkg4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wyyow")
+"texture": SubResource("AtlasTexture_vpr03")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yp35k")
+"texture": SubResource("AtlasTexture_ovnau")
 }],
 "loop": true,
 "name": &"run_1",
@@ -82,13 +82,13 @@ script = ExtResource("1_wkf5m")
 jump_curve = SubResource("Curve_tboxv")
 
 [node name="PlayerAnims" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.039952, 0)
 shaded = true
+double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_c6ywq")
-animation = &"run_1"
+animation = &"idle_1"
 autoplay = "idle_1"
-frame_progress = 0.201096
 script = ExtResource("3_ut24s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -98,7 +98,7 @@ shape = SubResource("BoxShape3D_mxlaw")
 [node name="SpringArm" type="SpringArm3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19209e-07, 0)
 collision_mask = 8
-spring_length = 5.75
+spring_length = 5.7
 script = ExtResource("3_cvtvs")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]
