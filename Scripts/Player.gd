@@ -65,7 +65,7 @@ const EDGE_ADJUST_DIST:float = 0.03
 # a jump is executed.
 const MAX_JUMP_HOLD:float = 0.2
 
-const DASH_BEAT_TYPE:String = "bass_1"
+const DASH_BEAT_TYPE:String = "metronome"
 
 const MAX_COYOTE_TIME:float = 0.075
 
@@ -102,13 +102,15 @@ var jump_buffer_time:float = 0.0
 func _ready():
 	var lam_enable_dash = func(type): if type == DASH_BEAT_TYPE: can_dash = true
 	var lam_disable_dash = func(type): if type == DASH_BEAT_TYPE: can_dash = false
-	MusicStates.pre_beat.connect(lam_enable_dash)
-	MusicStates.post_beat.connect(lam_disable_dash)
+	MusicStates.pre_beat.connect(handle_post_beat)
+	MusicStates.post_beat.connect(handle_post_beat)
 	MusicStates.on_beat.connect(handle_on_beat)
 
 func handle_on_beat(type):
-	if type == "metronome":
-		print("gnomes in the metro")
+	pass
+
+func handle_post_beat(type):
+	print(type)
 
 func reset_parent():
 	var global_trans = self.global_transform

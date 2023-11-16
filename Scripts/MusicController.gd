@@ -74,7 +74,6 @@ func _lead_2():
 	MusicStates.beat_trigger('lead_2', 0)
 
 func _drum_1(timing = 0): 
-	print("drum it up")
 	MusicStates.state_array['drum_1'] = !MusicStates.state_array['drum_1']
 	MusicStates.beat_trigger('drum_1', timing)
 		
@@ -86,7 +85,7 @@ func _backing_1():
 	MusicStates.state_array['backing_1'] = !MusicStates.state_array['backing_1']
 	MusicStates.beat_trigger('backing_1', 0)
 
-func _metronome():
+func _metronome(timing = 0):
 	MusicStates.beat_trigger('metronome', 0)
 	#print("we gnomin")
 
@@ -95,7 +94,7 @@ func generate_keys(keys, idx, animation, method):
 	animation.track_set_path(0, ".")
 
 	# Adds every keystamp from keys csv to an animation keyframe except for i = 0 which is the instrment name
-	for i in keys[idx].size():
+	for i in range(keys[idx].size()):
 		if i > 0:
 			animation.track_insert_key(0, float(keys[idx][i]), {"method": method,"args": []})
 		
@@ -104,12 +103,13 @@ func generate_keys(keys, idx, animation, method):
 	while key_index > 0:
 		var key_time = animation.track_get_key_time(0, key_index)
 		var key_value = animation.track_get_key_value(0, key_index)
-		if key_value:
+		if key_value and key_time - beat_offset > 0:
 			key_value.args = [-1]
 			animation.track_insert_key(0, key_time - beat_offset, key_value)
-			if key_time + beat_offset < last_key_time:
-				key_value.args = [1]
-				animation.track_insert_key(0, key_time + beat_offset, key_value)
+			print("test")
+			#if key_time + beat_offset < last_key_time:
+			key_value.args = [1]
+			animation.track_insert_key(0, key_time + beat_offset, key_value)
 			last_key_time = animation.track_get_key_time(0, key_index)
 			key_index -= 1
 		
@@ -119,10 +119,10 @@ func _ready():
 	var keys = read_csv()
 	var animation: Animation = anim_player.get_animation("Forest1")
 	generate_keys(keys, 0, animation, '_metronome')
-	generate_keys(keys, 5, animation, '_backing_1')
-	generate_keys(keys, 6, animation, '_drum_1')
-	generate_keys(keys, 3, animation, '_bass_1')
-	for i in range(animation.get_track_count()):
-		print(animation.track_get_key_count(i))
+	#generate_keys(keys, 5, animation, '_backing_1')
+	#generate_keys(keys, 6, animation, '_drum_1')
+	#generate_keys(keys, 3, animation, '_bass_1')
+	#for i in range(animation.get_track_count()):
+		#print(animation.track_get_key_count(i))
 
 	#_set_song('Forest1',['bass_1', 'drum_1'])
