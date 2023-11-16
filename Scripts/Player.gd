@@ -102,8 +102,8 @@ var jump_buffer_time:float = 0.0
 func _ready():
 	var lam_enable_dash = func(type): if type == DASH_BEAT_TYPE: can_dash = true
 	var lam_disable_dash = func(type): if type == DASH_BEAT_TYPE: can_dash = false
-	MusicStates.pre_beat.connect(handle_post_beat)
-	MusicStates.post_beat.connect(handle_post_beat)
+	MusicStates.pre_beat.connect(lam_enable_dash)
+	MusicStates.post_beat.connect(lam_disable_dash)
 	MusicStates.on_beat.connect(handle_on_beat)
 
 func handle_on_beat(type):

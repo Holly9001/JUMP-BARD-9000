@@ -66,27 +66,27 @@ func _bass_2(timing = 0):
 	MusicStates.state_array['bass_2'] = !MusicStates.state_array['bass_2']
 	MusicStates.beat_trigger('bass_2', timing)
 
-func _lead_1():
+func _lead_1(timing = 0):
 	MusicStates.state_array['lead_1'] = !MusicStates.state_array['lead_1']
-	MusicStates.beat_trigger('lead_1', 0)
-func _lead_2():
+	MusicStates.beat_trigger('lead_1', timing)
+func _lead_2(timing = 0):
 	MusicStates.state_array['lead_2'] = !MusicStates.state_array['lead_2']
-	MusicStates.beat_trigger('lead_2', 0)
+	MusicStates.beat_trigger('lead_2', timing)
 
 func _drum_1(timing = 0): 
 	MusicStates.state_array['drum_1'] = !MusicStates.state_array['drum_1']
 	MusicStates.beat_trigger('drum_1', timing)
 		
-func _drum_2():
+func _drum_2(timing = 0):
 	MusicStates.state_array['drum_2'] = !MusicStates.state_array['drum_2']
-	MusicStates.beat_trigger('drum_2', 0)
+	MusicStates.beat_trigger('drum_2', timing)
 
-func _backing_1():
+func _backing_1(timing = 0):
 	MusicStates.state_array['backing_1'] = !MusicStates.state_array['backing_1']
-	MusicStates.beat_trigger('backing_1', 0)
+	MusicStates.beat_trigger('backing_1', timing)
 
 func _metronome(timing = 0):
-	MusicStates.beat_trigger('metronome', 0)
+	MusicStates.beat_trigger('metronome', timing)
 	#print("we gnomin")
 
 func generate_keys(keys, idx, animation, method):
