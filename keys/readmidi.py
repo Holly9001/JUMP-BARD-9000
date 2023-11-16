@@ -3,7 +3,7 @@ import csv
 
 # MIDI FILES NEED TO BE 960 PPQ
 
-mid = MidiFile('track.mid', clip=True)
+mid = MidiFile('Track 1 Final.mid', clip=True)
 
 tempo = 0
 ccp = 0
@@ -23,6 +23,7 @@ for track in mid.tracks:
     delta_time = 0
     for msg in track:
         if msg.type == 'track_name':
+            export_tracks[len(export_tracks) - 1].append(msg.name)
             print(msg.name)
         delta_time += msg.time
         if msg.type == 'note_on':
@@ -33,10 +34,12 @@ with open('keys.csv', 'w', newline='\n') as csvfile:
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
     beat_time = 60 / tempo2bpm(tempo)
     metronome_row = []
+    metronome_row.append("Metronome")
     for i in range(1, int(mid.length / beat_time) + 1):
         metronome_row.append(i * beat_time)
     
     spamwriter.writerow(metronome_row)
+    print("metronome added")
     
     for export_track in export_tracks[1:]:
         spamwriter.writerow(export_track)

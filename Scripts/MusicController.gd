@@ -74,7 +74,7 @@ func _lead_2():
 	MusicStates.beat_trigger('lead_2', 0)
 
 func _drum_1(timing = 0): 
-	print("drum it up")
+	#print("drum it up")
 	MusicStates.state_array['drum_1'] = !MusicStates.state_array['drum_1']
 	MusicStates.beat_trigger('drum_1', timing)
 		
@@ -111,6 +111,8 @@ func generate_keys(keys, idx, animation, method):
 			if key_time + beat_offset < last_key_time:
 				key_value.args = [1]
 				animation.track_insert_key(0, key_time + beat_offset, key_value)
+			else:
+				print("not offset")
 			last_key_time = animation.track_get_key_time(0, key_index)
 			key_index -= 1
 		

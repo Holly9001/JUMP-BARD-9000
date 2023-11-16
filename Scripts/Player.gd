@@ -65,7 +65,7 @@ const EDGE_ADJUST_DIST:float = 0.03
 # a jump is executed.
 const MAX_JUMP_HOLD:float = 0.2
 
-const DASH_BEAT_TYPE:String = "drum_1"
+const DASH_BEAT_TYPE:String = "backing_1"
 
 const MAX_COYOTE_TIME:float = 0.075
 
@@ -108,7 +108,11 @@ func _ready():
 
 func handle_on_beat(type):
 	if type == "metronome":
-		print("gnomes in the metro")
+		pass
+
+func handle_pre_beat(type):
+	print(type)
+	pass
 
 func reset_parent():
 	var global_trans = self.global_transform
