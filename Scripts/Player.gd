@@ -77,6 +77,8 @@ const MAX_JUMP_BUFFER_TIME:float = 0.05
 
 var can_dash:bool = false
 
+var can_charge_dash:bool = false
+
 var jump_hold:float = 0
 
 var movement_vector :Vector2= Vector2.ZERO
@@ -93,6 +95,8 @@ var climb_direction:float = -1
 ## ability booleans
 # for double jump bools and shit, gonna make one for hold jump too.
 var dash_unlocked:bool = true
+
+var charge_dash_unlocked:bool = true
 
 var jump_buffer_time:float = 0.0
 
@@ -168,6 +172,12 @@ func handle_abilities(delta):
 			velocity.x = movement_vector.x * DASH_FORCE
 			velocity.y = movement_vector.y * DASH_FORCE
 			can_dash = false
+	
+	# Handle charge dash input
+	if charge_dash_unlocked:
+		if Input.is_action_just_pressed("charge_dash") and can_charge_dash:
+			print("charge dash")
+
 
 func handle_movement_inputs(delta):
 	var x_accel = X_GROUND_ACCEL if is_on_floor() else X_AIR_ACCEL
