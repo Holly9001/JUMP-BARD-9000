@@ -1,15 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpyr6xwullju1"]
+[gd_scene load_steps=10 format=3 uid="uid://dpyr6xwullju1"]
 
-[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="1_o5k3k"]
-[ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="2_j8vrm"]
-[ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="3_efj2x"]
-[ext_resource type="MeshLibrary" uid="uid://pqao0syau1tt" path="res://3D/mesh_libraries/forest_1.1.tres" id="4_yafjw"]
+[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_p3f2h"]
+[ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="3_slm3v"]
+[ext_resource type="MeshLibrary" uid="uid://pqao0syau1tt" path="res://3D/mesh_libraries/forest_1.1.tres" id="4_104tx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
 resource_name = "sky"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_efj2x")
+albedo_texture = ExtResource("3_slm3v")
 roughness = 0.5
 texture_filter = 2
 
@@ -60,10 +59,8 @@ fog_density = 0.0005
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_o5k3k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62317, 0)
-
-[node name="MusicPlayer" parent="." instance=ExtResource("2_j8vrm")]
+[node name="Player" parent="." instance=ExtResource("2_p3f2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62317, -0.5)
 
 [node name="sky_box2" type="MeshInstance3D" parent="."]
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 0, 0)
@@ -75,7 +72,7 @@ environment = SubResource("Environment_65jaa")
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-mesh_library = ExtResource("4_yafjw")
+mesh_library = ExtResource("4_104tx")
 cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(-2, 65535, 4, -1, 65535, 4, -65536, 65535, 4, -65535, 65535, 4, -65534, 65535, 4, -65538, 65535, 4, -65537, 65535, 4, -131072, 65535, 4, -131071, 65535, 4, -131074, 65535, 4, -196610, 65535, 4, -262147, 65535, 4, -327683, 65535, 4, -393219, 65535, 4, -458755, 65535, 4, -262146, 65535, 4, -327682, 65535, 4, -196611, 65535, 4, -131075, 65535, 4, -65539, 65535, 4, -3, 65535, 4, -4, 65535, 4, -5, 65535, 4, -6, 65535, 4, -7, 65535, 4, -65543, 65535, 4, -131079, 65535, 4, -131078, 65535, 4, -131077, 65535, 4, -131076, 65535, 4, -65540, 65535, 4, -65541, 65535, 4, -65542, 65535, 4, -65544, 65535, 4, -8, 65535, 4, -9, 65535, 4, -10, 65535, 4, -65535, 0, 6, -65536, 0, 6, -1, 0, 6, -2, 0, 6, -3, 0, 6, -4, 0, 6, -5, 0, 6, -6, 0, 6, -7, 0, 6, -8, 0, 6, -9, 0, 6, -10, 0, 6, -65534, 0, 6, -65533, 0, 7, -11, 0, 5, 2, 65535, 262147, 65538, 65535, 0, 131074, 65535, 0, 196610, 65535, 0, 262146, 65535, 262147, 327682, 65535, 131075, 262145, 65535, 131075, 196609, 65535, 0, 131073, 65535, 524289, 65537, 65535, 0, 1, 65535, 0, 0, 65535, 0, 65536, 65535, 0, 131072, 65535, 0, 196608, 65535, 0, 196606, 65535, 262148, 196605, 65535, 262148, 196604, 65535, 262148, 196604, 0, 5, 196605, 0, 6, 196606, 0, 7, 196609, 0, 2, 196610, 0, 3, 196608, 0, 1, 131069, 65535, 1441796)
