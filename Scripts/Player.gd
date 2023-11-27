@@ -174,9 +174,9 @@ func handle_abilities(delta):
 			can_dash = false
 	
 	# Handle charge dash input
-	if charge_dash_unlocked:
-		if Input.is_action_just_pressed("charge_dash") and can_charge_dash:
-			print("charge dash")
+#	if charge_dash_unlocked:
+#		if Input.is_action_just_pressed("charge_dash") and can_charge_dash:
+#			print("charge dash")
 
 
 func handle_movement_inputs(delta):
