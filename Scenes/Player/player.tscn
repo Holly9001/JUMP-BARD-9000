@@ -76,7 +76,7 @@ radius = 0.4
 height = 0.9
 
 [node name="Player" type="CharacterBody3D" groups=["projectile_passthrough"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 0)
 axis_lock_linear_z = true
 script = ExtResource("1_wkf5m")
 jump_curve = SubResource("Curve_tboxv")
