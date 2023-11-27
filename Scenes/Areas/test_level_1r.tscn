@@ -1,13 +1,13 @@
 [gd_scene load_steps=22 format=3 uid="uid://dwofic45m8svb"]
 
-[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_lqu75"]
-[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_msp25"]
-[ext_resource type="PackedScene" uid="uid://0k3kmccchs2w" path="res://Scenes/Props/continuous_moving_platform.tscn" id="3_nldo0"]
-[ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="4_eugvk"]
-[ext_resource type="ArrayMesh" uid="uid://3ndfr26ywxkl" path="res://3D/meshes/brick_cube.res" id="4_mp2ij"]
-[ext_resource type="PackedScene" uid="uid://0tk0sd8hlusg" path="res://Scenes/Props/fragile_platform.tscn" id="5_g7f0e"]
-[ext_resource type="Texture2D" uid="uid://c82y6i56y65e5" path="res://3D/tileset_1/brick_cube_stone_1.png" id="6_3amrw"]
-[ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="9_is60o"]
+[ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_68gpm"]
+[ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_plx5t"]
+[ext_resource type="PackedScene" uid="uid://0k3kmccchs2w" path="res://Scenes/Props/continuous_moving_platform.tscn" id="3_rw6oo"]
+[ext_resource type="ArrayMesh" uid="uid://3ndfr26ywxkl" path="res://3D/meshes/brick_cube.res" id="4_7jam3"]
+[ext_resource type="PackedScene" uid="uid://0tk0sd8hlusg" path="res://Scenes/Props/fragile_platform.tscn" id="5_mwhgj"]
+[ext_resource type="Texture2D" uid="uid://c82y6i56y65e5" path="res://3D/tileset_1/brick_cube_stone_1.png" id="6_msm1a"]
+[ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="7_ula0p"]
+[ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="8_p0jy3"]
 
 [sub_resource type="Curve3D" id="Curve3D_li2bk"]
 _data = {
@@ -26,7 +26,7 @@ point_count = 2
 resource_name = "stone_1"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("6_3amrw")
+albedo_texture = ExtResource("6_msm1a")
 roughness = 0.5
 texture_filter = 2
 
@@ -70,7 +70,7 @@ shadow_mesh = SubResource("ArrayMesh_4l5xb")
 resource_name = "stone_1"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("6_3amrw")
+albedo_texture = ExtResource("6_msm1a")
 roughness = 0.5
 texture_filter = 2
 
@@ -112,20 +112,20 @@ shadow_mesh = SubResource("ArrayMesh_roqqn")
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-mesh_library = ExtResource("1_lqu75")
+mesh_library = ExtResource("1_68gpm")
 cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0)
 }
 
-[node name="Player" parent="." instance=ExtResource("2_msp25")]
+[node name="Player" parent="." instance=ExtResource("2_plx5t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.74343, 0)
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, 0)
 curve = SubResource("Curve3D_li2bk")
 
-[node name="continuous_moving_platform" parent="Path3D" instance=ExtResource("3_nldo0")]
+[node name="continuous_moving_platform" parent="Path3D" instance=ExtResource("3_rw6oo")]
 transform = Transform3D(0.999998, 0, 0, 0, 0.999995, 0, 0, 0, 1, 1, 0, 0)
 move_time = 3.0
 position_curve = SubResource("Curve_bc1kv")
@@ -137,10 +137,10 @@ beat_type = "drum_1"
 shape = SubResource("BoxShape3D_ow0f8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/continuous_moving_platform/AnimatableBody3D"]
-mesh = ExtResource("4_mp2ij")
+mesh = ExtResource("4_7jam3")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="fragile_platform" parent="." instance=ExtResource("5_g7f0e")]
+[node name="fragile_platform" parent="." instance=ExtResource("5_mwhgj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="fragile_platform"]
@@ -154,7 +154,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 7.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -7, 0)
 shape = SubResource("BoxShape3D_q85ij")
 
-[node name="TriggerArea" parent="fragile_platform" node_paths=PackedStringArray("target") instance=ExtResource("4_eugvk")]
+[node name="TriggerArea" parent="fragile_platform" node_paths=PackedStringArray("target") instance=ExtResource("7_ula0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 target = NodePath("..")
 
@@ -162,10 +162,10 @@ target = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0)
 shape = SubResource("BoxShape3D_5fp2t")
 
-[node name="fragile_platform2" parent="." instance=ExtResource("5_g7f0e")]
+[node name="fragile_platform2" parent="." instance=ExtResource("5_mwhgj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, 0)
 
-[node name="triggerarea" parent="fragile_platform2" node_paths=PackedStringArray("target") instance=ExtResource("4_eugvk")]
+[node name="triggerarea" parent="fragile_platform2" node_paths=PackedStringArray("target") instance=ExtResource("7_ula0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target = NodePath("..")
 
@@ -181,6 +181,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform2/StaticBody3D"]
 shape = SubResource("BoxShape3D_ql1rj")
 
-[node name="ProjectileShooter" parent="." instance=ExtResource("9_is60o")]
+[node name="ProjectileShooter" parent="." instance=ExtResource("8_p0jy3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 3.5, 0)
 beat_type = "backing_1"
