@@ -1,10 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=34 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
 [ext_resource type="Texture2D" uid="uid://ckd7hwdfre3af" path="res://Art/PlayerAnims/idle.png" id="2_1mcrl"]
 [ext_resource type="Texture2D" uid="uid://nvtxp7km58xe" path="res://Art/PlayerAnims/walkanimbeta-color-sheet.png" id="2_bfbly"]
+[ext_resource type="Script" path="res://Scenes/Player/UI.gd" id="2_kpad7"]
 [ext_resource type="Script" path="res://Scripts/PlayerSpringArm.gd" id="3_cvtvs"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerAnims.gd" id="3_ut24s"]
+[ext_resource type="Texture2D" uid="uid://e3s2rfhw571x" path="res://Art/UI/clear_rect_1.png" id="3_yngrx"]
 [ext_resource type="Texture2D" uid="uid://xit1b4e7erlg" path="res://Art/Particles/particle.png" id="6_oufj8"]
 [ext_resource type="Material" uid="uid://sbcjf35phorg" path="res://Art/Particles/dash_particle.tres" id="7_cwupw"]
 
@@ -12,6 +14,12 @@
 max_value = 0.04
 _data = [Vector2(0, 0.0206316), 0.0, 0.0, 0, 0, Vector2(1, 0.03), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tclo5"]
+bg_color = Color(0.54902, 0.6, 0.509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0ksb"]
+bg_color = Color(0.6, 0.0196078, 0.0196078, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_avaoq"]
 atlas = ExtResource("2_1mcrl")
@@ -166,6 +174,43 @@ axis_lock_linear_z = true
 script = ExtResource("1_wkf5m")
 jump_curve = SubResource("Curve_tboxv")
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_kpad7")
+
+[node name="DashBar" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 11.0
+offset_right = 30.0
+offset_bottom = 129.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tclo5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h0ksb")
+step = 0.0
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI"]
+modulate = Color(0.337255, 1, 0.25098, 1)
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = 31.0
+offset_bottom = 134.0
+texture = ExtResource("3_yngrx")
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 14
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [node name="PlayerAnims" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.039952, 0)
 shaded = true
@@ -178,6 +223,7 @@ script = ExtResource("3_ut24s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.143811, 0)
+visible = false
 shape = SubResource("BoxShape3D_mxlaw")
 
 [node name="SpringArm" type="SpringArm3D" parent="."]
