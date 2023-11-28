@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=26 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
+[ext_resource type="Texture2D" uid="uid://61tjesft4avp" path="res://Art/PlayerAnims/idle.png" id="2_3foje"]
 [ext_resource type="Texture2D" uid="uid://nvtxp7km58xe" path="res://Art/PlayerAnims/walkanimbeta-color-sheet.png" id="2_bfbly"]
 [ext_resource type="Script" path="res://Scripts/PlayerSpringArm.gd" id="3_cvtvs"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerAnims.gd" id="3_ut24s"]
@@ -9,6 +10,46 @@
 max_value = 0.04
 _data = [Vector2(0, 0.0206316), 0.0, 0.0, 0, 0, Vector2(1, 0.03), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrfgl"]
+atlas = ExtResource("2_3foje")
+region = Rect2(0, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ss8"]
+atlas = ExtResource("2_3foje")
+region = Rect2(193, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tagkh"]
+atlas = ExtResource("2_3foje")
+region = Rect2(386, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nru0x"]
+atlas = ExtResource("2_3foje")
+region = Rect2(579, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7i1k"]
+atlas = ExtResource("2_3foje")
+region = Rect2(772, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg7wx"]
+atlas = ExtResource("2_3foje")
+region = Rect2(965, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c255f"]
+atlas = ExtResource("2_3foje")
+region = Rect2(1158, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irrdc"]
+atlas = ExtResource("2_3foje")
+region = Rect2(1351, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oga3o"]
+atlas = ExtResource("2_3foje")
+region = Rect2(1544, 0, 193, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu3v2"]
+atlas = ExtResource("2_3foje")
+region = Rect2(1737, 0, 193, 242)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6q341"]
 atlas = ExtResource("2_bfbly")
@@ -38,7 +79,34 @@ region = Rect2(965, 0, 193, 242)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6q341")
+"texture": SubResource("AtlasTexture_yrfgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ss8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tagkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nru0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7i1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg7wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c255f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irrdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oga3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu3v2")
 }],
 "loop": true,
 "name": &"idle_1",
@@ -76,7 +144,7 @@ radius = 0.4
 height = 0.9
 
 [node name="Player" type="CharacterBody3D" groups=["projectile_passthrough"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, 0.5)
 axis_lock_linear_z = true
 script = ExtResource("1_wkf5m")
 jump_curve = SubResource("Curve_tboxv")
@@ -89,6 +157,7 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_c6ywq")
 animation = &"idle_1"
 autoplay = "idle_1"
+frame_progress = 0.672658
 script = ExtResource("3_ut24s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
