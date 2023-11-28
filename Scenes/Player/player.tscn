@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=37 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
 [ext_resource type="Texture2D" uid="uid://61tjesft4avp" path="res://Art/PlayerAnims/idle.png" id="2_1mcrl"]
@@ -149,6 +149,23 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_mxlaw"]
 size = Vector3(0.8, 1, 0.8)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_taylq"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.54902, 0.54902, 0.392157)
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ue2jq"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -29.4, 0)
+scale_max = 1.3
+
+[sub_resource type="QuadMesh" id="QuadMesh_ki5ji"]
+size = Vector2(0.03, 0.45)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_06hc2"]
 radius = 0.4
 height = 0.9
@@ -236,6 +253,14 @@ script = ExtResource("3_cvtvs")
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.08907)
 current = true
+
+[node name="RainParticle" type="GPUParticles3D" parent="SpringArm/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.063, -2.30003)
+material_override = SubResource("StandardMaterial3D_taylq")
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_ue2jq")
+draw_pass_1 = SubResource("QuadMesh_ki5ji")
 
 [node name="HeadBonkRayMidR" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312, 0)
