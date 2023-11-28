@@ -8,7 +8,9 @@ var bob_progress = -1.0
 func _on_area_3d_body_entered(body):
 	if body.get_class() == "CharacterBody3D":
 		GameState.increase_score()
-		self.queue_free()
+		$MeshInstance3D.hide()
+		$AudioStreamPlayer.play()
+		$AudioStreamPlayer.connect("finished", func(): self.queue_free())
 
 func _process(delta):
 	$MeshInstance3D.rotate_y(delta * ROTATION_SPEED)
