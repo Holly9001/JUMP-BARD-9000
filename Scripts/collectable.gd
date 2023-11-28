@@ -12,6 +12,7 @@ func _on_area_3d_body_entered(body):
 		hit = true
 		GameState.increase_score()
 		$MeshInstance3D.hide()
+		$AudioStreamPlayer.pitch_scale = randf_range(0.89,0.95)
 		$AudioStreamPlayer.play()
 		$AudioStreamPlayer.connect("finished", func(): self.queue_free())
 
