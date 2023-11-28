@@ -18,6 +18,14 @@ shape = SubResource("SphereShape3D_5l14w")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_d2l4t")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0126883, 0.99992, 0, -0.99992, 0.0126883, 0, 0.908597, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.5
+light_bake_mode = 0
+spot_range = 3.0
+spot_angle = 60.0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_a3sp4")
 
