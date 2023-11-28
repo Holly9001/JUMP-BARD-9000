@@ -122,6 +122,7 @@ func _ready():
 	generate_keys(keys, 5, animation, '_backing_1')
 	generate_keys(keys, 6, animation, '_drum_1')
 	generate_keys(keys, 3, animation, '_bass_1')
+	generate_keys(keys, 4, animation, '_bass_2')
 	#for i in range(animation.get_track_count()):
 		#print(animation.track_get_key_count(i))
 
