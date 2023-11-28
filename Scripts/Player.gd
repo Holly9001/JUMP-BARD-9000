@@ -11,6 +11,8 @@ extends CharacterBody3D
 @onready var wall_check_foot = $wall_check_foot
 @onready var camera_arm = $SpringArm
 
+@onready var dash_particle :GPUParticles3D= $DashParticle
+
 const WALK_SPEED:float = 6.0
 
 # Because of the division, this is how fast in seconds the player will take to
@@ -184,21 +186,12 @@ func handle_abilities(delta):
 			if beats_counter == 0:
 				velocity.x = movement_vector.x * CHARGE_DASH_FORCE
 				velocity.y = movement_vector.y * CHARGE_DASH_FORCE
+				dash_particle.emitting = true
+				
 				can_dash = false 
-#			elif beats_counter > 0:
-#				# Regular dash
-#				velocity.x = movement_vector.x * DASH_FORCE
-#				velocity.y = movement_vector.y * DASH_FORCE
-#				can_dash = false 
-#				print(beats_counter)
 			is_charging = false
 			beats_counter = beats_to_charge_dash
 				
-	# Handle charge dash input
-#	if charge_dash_unlocked:
-#		if Input.is_action_just_pressed("charge_dash") and can_charge_dash:
-#			print("charge dash")
-
 
 func handle_movement_inputs(delta):
 	var x_accel = X_GROUND_ACCEL if is_on_floor() else X_AIR_ACCEL
