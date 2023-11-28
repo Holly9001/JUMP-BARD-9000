@@ -11,6 +11,8 @@ extends CharacterBody3D
 @onready var wall_check_foot = $wall_check_foot
 @onready var camera_arm = $SpringArm
 
+@onready var dash_particle = $DashParticle
+
 const WALK_SPEED:float = 6.0
 
 # Because of the division, this is how fast in seconds the player will take to
@@ -171,6 +173,7 @@ func handle_abilities(delta):
 		if Input.is_action_just_pressed("dash") and can_dash:
 			velocity.x = movement_vector.x * DASH_FORCE
 			velocity.y = movement_vector.y * DASH_FORCE
+			dash_particle.emitting = true
 			can_dash = false
 	
 	# Handle charge dash input
