@@ -188,6 +188,7 @@ func handle_abilities(delta):
 				velocity.x = movement_vector.x * CHARGE_DASH_FORCE
 				velocity.y = movement_vector.y * CHARGE_DASH_FORCE
 				dash_particle.emitting = true
+				whoosh_sfx.pitch_scale = randf_range(0.87,0.92)
 				whoosh_sfx.play()
 				
 				
