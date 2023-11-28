@@ -14,7 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	player_speed = snappedf(player.velocity.x,0.001)
+	player_speed = snappedf(player.velocity.x,0.5)
 	
 	
 	if player_speed == 0:
