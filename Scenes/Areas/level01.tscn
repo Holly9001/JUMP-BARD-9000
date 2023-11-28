@@ -133,4 +133,4 @@ text = "K to dash"
 font_size = 64
 
 [node name="ProjectileShooter" parent="." instance=ExtResource("6_pyubl")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 15.5, 9.5, -0.5)
+transform = Transform3D(-0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, 15.5, 6.5, -0.5)
