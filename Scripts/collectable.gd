@@ -5,8 +5,11 @@ const BOB_MAGNITUDE = 0.5
 
 var bob_progress = -1.0
 
+var hit = false
+
 func _on_area_3d_body_entered(body):
-	if body.get_class() == "CharacterBody3D":
+	if body.get_class() == "CharacterBody3D" and hit == false:
+		hit = true
 		GameState.increase_score()
 		$MeshInstance3D.hide()
 		$AudioStreamPlayer.play()
