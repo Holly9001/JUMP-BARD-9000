@@ -35,7 +35,7 @@ const WALLJUMP_FORCE_X:float = 8.0
 # just add "normalize()" after the movement vector assignment in
 # physics_process.
 const DASH_FORCE:float = 20.0
-const CHARGE_DASH_FORCE:float = 50.0
+const CHARGE_DASH_FORCE:float = 40.0
 
 # Gravity force applied per second when the player is airborne.
 const GRAVITY:float = 30.0
@@ -185,12 +185,12 @@ func handle_abilities(delta):
 				velocity.x = movement_vector.x * CHARGE_DASH_FORCE
 				velocity.y = movement_vector.y * CHARGE_DASH_FORCE
 				can_dash = false 
-			elif beats_counter > 0:
-				# Regular dash
-				velocity.x = movement_vector.x * DASH_FORCE
-				velocity.y = movement_vector.y * DASH_FORCE
-				can_dash = false 
-				print(beats_counter)
+#			elif beats_counter > 0:
+#				# Regular dash
+#				velocity.x = movement_vector.x * DASH_FORCE
+#				velocity.y = movement_vector.y * DASH_FORCE
+#				can_dash = false 
+#				print(beats_counter)
 			is_charging = false
 			beats_counter = beats_to_charge_dash
 				
