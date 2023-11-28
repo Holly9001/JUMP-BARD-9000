@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=30 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
 [ext_resource type="Texture2D" uid="uid://ckd7hwdfre3af" path="res://Art/PlayerAnims/idle.png" id="2_1mcrl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerSpringArm.gd" id="3_cvtvs"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerAnims.gd" id="3_ut24s"]
 [ext_resource type="Texture2D" uid="uid://xit1b4e7erlg" path="res://Art/Particles/particle.png" id="6_oufj8"]
+[ext_resource type="Material" uid="uid://sbcjf35phorg" path="res://Art/Particles/dash_particle.tres" id="7_cwupw"]
 
 [sub_resource type="Curve" id="Curve_tboxv"]
 max_value = 0.04
@@ -156,21 +157,6 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id="Gradient_cc08u"]
-offsets = PackedFloat32Array(0, 0.544715, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jvrgr"]
-gradient = SubResource("Gradient_cc08u")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nsapm"]
-direction = Vector3(0, 0, 0)
-spread = 50.0
-initial_velocity_min = 2.0
-initial_velocity_max = 3.0
-scale_min = 0.25
-color_ramp = SubResource("GradientTexture1D_jvrgr")
-
 [sub_resource type="QuadMesh" id="QuadMesh_ymjsd"]
 size = Vector2(0.25, 0.25)
 
@@ -260,7 +246,7 @@ amount = 32
 one_shot = true
 explosiveness = 0.9
 visibility_aabb = AABB(-4, -3.77197, -4, 8, 8, 8)
-process_material = SubResource("ParticleProcessMaterial_nsapm")
+process_material = ExtResource("7_cwupw")
 draw_pass_1 = SubResource("QuadMesh_ymjsd")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

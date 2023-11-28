@@ -1,0 +1,16 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://sbcjf35phorg"]
+
+[sub_resource type="Gradient" id="Gradient_cc08u"]
+offsets = PackedFloat32Array(0, 0.544715, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jvrgr"]
+gradient = SubResource("Gradient_cc08u")
+
+[resource]
+direction = Vector3(0, 0, 0)
+spread = 50.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_min = 0.25
+color_ramp = SubResource("GradientTexture1D_jvrgr")
