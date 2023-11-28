@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://be1ujdsyti1og"]
+
+[ext_resource type="Texture2D" uid="uid://qc7wtaxn7l20" path="res://Art/UI/endscreen.png" id="1_p3mjl"]
+[ext_resource type="AudioStream" uid="uid://0eq8e4guook0" path="res://Art/UI/Chief Keef - Love Sosa [Finally Rich (Deluxe Edition)] [HQ].wav" id="2_a4g5n"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 484.0
+offset_bottom = 270.0
+texture = ExtResource("1_p3mjl")
+expand_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_a4g5n")
+autoplay = true

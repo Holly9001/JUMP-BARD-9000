@@ -16,9 +16,11 @@ func _ready():
 func _process(delta):
 	player_speed = snappedf(player.velocity.x,0.001)
 	
-	speed_scale = abs(player_speed)/3
 	
-	if player_speed == 0: animation = 'idle_1'
+	if player_speed == 0:
+		animation = 'idle_1'
+		speed_scale = 1
 	else:
 		scale.x = orig_scale.x * sign(player_speed)
+		speed_scale = abs(player_speed)/3
 		animation = 'run_1'
