@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://86k6407oqgxj"]
 
-[ext_resource type="PackedScene" uid="uid://dpyr6xwullju1" path="res://Scenes/Areas/level01.tscn" id="5_ym3cv"]
+[ext_resource type="PackedScene" uid="uid://15ih0frr7clo" path="res://Scenes/Areas/level01.tscn" id="5_ym3cv"]
 [ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="6_225av"]
 [ext_resource type="PackedScene" uid="uid://wqbss1j8p52s" path="res://UI/debug_ui.tscn" id="7_4y0cq"]
 [ext_resource type="Script" path="res://Scripts/testscoredisplay.gd" id="10_dpucs"]
