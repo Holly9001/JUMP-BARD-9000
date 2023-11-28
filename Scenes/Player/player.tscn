@@ -252,7 +252,6 @@ script = ExtResource("3_cvtvs")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.08907)
-current = true
 
 [node name="RainParticle" type="GPUParticles3D" parent="SpringArm/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.063, -2.30003)
