@@ -35,6 +35,7 @@ const WALLJUMP_FORCE_X:float = 8.0
 # just add "normalize()" after the movement vector assignment in
 # physics_process.
 const DASH_FORCE:float = 20.0
+const CHARGE_DASH_FORCE:float = 50.0
 
 # Gravity force applied per second when the player is airborne.
 const GRAVITY:float = 30.0
@@ -100,6 +101,11 @@ var charge_dash_unlocked:bool = true
 
 var jump_buffer_time:float = 0.0
 
+var beats_to_charge_dash = 5 # Number of beats to wait for charge dash to trigger on key release
+
+var beats_counter = beats_to_charge_dash # Number of beats remaining in charge dash timer
+
+var is_charging = false 
 
 @export var jump_curve:Curve
 
@@ -111,7 +117,10 @@ func _ready():
 	MusicStates.on_beat.connect(handle_on_beat)
 
 func handle_on_beat(type):
-	pass
+	# Decreases counter for charge dash on each beat
+	if is_charging && type == DASH_BEAT_TYPE:
+		beats_counter -= 1
+		print(beats_counter)
 
 func handle_post_beat(type):
 	print(type)
@@ -168,11 +177,23 @@ func _physics_process(delta):
 
 func handle_abilities(delta):
 	if dash_unlocked:
-		if Input.is_action_just_pressed("dash") and can_dash:
-			velocity.x = movement_vector.x * DASH_FORCE
-			velocity.y = movement_vector.y * DASH_FORCE
-			can_dash = false
-	
+		if Input.is_action_just_pressed("dash"):
+			is_charging = true
+			
+		if Input.is_action_just_released("dash"):
+			if beats_counter == 0:
+				velocity.x = movement_vector.x * CHARGE_DASH_FORCE
+				velocity.y = movement_vector.y * CHARGE_DASH_FORCE
+				can_dash = false 
+			elif beats_counter > 0:
+				# Regular dash
+				velocity.x = movement_vector.x * DASH_FORCE
+				velocity.y = movement_vector.y * DASH_FORCE
+				can_dash = false 
+				print(beats_counter)
+			is_charging = false
+			beats_counter = beats_to_charge_dash
+				
 	# Handle charge dash input
 #	if charge_dash_unlocked:
 #		if Input.is_action_just_pressed("charge_dash") and can_charge_dash:
