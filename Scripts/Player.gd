@@ -37,7 +37,7 @@ const WALLJUMP_FORCE_X:float = 8.0
 # just add "normalize()" after the movement vector assignment in
 # physics_process.
 const DASH_FORCE:float = 20.0
-const CHARGE_DASH_FORCE:float = 40.0
+const CHARGE_DASH_FORCE:float = 30.0
 
 # Gravity force applied per second when the player is airborne.
 const GRAVITY:float = 30.0
