@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=38 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
 [ext_resource type="Texture2D" uid="uid://ckd7hwdfre3af" path="res://Art/PlayerAnims/idle.png" id="2_1mcrl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://e3s2rfhw571x" path="res://Art/UI/clear_rect_1.png" id="3_yngrx"]
 [ext_resource type="Texture2D" uid="uid://xit1b4e7erlg" path="res://Art/Particles/particle.png" id="6_oufj8"]
 [ext_resource type="Material" uid="uid://sbcjf35phorg" path="res://Art/Particles/dash_particle.tres" id="7_cwupw"]
+[ext_resource type="AudioStream" uid="uid://dsi4bumclty6q" path="res://Audio/SFX/60013__qubodup__whoosh.wav" id="10_y8788"]
 
 [sub_resource type="Curve" id="Curve_tboxv"]
 max_value = 0.04
@@ -320,5 +321,8 @@ explosiveness = 0.9
 visibility_aabb = AABB(-4, -3.77197, -4, 8, 8, 8)
 process_material = ExtResource("7_cwupw")
 draw_pass_1 = SubResource("QuadMesh_ymjsd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_y8788")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

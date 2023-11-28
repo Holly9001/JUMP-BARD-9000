@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var wall_check_arm = $wall_check_arm
 @onready var wall_check_foot = $wall_check_foot
 @onready var camera_arm = $SpringArm
+@onready var whoosh_sfx = $AudioStreamPlayer
 
 @onready var dash_particle :GPUParticles3D= $DashParticle
 
@@ -187,6 +188,8 @@ func handle_abilities(delta):
 				velocity.x = movement_vector.x * CHARGE_DASH_FORCE
 				velocity.y = movement_vector.y * CHARGE_DASH_FORCE
 				dash_particle.emitting = true
+				whoosh_sfx.play()
+				
 				
 				can_dash = false 
 			is_charging = false
