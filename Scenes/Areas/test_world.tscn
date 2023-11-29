@@ -1,6 +1,5 @@
 [gd_scene load_steps=17 format=3 uid="uid://86k6407oqgxj"]
 
-[ext_resource type="PackedScene" uid="uid://do7cnubktnwj" path="res://Scenes/Areas/test_level_1r.tscn" id="5_rx1oy"]
 [ext_resource type="PackedScene" uid="uid://dpyr6xwullju1" path="res://Scenes/Areas/level01.tscn" id="5_ym3cv"]
 [ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="6_225av"]
 [ext_resource type="PackedScene" uid="uid://dyu7cbmc6alvi" path="res://Scenes/Areas/level02.tscn" id="6_g1qxc"]
@@ -8,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/start_menu.gd" id="7_bjha5"]
 [ext_resource type="PackedScene" uid="uid://dijbug3ilp6j8" path="res://Scenes/Areas/level03.tscn" id="7_sdpfq"]
 [ext_resource type="Texture2D" uid="uid://dxfnkwabfwnf3" path="res://UI/JUMPBARD9000.PNG" id="8_bhwcq"]
+[ext_resource type="PackedScene" uid="uid://do7cnubktnwj" path="res://Scenes/Areas/level04.tscn" id="8_evlmi"]
 [ext_resource type="PackedScene" uid="uid://dv1wn4tdsqceo" path="res://Scenes/Props/end_screen.tscn" id="8_ts732"]
 [ext_resource type="Script" path="res://Scripts/testscoredisplay.gd" id="10_dpucs"]
 [ext_resource type="FontFile" uid="uid://btnkgnnf82ja8" path="res://UI/Pixel_1.ttf" id="11_cenoi"]
@@ -42,7 +42,7 @@ script = ExtResource("10_dpucs")
 
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("music_controller")]
 script = ExtResource("15_i42sh")
-levels = Array[PackedScene]([ExtResource("5_rx1oy"), ExtResource("5_ym3cv"), ExtResource("6_g1qxc"), ExtResource("7_sdpfq"), ExtResource("8_ts732")])
+levels = Array[PackedScene]([ExtResource("5_ym3cv"), ExtResource("6_g1qxc"), ExtResource("7_sdpfq"), ExtResource("8_evlmi"), ExtResource("8_ts732")])
 music_controller = NodePath("../MusicController")
 
 [node name="StartMenu" type="Control" parent="."]

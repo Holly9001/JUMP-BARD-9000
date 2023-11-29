@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
-[ext_resource type="Texture2D" uid="uid://ckd7hwdfre3af" path="res://Art/PlayerAnims/idle.png" id="2_1mcrl"]
+[ext_resource type="Texture2D" uid="uid://61tjesft4avp" path="res://Art/PlayerAnims/idle.png" id="2_1mcrl"]
 [ext_resource type="Texture2D" uid="uid://nvtxp7km58xe" path="res://Art/PlayerAnims/walkanimbeta-color-sheet.png" id="2_bfbly"]
 [ext_resource type="Script" path="res://Scenes/Player/UI.gd" id="2_kpad7"]
 [ext_resource type="Script" path="res://Scripts/PlayerSpringArm.gd" id="3_cvtvs"]
