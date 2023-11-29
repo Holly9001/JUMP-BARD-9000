@@ -104,7 +104,7 @@ var charge_dash_unlocked:bool = true
 
 var jump_buffer_time:float = 0.0
 
-var beats_to_charge_dash = 5 # Number of beats to wait for charge dash to trigger on key release
+var beats_to_charge_dash = 3 # Number of beats to wait for charge dash to trigger on key release
 
 var beats_counter = beats_to_charge_dash # Number of beats remaining in charge dash timer
 

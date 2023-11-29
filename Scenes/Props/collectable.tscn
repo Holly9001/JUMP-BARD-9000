@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1pqogevq4tif"]
 
 [ext_resource type="Script" path="res://Scripts/collectable.gd" id="1_5gxv1"]
-[ext_resource type="ArrayMesh" uid="uid://bxp1u12thxwga" path="res://3D/item_meshes/potion_Sphere.res" id="2_d2l4t"]
+[ext_resource type="ArrayMesh" path="res://3D/item_meshes/potion_Sphere.res" id="2_d2l4t"]
 [ext_resource type="AudioStream" uid="uid://c4f18g8fe84iu" path="res://Audio/SFX/pick_up_potion_alt.wav" id="3_a3sp4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5l14w"]
@@ -28,5 +28,6 @@ spot_angle = 60.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_a3sp4")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

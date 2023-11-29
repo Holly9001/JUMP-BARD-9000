@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce2ju8ox128mg"]
+
+[ext_resource type="Script" path="res://Scripts/death_area.gd" id="1_off4w"]
+[ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="2_wa8yj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnasd"]
+size = Vector3(168, 1, 1)
+
+[node name="death_area" type="Node3D"]
+script = ExtResource("1_off4w")
+
+[node name="TriggerArea" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_wa8yj")]
+target = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
+shape = SubResource("BoxShape3D_jnasd")

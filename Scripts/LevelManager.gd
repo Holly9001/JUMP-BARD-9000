@@ -20,7 +20,7 @@ func reload_level():
 
 func _ready():
 	music_controller = music_controller.get_child(0)
-	load_level(0)
+	#load_level(0)
 	GameState.reset_level.connect(reload_level)
 	GameState.next_level.connect(load_next)
 

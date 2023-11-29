@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn7feqfage5b5"]
+[gd_scene load_steps=15 format=3 uid="uid://dqas7h8bgulfh"]
 
 [ext_resource type="Texture2D" uid="uid://xit1b4e7erlg" path="res://Art/Particles/particle.png" id="1_0g2br"]
 [ext_resource type="Texture2D" uid="uid://dlwal6qr3lapc" path="res://3D/item_meshes/camp_fire_wood_4.png" id="2_ksiua"]
+[ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="3_2owiy"]
+[ext_resource type="PackedScene" uid="uid://de4pcos7v2egj" path="res://Scenes/Props/progress_trigger.tscn" id="4_dleom"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10bn4"]
 transparency = 1
@@ -84,7 +86,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_opp57")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_4lnv5"]
+radius = 1.0
+
 [node name="Exit" type="Node3D"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
 [node name="Fire" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0878348, 0)
@@ -110,3 +116,12 @@ light_size = 0.3
 [node name="fire" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_kprt6")
 skeleton = NodePath("")
+
+[node name="TriggerArea" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_2owiy")]
+target = NodePath("progress_trigger")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_4lnv5")
+
+[node name="progress_trigger" parent="TriggerArea" instance=ExtResource("4_dleom")]
