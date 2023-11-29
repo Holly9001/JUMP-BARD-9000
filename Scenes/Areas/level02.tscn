@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyu7cbmc6alvi"]
+[gd_scene load_steps=14 format=3 uid="uid://dyu7cbmc6alvi"]
 
 [ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="1_3mi6q"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_x4on5"]
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="3_855ma"]
 [ext_resource type="PackedScene" uid="uid://ccdov4njy6yfh" path="res://Scenes/Props/spikes.tscn" id="4_r7txn"]
+[ext_resource type="PackedScene" uid="uid://0k3kmccchs2w" path="res://Scenes/Props/continuous_moving_platform.tscn" id="5_u5kyt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
 resource_name = "sky"
@@ -58,6 +59,15 @@ tonemap_mode = 2
 fog_enabled = true
 fog_density = 0.0005
 
+[sub_resource type="Curve3D" id="Curve3D_4ace0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, -3, 0, 0, 0, 4, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_2b57y"]
+
 [node name="level02" type="Node3D"]
 
 [node name="sky_box2" type="MeshInstance3D" parent="."]
@@ -85,3 +95,13 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.
 
 [node name="Spikes" parent="." instance=ExtResource("4_r7txn")]
 transform = Transform3D(0.499739, 0.0161589, 0, -0.0161589, 0.499739, 0, 0, 0, 0.5, 1.44278, -0.300418, -0.351283)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.5, 0, 0)
+curve = SubResource("Curve3D_4ace0")
+
+[node name="continuous_moving_platform" parent="Path3D" instance=ExtResource("5_u5kyt")]
+position_curve = SubResource("Curve_2b57y")
+beat_type = "metronome"
+
+[node name="Spikes" parent="Path3D/continuous_moving_platform" instance=ExtResource("4_r7txn")]
