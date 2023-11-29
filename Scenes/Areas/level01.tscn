@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpyr6xwullju1"]
+[gd_scene load_steps=19 format=3 uid="uid://dpyr6xwullju1"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_p3f2h"]
 [ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="3_slm3v"]
@@ -7,7 +7,8 @@
 [ext_resource type="ArrayMesh" uid="uid://3ndfr26ywxkl" path="res://3D/meshes/brick_cube.res" id="5_68e8g"]
 [ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="6_pyubl"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_13h3r"]
-[ext_resource type="PackedScene" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
+[ext_resource type="PackedScene" uid="uid://dqas7h8bgulfh" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
+[ext_resource type="PackedScene" uid="uid://ce2ju8ox128mg" path="res://Scenes/Props/death_area.tscn" id="10_qgijg"]
 [ext_resource type="PackedScene" uid="uid://ba0b0mxu56ojn" path="res://3D/decor/tree_1.glb" id="10_yopfl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
@@ -172,3 +173,6 @@ transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -2.5, 0, -
 
 [node name="Exit" parent="." instance=ExtResource("9_wefug")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3562, 5.12666, -1)
+
+[node name="death_area" parent="." instance=ExtResource("10_qgijg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -0.5)
