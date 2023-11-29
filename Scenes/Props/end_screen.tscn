@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv1wn4tdsqceo"]
+[gd_scene load_steps=3 format=3 uid="uid://dv1wn4tdsqceo"]
 
 [ext_resource type="Texture2D" uid="uid://qc7wtaxn7l20" path="res://Art/UI/endscreen.png" id="1_p3mjl"]
 [ext_resource type="AudioStream" uid="uid://0eq8e4guook0" path="res://Art/UI/Chief Keef - Love Sosa [Finally Rich (Deluxe Edition)] [HQ].wav" id="2_a4g5n"]
-[ext_resource type="FontFile" uid="uid://btnkgnnf82ja8" path="res://UI/Pixel_1.ttf" id="3_xe7fk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qmi6"]
-bg_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,24 +22,3 @@ expand_mode = 1
 stream = ExtResource("2_a4g5n")
 pitch_scale = 2.0
 autoplay = true
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 268.0
-offset_top = 116.0
-offset_right = 346.0
-offset_bottom = 141.0
-theme_override_fonts/font = ExtResource("3_xe7fk")
-theme_override_styles/normal = SubResource("StyleBoxFlat_1qmi6")
-text = "freaking"
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 352.0
-offset_top = 118.0
-offset_right = 430.0
-offset_bottom = 139.0
-theme_override_fonts/font = ExtResource("3_xe7fk")
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxFlat_1qmi6")
-text = "cigarette"
