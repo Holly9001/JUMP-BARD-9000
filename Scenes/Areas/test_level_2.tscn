@@ -63,3 +63,8 @@ target = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fragile_platform/TriggerArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_yyaww")
+
+[node name="GridMap2" type="GridMap" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh_library = ExtResource("1_mqmvc")
+cell_size = Vector3(1, 1, 1)
