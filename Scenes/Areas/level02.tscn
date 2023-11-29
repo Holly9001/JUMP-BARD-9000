@@ -138,4 +138,4 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 8.5, 1.5, -0.5)
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 7, 8, -0.5)
 
 [node name="death_area" parent="." instance=ExtResource("9_t3oi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4.5, -0.5)
