@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://do7cnubktnwj"]
+[gd_scene load_steps=11 format=3 uid="uid://do7cnubktnwj"]
 
+[ext_resource type="Script" path="res://Scenes/Areas/test_level_1r.gd" id="1_58o08"]
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="1_bujw2"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_plx5t"]
 [ext_resource type="PackedScene" uid="uid://ccdov4njy6yfh" path="res://Scenes/Props/spikes.tscn" id="3_1msdn"]
@@ -30,7 +31,9 @@ _data = {
 }
 point_count = 2
 
-[node name="level_1r" type="Node3D"]
+[node name="level_1r" type="Node3D" node_paths=PackedStringArray("moving_spikes")]
+script = ExtResource("1_58o08")
+moving_spikes = [NodePath("Path3D/checkpoint_moving_platform"), NodePath("Path3D2/checkpoint_moving_platform"), NodePath("Path3D5/checkpoint_moving_platform"), NodePath("Path3D4/checkpoint_moving_platform"), NodePath("Path3D3/checkpoint_moving_platform")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
@@ -55,161 +58,166 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 4, 0)
 
 [node name="Spikes" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 31.7014, -0.00682533, -0.0254426)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 31.7014, -0.00682533, 0.474557)
 
 [node name="Spikes2" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0718, -1.89831, -0.0247655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0718, -1.89831, 0.475235)
 
 [node name="Spikes3" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 31.746, -2.32626, -0.0247655)
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 31.746, -2.32626, 0.475235)
 
 [node name="Spikes4" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 59.5377, -8.53578, -0.0247655)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 59.5377, -8.53578, 0.475235)
 
 [node name="Spikes5" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 73.1023, -8.85743, -0.0247655)
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 73.1023, -8.85743, 0.475235)
 
 [node name="Spikes11" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 69.5689, -1.34865, -0.0247655)
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 69.5689, -1.34865, 0.475235)
 
 [node name="Spikes12" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 65.8367, -1.12829, -0.0247655)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 65.8367, -1.12829, 0.475235)
 
 [node name="Spikes13" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 65.0682, -1.81297, -0.0247655)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 65.0682, -1.81297, 0.475235)
 
 [node name="Spikes14" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 67.1883, -0.965446, -0.0247655)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 67.1883, -0.965446, 0.475235)
 
 [node name="Spikes15" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 68.5831, -1.09422, -0.0247655)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 68.5831, -1.09422, 0.475235)
 
 [node name="Spikes16" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 67.9817, -1.46219, -0.0247655)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 67.9817, -1.46219, 0.475235)
 
 [node name="Spikes10" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 69.4155, -8.97999, -0.0247655)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 69.4155, -8.97999, 0.475235)
 
 [node name="Spikes9" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 70.3885, -9.84354, 0.0209699)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 70.3885, -9.84354, 0.52097)
 
 [node name="Spikes8" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 67.1195, -8.97942, -0.0247655)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 67.1195, -8.97942, 0.475235)
 
 [node name="Spikes19" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 87.3279, -6.16647, -0.0247655)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 87.3279, -6.16647, 0.475235)
 
 [node name="Spikes24" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 83.4117, -10.7616, -0.0247655)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 83.4117, -10.7616, 0.475235)
 
 [node name="Spikes25" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 91.475, -11.2836, -0.0247655)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 91.475, -11.2836, 0.475235)
 
 [node name="Spikes26" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 78.9034, -9.01134, -0.0247655)
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 78.9034, -9.01134, 0.475235)
 
 [node name="Spikes27" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 81.7801, -10.0955, -0.0247655)
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 81.7801, -10.0955, 0.475235)
 
 [node name="Spikes28" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 87.527, -11.2125, -0.0247655)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 87.527, -11.2125, 0.475235)
 
 [node name="Spikes29" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 88.7858, -10.8841, -0.0247655)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 88.7858, -10.8841, 0.475235)
 
 [node name="Spikes30" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 102.614, -3.17683, -0.0247655)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 102.614, -3.17683, 0.475235)
 
 [node name="Spikes31" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 102.315, -1.6058, -0.0247655)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 102.315, -1.6058, 0.475235)
 
 [node name="Spikes32" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 102.315, -8.07041, -0.0247655)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 102.315, -8.07041, 0.475235)
 
 [node name="Spikes33" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 102.74, -5.52757, -0.0247655)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 102.74, -5.52757, 0.475235)
 
 [node name="Spikes34" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 85.6252, -11.1107, -0.0247655)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 85.6252, -11.1107, 0.475235)
 
 [node name="Spikes35" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 96.0245, -10.468, -0.0247655)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 96.0245, -10.468, 0.475235)
 
 [node name="Spikes36" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.884, -9.83054, -0.0247655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.884, -9.83054, 0.475235)
 
 [node name="Spikes37" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1935, -9.45608, -0.0247655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1935, -9.45608, 0.475235)
 
 [node name="Spikes23" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 87.3279, -6.16647, -0.791287)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 87.3279, -6.16647, -0.291287)
 
 [node name="Spikes22" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 87.3279, -6.16647, 0.737236)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 87.3279, -6.16647, 1.23724)
 
 [node name="Spikes20" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.8784, 0.477925, 0, -0.477925, 0.8784, 0, 0, 0, 1, 82.7657, -0.627219, -0.0247655)
+transform = Transform3D(0.8784, 0.477925, 0, -0.477925, 0.8784, 0, 0, 0, 1, 82.7657, -0.627219, 0.475235)
 
 [node name="Spikes21" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.878817, -0.477159, 0, 0.477159, 0.878817, 0, 0, 0, 1, 92.2442, -1.38049, -0.0247655)
+transform = Transform3D(0.878817, -0.477159, 0, 0.477159, 0.878817, 0, 0, 0, 1, 92.2442, -1.38049, 0.475235)
 
 [node name="Spikes7" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 64.3337, -9.36791, -0.0247655)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 64.3337, -9.36791, 0.475235)
 
 [node name="Spikes6" parent="." instance=ExtResource("3_1msdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.9156, -9.57596, -0.0247655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.9156, -9.57596, 0.475235)
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 31.0655, 7.72246, -0.0167997)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 31.0655, 7.72246, 0.4832)
 curve = SubResource("Curve3D_8xbbv")
 
 [node name="checkpoint_moving_platform" parent="Path3D" instance=ExtResource("4_lb8r0")]
 checkpoints = Array[float]([0.0, 1.0])
 checkpoint_move_speeds = Array[float]([1.8, 1.8])
+one_time = true
 enabled = false
 
 [node name="Spikes" parent="Path3D/checkpoint_moving_platform" instance=ExtResource("3_1msdn")]
 
 [node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 80.1649, -0.380604, -0.0167997)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 80.1649, -0.380604, 0.4832)
 curve = SubResource("Curve3D_8xbbv")
 
 [node name="checkpoint_moving_platform" parent="Path3D2" instance=ExtResource("4_lb8r0")]
 checkpoints = Array[float]([0.0, 1.0])
 checkpoint_move_speeds = Array[float]([1.8, 1.8])
+one_time = true
 enabled = false
 
 [node name="Spikes" parent="Path3D2/checkpoint_moving_platform" instance=ExtResource("3_1msdn")]
 
 [node name="Path3D5" type="Path3D" parent="."]
-transform = Transform3D(-0.975856, -0.218416, 0, 0.218416, -0.975856, 0, 0, 0, 1, 95.1584, 0.341617, -0.0167997)
+transform = Transform3D(-0.975856, -0.218416, 0, 0.218416, -0.975856, 0, 0, 0, 1, 95.1584, 0.341617, 0.4832)
 curve = SubResource("Curve3D_8xbbv")
 
 [node name="checkpoint_moving_platform" parent="Path3D5" instance=ExtResource("4_lb8r0")]
 checkpoints = Array[float]([0.0, 1.0])
 checkpoint_move_speeds = Array[float]([1.8, 1.8])
+one_time = true
 enabled = false
 
 [node name="Spikes" parent="Path3D5/checkpoint_moving_platform" instance=ExtResource("3_1msdn")]
 
 [node name="Path3D4" type="Path3D" parent="."]
-transform = Transform3D(-0.858056, 0.513556, 0, -0.513556, -0.858056, 0, 0, 0, 1, 82.97, 5.40881, -0.0167997)
+transform = Transform3D(-0.858056, 0.513556, 0, -0.513556, -0.858056, 0, 0, 0, 1, 82.97, 5.40881, 0.4832)
 curve = SubResource("Curve3D_8xbbv")
 
 [node name="checkpoint_moving_platform" parent="Path3D4" instance=ExtResource("4_lb8r0")]
 checkpoints = Array[float]([0.0, 1.0])
 checkpoint_move_speeds = Array[float]([1.8, 1.8])
+one_time = true
 enabled = false
 
 [node name="Spikes" parent="Path3D4/checkpoint_moving_platform" instance=ExtResource("3_1msdn")]
 
 [node name="Path3D3" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.1649, -9.06115, -0.0167997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.1649, -9.06115, 0.4832)
 curve = SubResource("Curve3D_8xbbv")
 
 [node name="checkpoint_moving_platform" parent="Path3D3" instance=ExtResource("4_lb8r0")]
 checkpoints = Array[float]([0.0, 1.0])
 checkpoint_move_speeds = Array[float]([1.8, 1.8])
+one_time = true
 enabled = false
 
 [node name="Spikes" parent="Path3D3/checkpoint_moving_platform" instance=ExtResource("3_1msdn")]
