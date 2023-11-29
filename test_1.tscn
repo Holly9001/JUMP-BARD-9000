@@ -51,12 +51,12 @@ shadow_mesh = SubResource("ArrayMesh_8i6lc")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqf8b"]
 
-[sub_resource type="Sky" id="Sky_m2p3e"]
+[sub_resource type="Sky" id="Sky_8tith"]
 sky_material = SubResource("ProceduralSkyMaterial_lqf8b")
 
 [sub_resource type="Environment" id="Environment_65jaa"]
 background_mode = 2
-sky = SubResource("Sky_m2p3e")
+sky = SubResource("Sky_8tith")
 ambient_light_color = Color(0.521569, 0.521569, 0.521569, 1)
 tonemap_mode = 2
 fog_enabled = true

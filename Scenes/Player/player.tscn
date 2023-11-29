@@ -1,7 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://cosaav22w682t"]
+[gd_scene load_steps=39 format=3 uid="uid://cosaav22w682t"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wkf5m"]
-[ext_resource type="Texture2D" uid="uid://61tjesft4avp" path="res://Art/PlayerAnims/idle.png" id="2_1mcrl"]
+[ext_resource type="Texture2D" uid="uid://ckd7hwdfre3af" path="res://Art/PlayerAnims/idle.png" id="2_1mcrl"]
 [ext_resource type="Texture2D" uid="uid://nvtxp7km58xe" path="res://Art/PlayerAnims/walkanimbeta-color-sheet.png" id="2_bfbly"]
 [ext_resource type="Script" path="res://Scenes/Player/UI.gd" id="2_kpad7"]
 [ext_resource type="Script" path="res://Scripts/PlayerSpringArm.gd" id="3_cvtvs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://xit1b4e7erlg" path="res://Art/Particles/particle.png" id="6_oufj8"]
 [ext_resource type="Material" uid="uid://sbcjf35phorg" path="res://Art/Particles/dash_particle.tres" id="7_cwupw"]
 [ext_resource type="AudioStream" uid="uid://dsi4bumclty6q" path="res://Audio/SFX/60013__qubodup__whoosh.wav" id="10_y8788"]
+[ext_resource type="Script" path="res://Scenes/Player/ColorRect.gd" id="11_efds6"]
 
 [sub_resource type="Curve" id="Curve_tboxv"]
 max_value = 0.04
@@ -326,5 +327,15 @@ draw_pass_1 = SubResource("QuadMesh_ymjsd")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_y8788")
 volume_db = -1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("11_efds6")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
