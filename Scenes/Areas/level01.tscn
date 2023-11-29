@@ -7,7 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://3ndfr26ywxkl" path="res://3D/meshes/brick_cube.res" id="5_68e8g"]
 [ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="6_pyubl"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_13h3r"]
-[ext_resource type="PackedScene" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
+[ext_resource type="PackedScene" uid="uid://dqas7h8bgulfh" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
 [ext_resource type="PackedScene" uid="uid://ce2ju8ox128mg" path="res://Scenes/Props/death_area.tscn" id="10_qgijg"]
 [ext_resource type="PackedScene" uid="uid://ba0b0mxu56ojn" path="res://3D/decor/tree_1.glb" id="10_yopfl"]
 
@@ -137,7 +137,7 @@ text = "K to dash"
 font_size = 64
 
 [node name="ProjectileShooter2" parent="." instance=ExtResource("6_pyubl")]
-transform = Transform3D(0.0292652, -0.999572, 0, 0.999572, 0.0292652, 0, 0, 0, 1, 29.4376, 2.47457, -1)
+transform = Transform3D(0.0292652, -0.999572, 0, 0.999572, 0.0292652, 0, 0, 0, 1, 29.4376, 2.97457, -0.5)
 beat_type = "bass_2"
 
 [node name="ProjectileShooter" parent="." instance=ExtResource("6_pyubl")]
