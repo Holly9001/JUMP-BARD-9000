@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dijbug3ilp6j8"]
+[gd_scene load_steps=15 format=3 uid="uid://dijbug3ilp6j8"]
 
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="1_mqmvc"]
 [ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="2_bqhj1"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_weanv"]
 [ext_resource type="PackedScene" uid="uid://ccdov4njy6yfh" path="res://Scenes/Props/spikes.tscn" id="5_fq33d"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_pgrhr"]
+[ext_resource type="PackedScene" uid="uid://ce2ju8ox128mg" path="res://Scenes/Props/death_area.tscn" id="8_lfiiu"]
 [ext_resource type="PackedScene" uid="uid://dqas7h8bgulfh" path="res://Scenes/Props/exit.tscn" id="8_r7s38"]
 [ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="9_i31h3"]
 
@@ -117,6 +118,9 @@ transform = Transform3D(0.58859, 0.320097, 0, -0.320097, 0.58859, 0, 0, 0, 0.67,
 [node name="Spikes13" parent="." instance=ExtResource("5_fq33d")]
 transform = Transform3D(0.630045, -0.227911, 0, 0.227911, 0.630045, 0, 0, 0, 0.67, 39.9657, 2.915, 0.0538554)
 
+[node name="Spikes14" parent="." instance=ExtResource("5_fq33d")]
+transform = Transform3D(0.549589, -0.383213, 0, 0.383213, 0.549589, 0, 0, 0, 0.67, 28.9657, 9.415, 0.0538554)
+
 [node name="Spikes12" parent="." instance=ExtResource("5_fq33d")]
 transform = Transform3D(0.199218, -0.565961, 0, 0.565961, 0.199218, 0, 0, 0, 0.6, 44.271, 13.6333, 0.0538554)
 
@@ -190,3 +194,6 @@ environment = SubResource("Environment_i87pr")
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 32, 0, 0)
 mesh = SubResource("ArrayMesh_0glfc")
 skeleton = NodePath("")
+
+[node name="death_area" parent="." instance=ExtResource("8_lfiiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.5, 0)
