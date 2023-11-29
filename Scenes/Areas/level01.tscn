@@ -1,13 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://dpyr6xwullju1"]
+[gd_scene load_steps=20 format=3 uid="uid://dpyr6xwullju1"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_p3f2h"]
 [ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="3_slm3v"]
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="4_104tx"]
 [ext_resource type="PackedScene" uid="uid://bob661mynbg6t" path="res://Scenes/Props/checkpoint_moving_platform.tscn" id="4_m8d85"]
 [ext_resource type="ArrayMesh" uid="uid://3ndfr26ywxkl" path="res://3D/meshes/brick_cube.res" id="5_68e8g"]
+[ext_resource type="FontFile" uid="uid://btnkgnnf82ja8" path="res://UI/Pixel_1.ttf" id="6_k6lws"]
 [ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="6_pyubl"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_13h3r"]
-[ext_resource type="PackedScene" uid="uid://dqas7h8bgulfh" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
 [ext_resource type="PackedScene" uid="uid://ce2ju8ox128mg" path="res://Scenes/Props/death_area.tscn" id="10_qgijg"]
 [ext_resource type="PackedScene" uid="uid://ba0b0mxu56ojn" path="res://3D/decor/tree_1.glb" id="10_yopfl"]
 
@@ -129,15 +130,24 @@ shape = SubResource("BoxShape3D_vl6q5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, -0.5)
 text = "WASD to move
 SPACE to jump"
+font = ExtResource("6_k6lws")
+font_size = 64
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.229, 5.52944, -1)
+text = "L to climb
+"
+font = ExtResource("6_k6lws")
 font_size = 64
 
 [node name="Label3D2" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7, -0.5)
 text = "K to dash"
+font = ExtResource("6_k6lws")
 font_size = 64
 
 [node name="ProjectileShooter2" parent="." instance=ExtResource("6_pyubl")]
-transform = Transform3D(0.0292652, -0.999572, 0, 0.999572, 0.0292652, 0, 0, 0, 1, 29.4376, 2.97457, -0.5)
+transform = Transform3D(0.0292652, -0.999572, 0, 0.999572, 0.0292652, 0, 0, 0, 1, 29.4376, 2.47457, -0.508278)
 beat_type = "bass_2"
 
 [node name="ProjectileShooter" parent="." instance=ExtResource("6_pyubl")]
