@@ -280,6 +280,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.312, 0)
 target_position = Vector3(0, 0.1, 0)
 
 [node name="DebugUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
