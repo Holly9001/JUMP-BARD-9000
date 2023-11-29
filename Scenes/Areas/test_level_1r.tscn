@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://do7cnubktnwj"]
+[gd_scene load_steps=10 format=3 uid="uid://do7cnubktnwj"]
 
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="1_bujw2"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_plx5t"]
@@ -22,6 +22,13 @@ point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_38bnc"]
 size = Vector3(2, 1, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_gjw1v"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="level_1r" type="Node3D"]
 
@@ -226,4 +233,25 @@ shape = SubResource("BoxShape3D_38bnc")
 [node name="brick_cube" parent="Path3D6/checkpoint_moving_platform/AnimatableBody3D" instance=ExtResource("5_pswnm")]
 
 [node name="brick_cube2" parent="Path3D6/checkpoint_moving_platform/AnimatableBody3D" instance=ExtResource("5_pswnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999996, 0, 0)
+
+[node name="Path3D7" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.5, -4.5, 0.5)
+curve = SubResource("Curve3D_gjw1v")
+
+[node name="checkpoint_moving_platform" parent="Path3D7" instance=ExtResource("4_lb8r0")]
+beat_type = "metronome"
+checkpoints = Array[float]([0.0, 0.5, 1.0, 0.5, 0.0])
+checkpoint_move_speeds = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Path3D7/checkpoint_moving_platform"]
+transform = Transform3D(1, 0, 0, 0, 1.00001, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D7/checkpoint_moving_platform/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+shape = SubResource("BoxShape3D_38bnc")
+
+[node name="brick_cube" parent="Path3D7/checkpoint_moving_platform/AnimatableBody3D" instance=ExtResource("5_pswnm")]
+
+[node name="brick_cube2" parent="Path3D7/checkpoint_moving_platform/AnimatableBody3D" instance=ExtResource("5_pswnm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999996, 0, 0)
