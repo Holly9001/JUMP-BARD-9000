@@ -131,21 +131,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, -0.5)
 text = "WASD to move
 SPACE to jump"
 font = ExtResource("6_k6lws")
-font_size = 64
+font_size = 84
 
 [node name="Label3D3" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.229, 5.52944, -1)
 text = "hold L to climb
 "
 font = ExtResource("6_k6lws")
-font_size = 64
+font_size = 84
 
 [node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 10, -0.5)
 text = "hold K to dash
 release when meter is full"
 font = ExtResource("6_k6lws")
-font_size = 64
+font_size = 84
 
 [node name="ProjectileShooter2" parent="." instance=ExtResource("6_pyubl")]
 transform = Transform3D(0.0292652, -0.999572, 0, 0.999572, 0.0292652, 0, 0, 0, 1, 29.4376, 2.47457, -0.508278)
