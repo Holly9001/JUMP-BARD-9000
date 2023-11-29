@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=16 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://dpyr6xwullju1" path="res://Scenes/Areas/level01.tscn" id="5_ym3cv"]
 [ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="6_225av"]
@@ -7,9 +7,19 @@
 [ext_resource type="Script" path="res://Scripts/start_menu.gd" id="7_bjha5"]
 [ext_resource type="PackedScene" uid="uid://dijbug3ilp6j8" path="res://Scenes/Areas/level03.tscn" id="7_sdpfq"]
 [ext_resource type="Texture2D" uid="uid://dxfnkwabfwnf3" path="res://UI/JUMPBARD9000.PNG" id="8_bhwcq"]
-[ext_resource type="PackedScene" uid="uid://be1ujdsyti1og" path="res://Scenes/Props/end_screen.tscn" id="8_ts732"]
+[ext_resource type="PackedScene" uid="uid://dv1wn4tdsqceo" path="res://Scenes/Props/end_screen.tscn" id="8_ts732"]
 [ext_resource type="Script" path="res://Scripts/testscoredisplay.gd" id="10_dpucs"]
+[ext_resource type="FontFile" uid="uid://btnkgnnf82ja8" path="res://UI/Pixel_1.ttf" id="11_cenoi"]
+[ext_resource type="Texture2D" uid="uid://cc34j733bul46" path="res://Art/UI/icon.svg" id="12_jjc5c"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="15_i42sh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtsy5"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyvjr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcy82"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="TestWorld" type="Node3D"]
 
@@ -42,8 +52,8 @@ offset_bottom = 40.0
 script = ExtResource("7_bjha5")
 
 [node name="Jumpbard9000" type="Sprite2D" parent="StartMenu"]
-position = Vector2(242, 133.5)
-scale = Vector2(0.188889, 0.146703)
+position = Vector2(271.461, 197.5)
+scale = Vector2(0.215934, 0.215934)
 texture = ExtResource("8_bhwcq")
 
 [node name="Button" type="Button" parent="StartMenu"]
@@ -51,10 +61,29 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 12.01
 anchor_bottom = 6.735
-offset_left = 111.0
-offset_top = 154.0
-offset_right = -313.4
-offset_bottom = -84.4
+offset_left = 7.0
+offset_top = 149.0
+offset_right = -366.4
+offset_bottom = -75.4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_cenoi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xtsy5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oyvjr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rcy82")
 text = "START"
+icon = ExtResource("12_jjc5c")
+expand_icon = true
+
+[node name="Label" type="Label" parent="StartMenu"]
+offset_left = 122.0
+offset_top = 104.0
+offset_right = 313.0
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("11_cenoi")
+text = "press f11 to fullscreen"
 
 [connection signal="pressed" from="StartMenu/Button" to="StartMenu" method="load_first"]
