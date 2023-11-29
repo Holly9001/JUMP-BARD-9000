@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://86k6407oqgxj"]
+[gd_scene load_steps=9 format=3 uid="uid://86k6407oqgxj"]
 
 [ext_resource type="PackedScene" uid="uid://dpyr6xwullju1" path="res://Scenes/Areas/level01.tscn" id="5_ym3cv"]
 [ext_resource type="PackedScene" uid="uid://7vog8io13utl" path="res://Scenes/WorldControl/music_controller.tscn" id="6_225av"]
 [ext_resource type="PackedScene" uid="uid://dyu7cbmc6alvi" path="res://Scenes/Areas/level02.tscn" id="6_g1qxc"]
 [ext_resource type="PackedScene" uid="uid://wqbss1j8p52s" path="res://UI/debug_ui.tscn" id="7_4y0cq"]
 [ext_resource type="Script" path="res://Scenes/Areas/start_menu.gd" id="7_sac36"]
+[ext_resource type="Texture2D" uid="uid://dxfnkwabfwnf3" path="res://UI/JUMPBARD9000.PNG" id="8_bhwcq"]
 [ext_resource type="Script" path="res://Scripts/testscoredisplay.gd" id="10_dpucs"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="15_i42sh"]
 
@@ -38,15 +39,20 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_sac36")
 
+[node name="Jumpbard9000" type="Sprite2D" parent="StartMenu"]
+position = Vector2(242, 133.5)
+scale = Vector2(0.188889, 0.146703)
+texture = ExtResource("8_bhwcq")
+
 [node name="Button" type="Button" parent="StartMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 12.01
 anchor_bottom = 6.735
-offset_left = 197.0
-offset_top = 100.0
-offset_right = -227.4
-offset_bottom = -138.4
+offset_left = 111.0
+offset_top = 154.0
+offset_right = -313.4
+offset_bottom = -84.4
 text = "START"
 
 [connection signal="pressed" from="StartMenu/Button" to="StartMenu" method="load_first"]
