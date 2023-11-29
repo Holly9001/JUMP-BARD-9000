@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://btnkgnnf82ja8" path="res://UI/Pixel_1.ttf" id="6_k6lws"]
 [ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="6_pyubl"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_13h3r"]
-[ext_resource type="PackedScene" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
+[ext_resource type="PackedScene" uid="uid://dqas7h8bgulfh" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
 [ext_resource type="PackedScene" uid="uid://ce2ju8ox128mg" path="res://Scenes/Props/death_area.tscn" id="10_qgijg"]
 [ext_resource type="PackedScene" uid="uid://ba0b0mxu56ojn" path="res://3D/decor/tree_1.glb" id="10_yopfl"]
 
