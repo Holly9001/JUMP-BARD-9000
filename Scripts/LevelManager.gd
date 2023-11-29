@@ -28,10 +28,11 @@ func load_next():
 	load_level(current_level + 1)
 	
 func _process(delta):
-	if Input.is_action_just_pressed("debug_lvl_0"):
-		load_level(0)
-	if Input.is_action_just_pressed("debug_lvl_1"):
-		load_level(1)
-	if Input.is_action_just_pressed("debug_lvl_2"):
-		load_next()
-		
+	pass
+#	if Input.is_action_just_pressed("debug_lvl_0"):
+#		load_level(0)
+#	if Input.is_action_just_pressed("debug_lvl_1"):
+#		load_level(1)
+#	if Input.is_action_just_pressed("debug_lvl_2"):
+#		load_next()
+#
