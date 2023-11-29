@@ -54,12 +54,12 @@ shadow_mesh = SubResource("ArrayMesh_jwpla")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqf8b"]
 
-[sub_resource type="Sky" id="Sky_ahhm5"]
+[sub_resource type="Sky" id="Sky_whhjo"]
 sky_material = SubResource("ProceduralSkyMaterial_lqf8b")
 
 [sub_resource type="Environment" id="Environment_65jaa"]
 background_mode = 2
-sky = SubResource("Sky_ahhm5")
+sky = SubResource("Sky_whhjo")
 ambient_light_color = Color(0.521569, 0.521569, 0.521569, 1)
 tonemap_mode = 2
 fog_enabled = true
