@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scripts/LEVEL_02.gd" id="1_g65i3"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_x4on5"]
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="3_855ma"]
-[ext_resource type="PackedScene" uid="uid://ccdov4njy6yfh" path="res://Scenes/Props/spikes.tscn" id="4_r7txn"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/spikes.tscn" id="4_r7txn"]
 [ext_resource type="PackedScene" uid="uid://bob661mynbg6t" path="res://Scenes/Props/checkpoint_moving_platform.tscn" id="5_th6sk"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_d6m8k"]
-[ext_resource type="PackedScene" uid="uid://dqas7h8bgulfh" path="res://Scenes/Props/exit.tscn" id="8_1cv0n"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/exit.tscn" id="8_1cv0n"]
 [ext_resource type="PackedScene" uid="uid://ce2ju8ox128mg" path="res://Scenes/Props/death_area.tscn" id="9_wm25c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
