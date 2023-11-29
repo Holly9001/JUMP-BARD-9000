@@ -1,14 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyu7cbmc6alvi"]
+[gd_scene load_steps=16 format=3 uid="uid://dyu7cbmc6alvi"]
 
 [ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="1_3mi6q"]
 [ext_resource type="Script" path="res://Scripts/LEVEL_02.gd" id="1_g65i3"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_x4on5"]
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="3_855ma"]
-[ext_resource type="PackedScene" uid="uid://ccdov4njy6yfh" path="res://Scenes/Props/spikes.tscn" id="4_r7txn"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/spikes.tscn" id="4_r7txn"]
 [ext_resource type="PackedScene" uid="uid://bob661mynbg6t" path="res://Scenes/Props/checkpoint_moving_platform.tscn" id="5_th6sk"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_d6m8k"]
-[ext_resource type="PackedScene" uid="uid://dqas7h8bgulfh" path="res://Scenes/Props/exit.tscn" id="8_1cv0n"]
-[ext_resource type="PackedScene" uid="uid://ce2ju8ox128mg" path="res://Scenes/Props/death_area.tscn" id="9_t3oi8"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/exit.tscn" id="8_1cv0n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
 resource_name = "sky"
@@ -136,6 +135,3 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 8.5, 1.5, -0.5)
 
 [node name="Exit" parent="." instance=ExtResource("8_1cv0n")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 7, 8, -0.5)
-
-[node name="death_area" parent="." instance=ExtResource("9_t3oi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4.5, -0.5)
