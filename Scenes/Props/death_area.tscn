@@ -9,7 +9,8 @@ size = Vector3(168, 1, 1)
 [node name="death_area" type="Node3D"]
 script = ExtResource("1_off4w")
 
-[node name="TriggerArea" parent="." instance=ExtResource("2_wa8yj")]
+[node name="TriggerArea" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_wa8yj")]
+target = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
 shape = SubResource("BoxShape3D_jnasd")
