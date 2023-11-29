@@ -168,7 +168,7 @@ scale_max = 1.3
 size = Vector2(0.03, 0.45)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_06hc2"]
-radius = 0.160728
+radius = 0.4
 height = 0.9
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1vu6"]
@@ -253,7 +253,6 @@ script = ExtResource("3_cvtvs")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.08907)
-current = true
 
 [node name="RainParticle" type="GPUParticles3D" parent="SpringArm/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.063, -2.30003)
@@ -280,6 +279,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.312, 0)
 target_position = Vector3(0, 0.1, 0)
 
 [node name="DebugUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -324,6 +324,5 @@ draw_pass_1 = SubResource("QuadMesh_ymjsd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_y8788")
-volume_db = -1.0
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
