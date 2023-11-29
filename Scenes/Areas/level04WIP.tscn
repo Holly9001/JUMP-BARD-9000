@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c415dgf075j6q"]
+[gd_scene load_steps=22 format=3 uid="uid://cx4i71qdctxi7"]
 
 [ext_resource type="MeshLibrary" uid="uid://7fy5hw5gdrir" path="res://BlockLib.meshlib" id="1_dm1u4"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_xong5"]
