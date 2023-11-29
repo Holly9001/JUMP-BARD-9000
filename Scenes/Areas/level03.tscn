@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dijbug3ilp6j8"]
+[gd_scene load_steps=28 format=3 uid="uid://dijbug3ilp6j8"]
 
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="1_mqmvc"]
 [ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="2_bqhj1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dtamupok6f1nn" path="res://3D/decor/tree_1_tree.png" id="10_tjn2n"]
 [ext_resource type="Texture2D" uid="uid://c6b8y8nwisdga" path="res://3D/decor/tree_2_branch.png" id="11_st6av"]
 [ext_resource type="Texture2D" uid="uid://cg57qnyqkb2x0" path="res://3D/decor/tree_2_tree.png" id="12_yjeoa"]
+[ext_resource type="PackedScene" uid="uid://pt54osjkwxvj" path="res://3D/item_meshes/camp_fire.glb" id="13_iyuxa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
 resource_name = "sky"
@@ -254,7 +255,7 @@ transform = Transform3D(0.58859, 0.320097, 0, -0.320097, 0.58859, 0, 0, 0, 0.67,
 transform = Transform3D(0.630045, -0.227911, 0, 0.227911, 0.630045, 0, 0, 0, 0.67, 39.9657, 2.915, 0.0538554)
 
 [node name="Spikes14" parent="." instance=ExtResource("5_fq33d")]
-transform = Transform3D(0.549589, -0.383213, 0, 0.383213, 0.549589, 0, 0, 0, 0.67, 28.9657, 9.415, 0.0538554)
+transform = Transform3D(0.549589, -0.383213, 0, 0.383213, 0.549589, 0, 0, 0, 0.67, 29.8954, 9.03044, 0.0538554)
 
 [node name="Spikes12" parent="." instance=ExtResource("5_fq33d")]
 transform = Transform3D(0.199218, -0.565961, 0, 0.565961, 0.199218, 0, 0, 0, 0.6, 44.271, 13.6333, 0.0538554)
@@ -367,3 +368,6 @@ skeleton = NodePath("")
 transform = Transform3D(-2.26601, 3.56449, 2.59161, 0.424741, 5.77349, -2.22155, -3.26876, -1.72081, -2.08525, 46.2686, 42.9862, -5.83622)
 mesh = SubResource("ArrayMesh_wnyy1")
 skeleton = NodePath("")
+
+[node name="camp_fire" parent="." instance=ExtResource("13_iyuxa")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 2.13614, 0, 0.709165)

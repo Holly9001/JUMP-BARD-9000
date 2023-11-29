@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dpyr6xwullju1"]
+[gd_scene load_steps=32 format=3 uid="uid://dpyr6xwullju1"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_p3f2h"]
 [ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="3_slm3v"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dtamupok6f1nn" path="res://3D/decor/tree_1_tree.png" id="10_xg1ou"]
 [ext_resource type="Texture2D" uid="uid://c6b8y8nwisdga" path="res://3D/decor/tree_2_branch.png" id="11_hixrg"]
 [ext_resource type="Texture2D" uid="uid://cg57qnyqkb2x0" path="res://3D/decor/tree_2_tree.png" id="12_jh4mb"]
+[ext_resource type="PackedScene" uid="uid://pt54osjkwxvj" path="res://3D/item_meshes/camp_fire.glb" id="15_4ydbp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
 resource_name = "sky"
@@ -343,3 +344,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3562, 5.12666, -1)
 
 [node name="death_area" parent="." instance=ExtResource("10_qgijg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -0.5)
+
+[node name="camp_fire" parent="." instance=ExtResource("15_4ydbp")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -14.9517, 0, -1.16489)
