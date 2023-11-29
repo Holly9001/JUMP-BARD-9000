@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpyr6xwullju1"]
+[gd_scene load_steps=18 format=3 uid="uid://dpyr6xwullju1"]
 
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_p3f2h"]
 [ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="3_slm3v"]
@@ -7,8 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://3ndfr26ywxkl" path="res://3D/meshes/brick_cube.res" id="5_68e8g"]
 [ext_resource type="PackedScene" uid="uid://so6ovsk2v7su" path="res://Scenes/Props/projectile_shooter.tscn" id="6_pyubl"]
 [ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_13h3r"]
-[ext_resource type="PackedScene" uid="uid://ce3chjko8ue20" path="res://Scenes/Props/trigger_area.tscn" id="8_2exio"]
-[ext_resource type="PackedScene" uid="uid://de4pcos7v2egj" path="res://Scenes/Props/progress_trigger.tscn" id="9_77i8i"]
+[ext_resource type="PackedScene" uid="uid://dqas7h8bgulfh" path="res://Scenes/Props/exit.tscn" id="9_wefug"]
 [ext_resource type="PackedScene" uid="uid://ba0b0mxu56ojn" path="res://3D/decor/tree_1.glb" id="10_yopfl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
@@ -73,9 +72,6 @@ point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vl6q5"]
 size = Vector3(3, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_av8bm"]
-size = Vector3(1, 2, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -163,18 +159,11 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 10.5, 9.5, -0.5)
 [node name="collectable7" parent="." instance=ExtResource("7_13h3r")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 17, 8.5, -0.5)
 
-[node name="TriggerArea" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_2exio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 8, -0.5)
-target = NodePath("progress_trigger")
-
-[node name="progress_trigger" parent="TriggerArea" instance=ExtResource("9_77i8i")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-shape = SubResource("BoxShape3D_av8bm")
-
 [node name="tree_1" parent="." instance=ExtResource("10_yopfl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -1.5)
 
 [node name="tree_2" parent="." instance=ExtResource("10_yopfl")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -2.5, 0, -3)
+
+[node name="Exit" parent="." instance=ExtResource("9_wefug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 7, -1)
