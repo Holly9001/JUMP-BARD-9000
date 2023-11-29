@@ -76,6 +76,7 @@ icon = ExtResource("12_jjc5c")
 expand_icon = true
 
 [node name="Label" type="Label" parent="StartMenu"]
+layout_mode = 0
 offset_left = 122.0
 offset_top = 104.0
 offset_right = 313.0
