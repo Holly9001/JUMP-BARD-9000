@@ -15,7 +15,7 @@ run/main_scene="res://Scenes/Areas/test_world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://UI/JUMPBARD9000.PNG"
-config/icon="res://icon.svg"
+config/icon="res://Art/UI/icon.svg"
 
 [autoload]
 
