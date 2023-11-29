@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyu7cbmc6alvi"]
+[gd_scene load_steps=15 format=3 uid="uid://dyu7cbmc6alvi"]
 
 [ext_resource type="Texture2D" uid="uid://wfy2igxm16ri" path="res://3D/decor/sky_box_sky_box_test_1.png" id="1_3mi6q"]
+[ext_resource type="Script" path="res://Scripts/LEVEL_02.gd" id="1_g65i3"]
 [ext_resource type="PackedScene" uid="uid://cosaav22w682t" path="res://Scenes/Player/player.tscn" id="2_x4on5"]
 [ext_resource type="MeshLibrary" uid="uid://dro60jmy8jwpg" path="res://3D/mesh_libraries/forest_1.1.tres" id="3_855ma"]
 [ext_resource type="PackedScene" uid="uid://ccdov4njy6yfh" path="res://Scenes/Props/spikes.tscn" id="4_r7txn"]
-[ext_resource type="PackedScene" uid="uid://0k3kmccchs2w" path="res://Scenes/Props/continuous_moving_platform.tscn" id="5_u5kyt"]
+[ext_resource type="PackedScene" uid="uid://bob661mynbg6t" path="res://Scenes/Props/checkpoint_moving_platform.tscn" id="5_th6sk"]
+[ext_resource type="PackedScene" uid="uid://c1pqogevq4tif" path="res://Scenes/Props/collectable.tscn" id="7_d6m8k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhg36"]
 resource_name = "sky"
@@ -66,9 +68,8 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="Curve" id="Curve_2b57y"]
-
 [node name="level02" type="Node3D"]
+script = ExtResource("1_g65i3")
 
 [node name="sky_box2" type="MeshInstance3D" parent="."]
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 0, 0)
@@ -79,14 +80,14 @@ skeleton = NodePath("")
 environment = SubResource("Environment_s00dj")
 
 [node name="Player" parent="." instance=ExtResource("2_x4on5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4.147, -0.5)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 mesh_library = ExtResource("3_855ma")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(-1, 0, 851971, -65536, 0, 3, -65535, 0, 3, -65534, 0, 1048579, 5, 0, 1048577, 7, 0, 1048577, 6, 0, 0)
+"cells": PackedInt32Array(-1, 0, 65536, -65536, 0, 65536, -65535, 0, 3, -65534, 0, 131075, 5, 0, 720898, 7, 0, 393218, 6, 0, 196610, 196608, 0, 3, 262144, 0, 65539, 327679, 0, 65539, 393215, 0, 131075, 393214, 0, 3, 393213, 0, 65539, 393212, 0, 131075, 327676, 0, 196611, 327675, 0, 3, 262139, 0, 65539, 196603, 0, 131075, 131067, 0, 196611, 65531, 0, 3, 65532, 0, 65539, -4, 0, 131075, -3, 0, 65536, -2, 0, 65536, 131068, 65535, 1507328, 196604, 65535, 917504, 262140, 65535, 1507328, 262141, 65535, 1245184, 327677, 65535, 720896, 327678, 65535, 1245184, 262142, 65535, 1179648, 196605, 65535, 1245184, 131069, 65535, 983040, 65533, 65535, 983040, 65534, 65535, 1179648, 131070, 65535, 983040, 65535, 65535, 1245184, 131071, 65535, 917504, 196607, 65535, 1507328, 262143, 65535, 65536, 196606, 65535, 983040, 65536, 65535, 1048579, 0, 65535, 262147, 8, 0, 196610, 131072, 65535, 327683, 131070, 0, 7, 196607, 0, 65542, 262143, 0, 65543, -65538, 0, 2, -65539, 0, 196611, -65537, 0, 1441795, -131072, 0, 393219, -131071, 0, 3)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -94,14 +95,21 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.689, 20.1065)
 
 [node name="Spikes" parent="." instance=ExtResource("4_r7txn")]
-transform = Transform3D(0.499739, 0.0161589, 0, -0.0161589, 0.499739, 0, 0, 0, 0.5, 1.44278, -0.300418, -0.351283)
+transform = Transform3D(0.499739, 0.0161589, 0, -0.0161589, 0.499739, 0, 0, 0, 0.5, 3.5, 1, -0.5)
+
+[node name="Spikes2" parent="." instance=ExtResource("4_r7txn")]
+transform = Transform3D(0.499739, 0.0161589, 0, -0.0161589, 0.499739, 0, 0, 0, 0.5, 1, 0, -0.5)
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.5, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 3.5, 1, -0.5)
 curve = SubResource("Curve3D_4ace0")
 
-[node name="continuous_moving_platform" parent="Path3D" instance=ExtResource("5_u5kyt")]
-position_curve = SubResource("Curve_2b57y")
-beat_type = "metronome"
+[node name="checkpoint_moving_platform" parent="Path3D" instance=ExtResource("5_th6sk")]
+checkpoints = Array[float]([0.0, 1.0])
+checkpoint_move_speeds = Array[float]([2.0, 2.0])
+enabled = false
 
-[node name="Spikes" parent="Path3D/continuous_moving_platform" instance=ExtResource("4_r7txn")]
+[node name="Spikes" parent="Path3D/checkpoint_moving_platform" instance=ExtResource("4_r7txn")]
+
+[node name="collectable" parent="." instance=ExtResource("7_d6m8k")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -3.5, 1.5, -0.5)
