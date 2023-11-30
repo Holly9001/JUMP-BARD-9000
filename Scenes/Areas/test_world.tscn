@@ -43,6 +43,7 @@ script = ExtResource("10_dpucs")
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("music_controller")]
 script = ExtResource("15_i42sh")
 levels = Array[PackedScene]([ExtResource("5_ym3cv"), ExtResource("6_g1qxc"), ExtResource("7_sdpfq"), ExtResource("8_evlmi"), ExtResource("8_ts732")])
+level_songs = Array[String](["Forest1", "Town1", "Forest1", "Town1", "Forest1"])
 music_controller = NodePath("../MusicController")
 
 [node name="StartMenu" type="Control" parent="."]

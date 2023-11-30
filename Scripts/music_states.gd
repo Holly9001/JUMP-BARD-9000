@@ -15,6 +15,8 @@ var state_array := {
 signal pre_beat(beat_type)
 signal on_beat(beat_type)
 signal post_beat(beat_type)
+signal _load_song(song)
+	
 
 func beat_trigger(beat_type, timing):
 	match timing:

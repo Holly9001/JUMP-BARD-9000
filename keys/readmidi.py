@@ -31,7 +31,7 @@ def makeFile(name):
             if msg.type == 'note_on':
                 export_tracks[len(export_tracks) - 1].append(tick2second(delta_time, 960, tempo))
 
-    with open(sys.path[0] + '/' + name.replace(".mid", "") + '_keys.csv', 'w', newline='\n') as csvfile:
+    with open(sys.path[0] + '/' + name.replace(".mid", "") + '.csv', 'w', newline='\n') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=' ',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
         beat_time = 60 / tempo2bpm(tempo)

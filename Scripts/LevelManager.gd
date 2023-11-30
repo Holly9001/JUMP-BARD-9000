@@ -1,13 +1,14 @@
 extends Node
 
 @export var levels: Array[PackedScene] = []
+@export var level_songs: Array[String] = []
 @export var music_controller:Node
 
 var current_level:int
 
 func load_level(idx):
 	current_level = idx
-	music_controller.seek(0, true) 
+	music_controller.play(level_songs[idx])
 	MusicStates.reset_states()
 	GameState.reset_score()
 	for c in get_children():

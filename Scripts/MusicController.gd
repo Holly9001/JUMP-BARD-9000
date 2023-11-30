@@ -2,31 +2,11 @@ extends Control
 
 @onready var anim_player := $AnimationPlayer
 
-@onready var track_reference :Dictionary={
-	'lead_1':'AnimationPlayer/Lead_1_Player',
-	'lead_2':'AnimationPlayer/Lead_2_Player',
-	'bass_1':'AnimationPlayer/Bass_1_Player',
-	'bass_2':'AnimationPlayer/Bass_2_Player',
-	'drum_1':'AnimationPlayer/Drum_1_Player',
-	'drum_2':'AnimationPlayer/Drum_2_Player',
-	'backing_1':'AnimationPlayer/Backing_1_Player',
-	'backing_2':'AnimationPlayer/Backing_2_Player'
-}
-
-@onready var l_1_p :AudioStreamPlayer= $AnimationPlayer/Lead_1_Player
-@onready var l_2_p :AudioStreamPlayer= $AnimationPlayer/Lead_2_Player
-@onready var bs_1_p :AudioStreamPlayer= $AnimationPlayer/Bass_1_Player
-@onready var bs_2_p :AudioStreamPlayer= $AnimationPlayer/Bass_2_Player
-@onready var d_1_p :AudioStreamPlayer= $AnimationPlayer/Drum_1_Player
-@onready var d_2_p :AudioStreamPlayer= $AnimationPlayer/Drum_2_Player
-@onready var bk_1_p :AudioStreamPlayer= $AnimationPlayer/Backing_1_Player
-@onready var bk_2_p :AudioStreamPlayer= $AnimationPlayer/Backing_2_Player
-
 const beat_offset:float = 0.1
 
-func read_csv():
+func read_csv(name):
 	var csv = []
-	var file = FileAccess.open("res://keys/keys.csv", FileAccess.READ)
+	var file = FileAccess.open("res://keys/" + name + ".csv", FileAccess.READ)
 	while !file.eof_reached():
 		var csv_rows = file.get_csv_line(" ")
 		csv.append(csv_rows)
@@ -37,26 +17,6 @@ func read_csv():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
-
-## func where u choose song, and tracks. song is string (just the animation name) and tracks will be an enum maybe?
-
-func _set_song(song, instruments):
-	anim_player.current_animation = song
-	
-	# VERY SORRY IF THIS BREAKS SOMETHING I NEED IT  TO GO AWAY FOR NOW
-#	var track :Animation= anim_player.get_animation(anim_player.get_current_animation())
-#
-#	for i in track_reference:
-#		var track_id = track.find_track(track_reference[i],7)
-#		track.track_set_enabled(track_id,0)
-#
-#	for i in instruments:
-#		var track_id = track.find_track(track_reference[i],7)
-#		track.track_set_enabled(track_id,1)
-#
-#		print(track.track_get_path(1))
-
-## KEYFRAME CHECKS CHANGE VISIBILITY OF AUDIO NODES, WHEN VIS CHANGES, SIGNAL EMITTED!! EZ!!
 
 func _bass_1(timing = 0):
 	#print("bass 1")
@@ -115,16 +75,18 @@ func generate_keys(keys, idx, animation, method):
 		
 		
 
-func _ready():
-	var keys = read_csv()
-	var animation: Animation = anim_player.get_animation("Forest1")
+func load_song(name):
+	var keys = read_csv(name)
+	var animation: Animation = anim_player.get_animation(name)
 	generate_keys(keys, 0, animation, '_metronome')
-	generate_keys(keys, 5, animation, '_backing_1')
-	generate_keys(keys, 6, animation, '_drum_1')
+	generate_keys(keys, 1, animation, '_lead_1')
+	generate_keys(keys, 2, animation, '_lead_2')
 	generate_keys(keys, 3, animation, '_bass_1')
 	generate_keys(keys, 4, animation, '_bass_2')
-	generate_keys(keys, 2, animation, '_lead_2')
-	#for i in range(animation.get_track_count()):
-		#print(animation.track_get_key_count(i))
+	generate_keys(keys, 5, animation, '_backing_1')
+	generate_keys(keys, 6, animation, '_drum_1')
+	generate_keys(keys, 7, animation, '_drum_2')
 
-	#_set_song('Forest1',['bass_1', 'drum_1'])
+func _ready():
+	for i in anim_player.get_animation_list():
+		load_song(i)
