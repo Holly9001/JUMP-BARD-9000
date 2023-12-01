@@ -347,3 +347,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -0.5)
 
 [node name="checkpoint" parent="." instance=ExtResource("15_b8stu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.56297, -0.000209898, -0.797462)
+
+[node name="checkpoint2" parent="." instance=ExtResource("15_b8stu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31116, -0.000209898, -0.797462)
