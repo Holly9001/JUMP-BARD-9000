@@ -118,15 +118,14 @@ func _ready():
 	MusicStates.pre_beat.connect(lam_enable_dash)
 	MusicStates.post_beat.connect(lam_disable_dash)
 	MusicStates.on_beat.connect(handle_on_beat)
+	if GameState.checkpoint != null:
+		position.x = GameState.checkpoint.position.x
+		position.y = GameState.checkpoint.position.y
 
 func handle_on_beat(type):
 	# Decreases counter for charge dash on each beat
 	if is_charging && type == DASH_BEAT_TYPE:
 		beats_counter -= 1
-		print(beats_counter)
-
-func handle_post_beat(type):
-	print(type)
 
 func reset_parent():
 	var global_trans = self.global_transform

@@ -5,6 +5,7 @@ signal reset_level
 signal next_level
 
 var score = 0
+var checkpoint:Node = null
 
 func reset_score():
 	score = 0
@@ -19,3 +20,6 @@ func restart():
 
 func level_progress():
 	next_level.emit()
+	checkpoint = null
+	
+
