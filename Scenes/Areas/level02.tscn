@@ -81,7 +81,7 @@ mesh = SubResource("ArrayMesh_gtxlt")
 skeleton = NodePath("")
 
 [node name="Player" parent="." instance=ExtResource("2_x4on5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4.147, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84108, 4.147, -0.5)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

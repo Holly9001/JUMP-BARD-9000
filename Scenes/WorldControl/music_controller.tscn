@@ -29,6 +29,7 @@ tracks/0/use_blend = true
 [sub_resource type="Animation" id="Animation_torjp"]
 resource_name = "Town1"
 length = 75.0
+loop_mode = 1
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,6 +49,7 @@ tracks/0/use_blend = true
 [sub_resource type="Animation" id="Animation_qo8xb"]
 resource_name = "Forest2"
 length = 44.0
+loop_mode = 1
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
