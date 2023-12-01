@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://7vog8io13utl"]
+[gd_scene load_steps=9 format=3 uid="uid://7vog8io13utl"]
 
 [ext_resource type="Script" path="res://Scripts/MusicController.gd" id="2_hwmsn"]
 [ext_resource type="AudioStream" uid="uid://c7bgy6kwfwj4a" path="res://Audio/Music/Track 1 Forest.wav" id="2_s8k8g"]
 [ext_resource type="AudioStream" uid="uid://1q2080uwu5g5" path="res://Audio/Music/Track_2_Town_Theme.mp3" id="3_e6nc6"]
+[ext_resource type="AudioStream" uid="uid://cmuyhxewud1jt" path="res://Audio/Music/Forest2.wav" id="4_l61gl"]
 
 [sub_resource type="Animation" id="Animation_d748t"]
 resource_name = "Forest1"
@@ -44,9 +45,29 @@ tracks/0/keys = {
 }
 tracks/0/use_blend = true
 
+[sub_resource type="Animation" id="Animation_qo8xb"]
+resource_name = "Forest2"
+length = 44.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/SongPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_l61gl")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2r1aq"]
 _data = {
 "Forest1": SubResource("Animation_d748t"),
+"Forest2": SubResource("Animation_qo8xb"),
 "Town1": SubResource("Animation_torjp")
 }
 
